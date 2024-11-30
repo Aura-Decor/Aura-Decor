@@ -23,4 +23,8 @@
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AuraDecor.Core\AuraDecor.Core.csproj" />
+    </ItemGroup>
+
 </Project>
