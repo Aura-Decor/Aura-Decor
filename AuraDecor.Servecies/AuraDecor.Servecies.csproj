@@ -7,4 +7,8 @@
         <RootNamespace>AuraDecor.Servicies</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AuraDecor.Repository\AuraDecor.Repository.csproj" />
+    </ItemGroup>
+
 </Project>
