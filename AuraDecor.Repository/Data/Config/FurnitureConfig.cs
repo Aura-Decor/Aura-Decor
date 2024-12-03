@@ -13,8 +13,14 @@ public class FurnitureConfig : IEntityTypeConfiguration<Furniture>
         builder.Property(F=>F.Price).HasColumnType("decimal(18,2)");
         builder.Property(F=>F.PictureUrl).IsRequired();
         builder.Property(F=>F.FurnitureModel).IsRequired();
-        builder.HasOne(F => F.Brand).WithMany();
+        builder.HasOne(F => F.Brand)
+            .WithMany()
+            .HasForeignKey(F => F.BrandId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         builder.HasOne(F => F.Category)
-            .WithMany();
+            .WithMany()
+            .HasForeignKey(F => F.CategoryId)
+            .OnDelete(DeleteBehavior.Restrict);;
     }
 }
