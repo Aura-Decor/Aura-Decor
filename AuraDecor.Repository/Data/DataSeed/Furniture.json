@@ -1,169 +1,257 @@
-﻿{
-  "Furniture": [
-    {
-      "Name": "Modern Sofa",
-      "Description": "A comfortable modern sofa with gray fabric.",
-      "PictureUrl": "https://th.bing.com/th/id/OIP.kQmFtkGF8WFE8jooF0QxHwHaLH?rs=1&pid=ImgDetMain",
-      "FurnitureModel": "",
-      "Price": "599.99",
-      "BrandId": "",
-      "Brand": "ComfortHome",
-      "CategoryId": "",
-      "Category": "Sofa"
+﻿[
+  {
+    "Name": "Modern Sofa",
+    "Description": "A comfortable modern sofa with gray fabric.",
+    "PictureUrl": "https://th.bing.com/th/id/OIP.kQmFtkGF8WFE8jooF0QxHwHaLH?rs=1&pid=ImgDetMain",
+    "FurnitureModel": "",
+    "Price": "599.99",
+    "BrandId": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+    "Brand": {
+      "Id": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+      "Name": "ComfortHome"
     },
-    {
-      "Name": "Leather Recliner",
-      "Description": "Black leather recliner with adjustable backrest.",
-      "PictureUrl": "https://cdn.shopify.com/s/files/1/1618/6251/products/Boston_Black_Leather_Recliner_Armchair_Fully_Reclined_FurnitureMaxi_22913_1800x1800.jpg?v=1581708069",
-      "FurnitureModel": "",
-      "Price": "349.99",
-      "BrandId": "",
-      "Brand": "RelaxZone",
-      "CategoryId": "",
-      "Category": "Chair"
-    },
-    {
-      "Name": "Accent Chair",
-      "Description": "Stylish accent chair with velvet upholstery.",
-      "PictureUrl": "https://th.bing.com/th/id/OIP.-uWyYwG2vuF0uJbrrRSHKwHaHa?rs=1&pid=ImgDetMain",
-      "FurnitureModel": "",
-      "Price": "199.99",
-      "BrandId": "",
-      "Brand": "RelaxZone",
-      "CategoryId": "",
-      "Category": "Chair"
-    },
-    {
-      "Name": "Oak Dining Table",
-      "Description": "Solid oak dining table for six people.",
-      "PictureUrl": "https://th.bing.com/th/id/R.c66a9e971734213528265c7aface59ce?rik=54EJYwjvHxWR8g&pid=ImgRaw&r=0",
-      "FurnitureModel": "",
-      "Price": "799.99",
-      "BrandId": "",
-      "Brand": "WoodCraft",
-      "CategoryId": "",
-      "Category": "Table"
-    },
-    {
-      "Name": "Glass Coffee Table",
-      "Description": "Transparent glass coffee table with a metal frame.",
-      "PictureUrl": "https://th.bing.com/th/id/OIP.TQqMfTSqTM36xhoHPqExwwHaG2?rs=1&pid=ImgDetMain",
-      "FurnitureModel": "",
-      "Price": "249.99",
-      "BrandId": "",
-      "Brand": "WoodCraft",
-      "CategoryId": "",
-      "Category": "Table"
-    },
-    {
-      "Name": "Office Desk",
-      "Description": "Ergonomic office desk with cable management.",
-      "PictureUrl": "https://th.bing.com/th/id/OIP._FHDlS5mH2r_XGwvEPSl4wHaHa?rs=1&pid=ImgDetMain",
-      "FurnitureModel": "",
-      "Price": "399.99",
-      "BrandId": "",
-      "Brand": "WoodCraft",
-      "CategoryId": "",
-      "Category": "Table"
-    },
-    {
-      "Name": "Queen Bed Frame",
-      "Description": "Walnut wood queen-size bed frame.",
-      "PictureUrl": "https://th.bing.com/th/id/OIP.AwX6oas3KUcbdUXIrpX9nAHaHa?rs=1&pid=ImgDetMain",
-      "FurnitureModel": "",
-      "Price": "899.99",
-      "BrandId": "",
-      "Brand": "ComfortHome",
-      "CategoryId": "",
-      "Category": "Sofa"
-    },
-    {
-      "Name": "Corner Shelf",
-      "Description": "Space-saving corner shelf unit.",
-      "PictureUrl": "https://th.bing.com/th/id/R.b723d16cdbf9c5351ff9dd2da3b9e275?rik=ygqIz%2bfzLrqX8A&pid=ImgRaw&r=0",
-      "FurnitureModel": "",
-      "Price": "89.99",
-      "BrandId": "",
-      "Brand": "WoodCraft",
-      "CategoryId": "",
-      "Category": "Table"
-    },
-    {
-      "Name": "Bookshelf",
-      "Description": "White wooden bookshelf with five shelves.",
-      "PictureUrl": "https://images.cymax.com/Images/5/2108858-1-L.jpg",
-      "FurnitureModel": "",
-      "Price": "199.99",
-      "BrandId": "",
-      "Brand": "RelaxZone",
-      "CategoryId": "",
-      "Category": "Chair"
-    },
-    {
-      "Name": "TV Stand",
-      "Description": "Modern TV stand with storage compartments.",
-      "PictureUrl": "https://www.gpwih.com/wp-content/uploads/2019/02/most-up-to-date-all-modern-tv-stands-throughout-modern-contemporary-high-gloss-black-tv-stand.jpg",
-      "FurnitureModel": "",
-      "Price": "299.99",
-      "BrandId": "",
-      "Brand": "RelaxZone",
-      "CategoryId": "",
-      "Category": "Chair"
-    },
-    {
-      "Name": "Bar Stool",
-      "Description": "Adjustable bar stool with cushioned seat.",
-      "PictureUrl": "https://th.bing.com/th/id/OIP.BpQ79kkGT766vJD-WU8krwHaHa?rs=1&pid=ImgDetMain",
-      "FurnitureModel": "",
-      "Price": "79.99",
-      "BrandId": "",
-      "Brand": "WoodCraft",
-      "CategoryId": "",
-      "Category": "Table"
-    },
-    {
-      "Name": "Nightstand",
-      "Description": "Compact nightstand with a drawer and shelf.",
-      "PictureUrl": "https://th.bing.com/th/id/OIP.gTuRDF9q8LLpOtLZ3Hn4xwHaJQ?rs=1&pid=ImgDetMain",
-      "FurnitureModel": "",
-      "Price": "129.99",
-      "BrandId": "",
-      "Brand": "ComfortHome",
-      "CategoryId": "",
-      "Category": "Sofa"
-    },
-    {
-      "Name": "Dining Chair Set",
-      "Description": "Set of four cushioned dining chairs.",
-      "PictureUrl": "https://th.bing.com/th/id/OIP.izeRDf0p76B8n-JIY9vUmAHaHa?rs=1&pid=ImgDetMain",
-      "FurnitureModel": "",
-      "Price": "499.99",
-      "BrandId": "",
-      "Brand": "ComfortHome",
-      "CategoryId": "",
-      "Category": "Sofa"
-    },
-    {
-      "Name": "Kitchen Island",
-      "Description": "Wooden kitchen island with storage and seating.",
-      "PictureUrl": "https://th.bing.com/th/id/R.50bbedf399abd5a34c2adef298ad4475?rik=Kt1N8g7CyBWNOw&pid=ImgRaw&r=0",
-      "FurnitureModel": "",
-      "Price": "849.99",
-      "BrandId": "",
-      "Brand": "RelaxZone",
-      "CategoryId": "",
-      "Category": "Chair"
-    },
-    {
-      "Name": "Wardrobe",
-      "Description": "Spacious wooden wardrobe with sliding doors.",
-      "PictureUrl": "https://th.bing.com/th/id/OIP.YSRMlfivbHHZUzsrxP8hAgAAAA?rs=1&pid=ImgDetMain",
-      "FurnitureModel": "",
-      "Price": "999.99",
-      "BrandId": "",
-      "Brand": "ComfortHome",
-      "CategoryId": "",
-      "Category": "Sofa"
+    "CategoryId": "5ec441fc-df97-486e-d750-08dd13abe639",
+    "Category": {
+      "Id": "5ec441fc-df97-486e-d750-08dd13abe639",
+      "Name": "Sofa"
     }
-  ]
-}
+  },
+  {
+    "Name": "Leather Recliner",
+    "Description": "Black leather recliner with adjustable backrest.",
+    "PictureUrl": "https://cdn.shopify.com/s/files/1/1618/6251/products/Boston_Black_Leather_Recliner_Armchair_Fully_Reclined_FurnitureMaxi_22913_1800x1800.jpg?v=1581708069",
+    "FurnitureModel": "",
+    "Price": "349.99",
+    "BrandId": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+    "Brand": {
+      "Id": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+      "Name": "RelaxZone"
+    },
+    "CategoryId": "134f784c-b34a-4190-d751-08dd13abe639",
+    "Category": {
+      "Id": "134f784c-b34a-4190-d751-08dd13abe639",
+      "Name": "Chair"
+    }
+  },
+  {
+    "Name": "Accent Chair",
+    "Description": "Stylish accent chair with velvet upholstery.",
+    "PictureUrl": "https://th.bing.com/th/id/OIP.-uWyYwG2vuF0uJbrrRSHKwHaHa?rs=1&pid=ImgDetMain",
+    "FurnitureModel": "",
+    "Price": "199.99",
+    "BrandId": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+    "Brand": {
+      "Id": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+      "Name": "RelaxZone"
+    },
+    "CategoryId": "134f784c-b34a-4190-d751-08dd13abe639",
+    "Category": {
+      "Id": "134f784c-b34a-4190-d751-08dd13abe639",
+      "Name": "Chair"
+    }
+  },
+  {
+    "Name": "Oak Dining Table",
+    "Description": "Solid oak dining table for six people.",
+    "PictureUrl": "https://th.bing.com/th/id/R.c66a9e971734213528265c7aface59ce?rik=54EJYwjvHxWR8g&pid=ImgRaw&r=0",
+    "FurnitureModel": "",
+    "Price": "799.99",
+    "BrandId": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+    "Brand": {
+      "Id": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+      "Name": "WoodCraft"
+    },
+    "CategoryId": "7883d138-36c9-455d-d74f-08dd13abe639",
+    "Category": {
+      "Id": "7883d138-36c9-455d-d74f-08dd13abe639",
+      "Name": "Table"
+    }
+  },
+  {
+    "Name": "Glass Coffee Table",
+    "Description": "Transparent glass coffee table with a metal frame.",
+    "PictureUrl": "https://th.bing.com/th/id/OIP.TQqMfTSqTM36xhoHPqExwwHaG2?rs=1&pid=ImgDetMain",
+    "FurnitureModel": "",
+    "Price": "249.99",
+    "BrandId": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+    "Brand": {
+      "Id": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+      "Name": "WoodCraft"
+    },
+    "CategoryId": "7883d138-36c9-455d-d74f-08dd13abe639",
+    "Category": {
+      "Id": "7883d138-36c9-455d-d74f-08dd13abe639",
+      "Name": "Table"
+    }
+  },
+  {
+    "Name": "Office Desk",
+    "Description": "Ergonomic office desk with cable management.",
+    "PictureUrl": "https://th.bing.com/th/id/OIP._FHDlS5mH2r_XGwvEPSl4wHaHa?rs=1&pid=ImgDetMain",
+    "FurnitureModel": "",
+    "Price": "399.99",
+    "BrandId": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+    "Brand": {
+      "Id": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+      "Name": "WoodCraft"
+    },
+    "CategoryId": "7883d138-36c9-455d-d74f-08dd13abe639",
+    "Category": {
+      "Id": "7883d138-36c9-455d-d74f-08dd13abe639",
+      "Name": "Table"
+    }
+  },
+  {
+    "Name": "Queen Bed Frame",
+    "Description": "Walnut wood queen-size bed frame.",
+    "PictureUrl": "https://th.bing.com/th/id/OIP.AwX6oas3KUcbdUXIrpX9nAHaHa?rs=1&pid=ImgDetMain",
+    "FurnitureModel": "",
+    "Price": "899.99",
+    "BrandId": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+    "Brand": {
+      "Id": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+      "Name": "ComfortHome"
+    },
+    "CategoryId": "5ec441fc-df97-486e-d750-08dd13abe639",
+    "Category": {
+      "Id": "5ec441fc-df97-486e-d750-08dd13abe639",
+      "Name": "Sofa"
+    }
+  },
+  {
+    "Name": "Corner Shelf",
+    "Description": "Space-saving corner shelf unit.",
+    "PictureUrl": "https://th.bing.com/th/id/R.b723d16cdbf9c5351ff9dd2da3b9e275?rik=ygqIz%2bfzLrqX8A&pid=ImgRaw&r=0",
+    "FurnitureModel": "",
+    "Price": "89.99",
+    "BrandId": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+    "Brand": {
+      "Id": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+      "Name": "WoodCraft"
+    },
+    "CategoryId": "7883d138-36c9-455d-d74f-08dd13abe639",
+    "Category": {
+      "Id": "7883d138-36c9-455d-d74f-08dd13abe639",
+      "Name": "Table"
+    }
+  },
+  {
+    "Name": "Bookshelf",
+    "Description": "White wooden bookshelf with five shelves.",
+    "PictureUrl": "https://images.cymax.com/Images/5/2108858-1-L.jpg",
+    "FurnitureModel": "",
+    "Price": "199.99",
+    "BrandId": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+    "Brand": {
+      "Id": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+      "Name": "RelaxZone"
+    },
+    "CategoryId": "134f784c-b34a-4190-d751-08dd13abe639",
+    "Category": {
+      "Id": "134f784c-b34a-4190-d751-08dd13abe639",
+      "Name": "Chair"
+    }
+  },
+  {
+    "Name": "TV Stand",
+    "Description": "Modern TV stand with storage compartments.",
+    "PictureUrl": "https://www.gpwih.com/wp-content/uploads/2019/02/most-up-to-date-all-modern-tv-stands-throughout-modern-contemporary-high-gloss-black-tv-stand.jpg",
+    "FurnitureModel": "",
+    "Price": "299.99",
+    "BrandId": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+    "Brand": {
+      "Id": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+      "Name": "RelaxZone"
+    },
+    "CategoryId": "134f784c-b34a-4190-d751-08dd13abe639",
+    "Category": {
+      "Id": "134f784c-b34a-4190-d751-08dd13abe639",
+      "Name": "Chair"
+    }
+  },
+  {
+    "Name": "Bar Stool",
+    "Description": "Adjustable bar stool with cushioned seat.",
+    "PictureUrl": "https://th.bing.com/th/id/OIP.BpQ79kkGT766vJD-WU8krwHaHa?rs=1&pid=ImgDetMain",
+    "FurnitureModel": "",
+    "Price": "79.99",
+    "BrandId": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+    "Brand": {
+      "Id": "704357e9-ebb9-4658-ca5f-08dd13abe5ff",
+      "Name": "WoodCraft"
+    },
+    "CategoryId": "7883d138-36c9-455d-d74f-08dd13abe639",
+    "Category": {
+      "Id": "7883d138-36c9-455d-d74f-08dd13abe639",
+      "Name": "Table"
+    }
+  },
+  {
+    "Name": "Nightstand",
+    "Description": "Compact nightstand with a drawer and shelf.",
+    "PictureUrl": "https://th.bing.com/th/id/OIP.gTuRDF9q8LLpOtLZ3Hn4xwHaJQ?rs=1&pid=ImgDetMain",
+    "FurnitureModel": "",
+    "Price": "129.99",
+    "BrandId": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+    "Brand": {
+      "Id": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+      "Name": "ComfortHome"
+    },
+    "CategoryId": "5ec441fc-df97-486e-d750-08dd13abe639",
+    "Category": {
+      "Id": "5ec441fc-df97-486e-d750-08dd13abe639",
+      "Name": "Sofa"
+    }
+  },
+  {
+    "Name": "Dining Chair Set",
+    "Description": "Set of four cushioned dining chairs.",
+    "PictureUrl": "https://th.bing.com/th/id/OIP.izeRDf0p76B8n-JIY9vUmAHaHa?rs=1&pid=ImgDetMain",
+    "FurnitureModel": "",
+    "Price": "499.99",
+    "BrandId": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+    "Brand": {
+      "Id": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+      "Name": "ComfortHome"
+    },
+    "CategoryId": "5ec441fc-df97-486e-d750-08dd13abe639",
+    "Category": {
+      "Id": "5ec441fc-df97-486e-d750-08dd13abe639",
+      "Name": "Sofa"
+    }
+  },
+  {
+    "Name": "Kitchen Island",
+    "Description": "Wooden kitchen island with storage and seating.",
+    "PictureUrl": "https://th.bing.com/th/id/R.50bbedf399abd5a34c2adef298ad4475?rik=Kt1N8g7CyBWNOw&pid=ImgRaw&r=0",
+    "FurnitureModel": "",
+    "Price": "849.99",
+    "BrandId": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+    "Brand": {
+      "Id": "40f537ba-044b-471a-ca61-08dd13abe5ff",
+      "Name": "RelaxZone"
+    },
+    "CategoryId": "134f784c-b34a-4190-d751-08dd13abe639",
+    "Category": {
+      "Id": "134f784c-b34a-4190-d751-08dd13abe639",
+      "Name": "Chair"
+    }
+  },
+  {
+    "Name": "Wardrobe",
+    "Description": "Spacious wooden wardrobe with sliding doors.",
+    "PictureUrl": "https://th.bing.com/th/id/OIP.YSRMlfivbHHZUzsrxP8hAgAAAA?rs=1&pid=ImgDetMain",
+    "FurnitureModel": "",
+    "Price": "999.99",
+    "BrandId": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+    "Brand": {
+      "Id": "af16ccd3-3a5c-476d-ca60-08dd13abe5ff",
+      "Name": "ComfortHome"
+    },
+    "CategoryId": "5ec441fc-df97-486e-d750-08dd13abe639",
+    "Category": {
+      "Id": "5ec441fc-df97-486e-d750-08dd13abe639",
+      "Name": "Sofa"
+    }
+  }
+]
