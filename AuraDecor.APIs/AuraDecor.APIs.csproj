@@ -17,10 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\AuraDecor.Core\AuraDecor.Core.csproj" />
       <ProjectReference Include="..\AuraDecor.Repository\AuraDecor.Repository.csproj" />
     </ItemGroup>
