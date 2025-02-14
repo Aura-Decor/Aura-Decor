@@ -21,4 +21,8 @@
       <ProjectReference Include="..\AuraDecor.Repository\AuraDecor.Repository.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\" />
+    </ItemGroup>
+
 </Project>
