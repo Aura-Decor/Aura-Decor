@@ -24,7 +24,9 @@ if (app.Environment.IsDevelopment())
 }
 app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseHttpsRedirection();
+app.UseDefaultFiles();
 app.UseStaticFiles();
+
 app.MapControllers();
 
 app.Run();
