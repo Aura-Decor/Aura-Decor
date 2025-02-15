@@ -1,19 +1,19 @@
-#region Using Directives
-using AuraDecor.APIs.Extensions;
 using AuraDecor.APIs.Middlewares;
+using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Repository;
 using AuraDecor.Repository.Data;
-#endregion
+using Microsoft.EntityFrameworkCore;
 
-#region Builder Configuration
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddApplicationServices(builder.Configuration);
-#endregion
+builder.Services.AddControllers();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-#region Application Configuration
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
@@ -30,4 +30,3 @@ app.UseStaticFiles();
 app.MapControllers();
 
 app.Run();
-#endregion
