@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuraDecor.Servicies
+namespace AuraDecor.Core.Services.Contract
 {
     public interface IFurnitureService
     {
@@ -15,7 +15,5 @@ namespace AuraDecor.Servicies
         Task AddFurnitureAsync(Furniture furniture);
         Task UpdateFurnitureAsync(Furniture furniture);
         Task DeleteFurnitureAsync(Furniture furniture);
-
-
     }
 }
