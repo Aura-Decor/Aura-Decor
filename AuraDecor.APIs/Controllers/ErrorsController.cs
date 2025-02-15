@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AuraDecor.APIs.Controllers;
 [Route("errors/{code}")]
-[ApiExplorerSettings(IgnoreApi = true)]
 [ApiController]
 public class ErrorsController : ControllerBase
 {
@@ -13,5 +12,4 @@ public class ErrorsController : ControllerBase
     {
         return NotFound(new ApiResponse(code));
     }
-    
 }
