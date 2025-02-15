@@ -1,5 +1,6 @@
 ﻿using AuraDecor.Core.Entities;
 using AuraDecor.Core.Repositories.Contract;
+using AuraDecor.Core.Services.Contract;
 using AuraDecor.Repositoriy.Migrations;
 using System;
 using System.Collections.Generic;
