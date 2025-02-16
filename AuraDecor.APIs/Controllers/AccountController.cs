@@ -6,6 +6,8 @@ using AuraDecor.APIs.Extensions;
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Services.Contract;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -83,6 +85,53 @@ public class AccountController : ApiBaseController
                 Token = await _authService.CreateTokenAsync(user, _userManager),
                 DisplayName = user.DisplayName
             };
+        }
+        [HttpGet("google-login")]
+        public IActionResult GoogleLogin()
+        {
+            var properties = new AuthenticationProperties 
+            { 
+                RedirectUri = Url.Action("GoogleResponse") 
+            };
+            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+        }
+
+        [HttpGet("google-response")]
+        public async Task<IActionResult> GoogleResponse()
+        {
+            var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
+    
+            if (!result.Succeeded)
+                return Unauthorized(new ApiResponse(401));
+
+            var googleUser = result.Principal;
+            var email = googleUser.FindFirst(ClaimTypes.Email)?.Value;
+            var name = googleUser.FindFirst(ClaimTypes.Name)?.Value;
+
+            // Check if user exists
+            var user = await _userManager.FindByEmailAsync(email);
+    
+            if (user == null)
+            {
+                user = new User
+                {
+                    Email = email,
+                    UserName = email,
+                    DisplayName = name,
+                    EmailConfirmed = true 
+                };
+
+                var createResult = await _userManager.CreateAsync(user);
+                if (!createResult.Succeeded)
+                    return BadRequest(new ApiResponse(400, "Failed to create user"));
+            }
+
+            return Ok(new UserDto
+            {
+                Email = user.Email,
+                Token = await _authService.CreateTokenAsync(user, _userManager),
+                DisplayName = user.DisplayName
+            });
         }
 
         [Authorize]
