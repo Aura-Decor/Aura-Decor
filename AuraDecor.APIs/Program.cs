@@ -4,6 +4,8 @@ using AuraDecor.APIs.Middlewares;
 using AuraDecor.Repository;
 using AuraDecor.Repository.Data;
 using Scalar.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 #endregion
 
 #region Builder Configuration
@@ -26,6 +28,8 @@ if (app.Environment.IsDevelopment())
 app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
