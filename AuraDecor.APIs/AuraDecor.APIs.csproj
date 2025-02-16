@@ -8,6 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,7 +21,7 @@
     <ItemGroup>
       <ProjectReference Include="..\AuraDecor.Core\AuraDecor.Core.csproj" />
       <ProjectReference Include="..\AuraDecor.Repository\AuraDecor.Repository.csproj" />
-      <ProjectReference Include="..\AuraDecor.Servecies\AuraDecor.Servecies.csproj" />
+      <ProjectReference Include="..\AuraDecor.Services\AuraDecor.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>

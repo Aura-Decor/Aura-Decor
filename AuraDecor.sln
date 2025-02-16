@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuraDecor.Core", "AuraDecor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuraDecor.Repository", "AuraDecor.Repository\AuraDecor.Repository.csproj", "{921C357E-4985-49F4-A6B3-F520D9190F9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuraDecor.Servecies", "AuraDecor.Servecies\AuraDecor.Servecies.csproj", "{61BFAE75-3E4B-4A19-A415-61F39C16F5DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuraDecor.Services", "AuraDecor.Services\AuraDecor.Services.csproj", "{61BFAE75-3E4B-4A19-A415-61F39C16F5DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
