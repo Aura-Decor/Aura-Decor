@@ -14,20 +14,17 @@ public static class IdentityServicesExtensions
     public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
     {
         services.AddScoped(typeof(ITokenService), typeof(TokenService));
-        services.AddIdentity<User,IdentityRole>(options =>
+        
+        services.AddIdentity<User, IdentityRole>(options =>
         {
-            // options.Password.RequireNonAlphanumeric = false;
-            // options.Password.RequireDigit = false;
-            // options.Password.RequireLowercase = false;
-            // options.Password.RequireUppercase = false;
-            // options.Password.RequiredLength = 6;
         }).AddEntityFrameworkStores<AppDbContext>();
-        services.AddAuthentication( options =>
+
+        services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer( options =>
+            .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -40,13 +37,13 @@ public static class IdentityServicesExtensions
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.FromDays(double.Parse(config["JWT:TokenLifeTime"]))
                 };
-            });
-        services.AddAuthentication()
+            })
             .AddGoogle(options =>
             {
                 options.ClientId = config["Authentication:Google:ClientId"];
                 options.ClientSecret = config["Authentication:Google:ClientSecret"];
             });
+
         return services;
     }
 }
