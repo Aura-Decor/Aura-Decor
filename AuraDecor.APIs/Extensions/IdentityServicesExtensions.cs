@@ -41,6 +41,12 @@ public static class IdentityServicesExtensions
                     ClockSkew = TimeSpan.FromDays(double.Parse(config["JWT:TokenLifeTime"]))
                 };
             });
+        services.AddAuthentication()
+            .AddGoogle(options =>
+            {
+                options.ClientId = config["Authentication:Google:ClientId"];
+                options.ClientSecret = config["Authentication:Google:ClientSecret"];
+            });
         return services;
     }
 }
