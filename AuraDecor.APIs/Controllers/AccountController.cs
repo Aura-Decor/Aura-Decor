@@ -107,6 +107,11 @@ public class AccountController : ApiBaseController
             var email = User.FindFirstValue(ClaimTypes.Email);
             var user = await _userManager.FindUserWithAddressAsync(User);
             var address = _mapper.Map<Address, AddressDto>(user.Address);
+            if (address == null)
+            {
+                return NotFound(new ApiResponse(404));
+                
+            }
             return Ok(address);
         }
 
