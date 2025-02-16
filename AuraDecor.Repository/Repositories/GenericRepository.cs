@@ -21,6 +21,13 @@ public class GenericRepository<T>: IGenericRepository<T> where T : BaseEntity
 
     public async Task<IReadOnlyList<T>> GetAllAsync()
     {
+        if (typeof(T) == typeof(Furniture))
+        {
+            return await _dbContext.Set<T>()
+                .Include(p => ((Furniture)(object)p).Category)
+                .Include(p => ((Furniture)(object)p).Brand)
+                .ToListAsync();
+        }
         return await _dbContext.Set<T>().ToListAsync();
     }
 
