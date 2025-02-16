@@ -1,4 +1,5 @@
 using AuraDecor.APIs.Errors;
+using AuraDecor.APIs.Helpers;
 using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Repository;
 using AuraDecor.Repository.Data;
@@ -13,7 +14,7 @@ public static class ApplicationServicesExtensions
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+        services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
         services.Configure<ApiBehaviorOptions>(options =>
