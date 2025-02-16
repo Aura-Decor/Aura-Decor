@@ -4,6 +4,7 @@ using AuraDecor.Repository;
 using AuraDecor.Repository.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AuraDecor.APIs.Extensions;
 
@@ -32,6 +33,8 @@ public static class ApplicationServicesExtensions
                 return new BadRequestObjectResult(errorResponse);
             };
         });
+
+
         return services;
     }
 }
