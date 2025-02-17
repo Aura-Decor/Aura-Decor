@@ -4,6 +4,7 @@ using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
 using AuraDecor.Repository;
 using AuraDecor.Repository.Data;
+using AuraDecor.Services;
 using AuraDecor.Servicies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ public static class ApplicationServicesExtensions
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IFurnitureService, FurnitureService>();
+        services.AddScoped<IRoleService, RoleService>();
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
