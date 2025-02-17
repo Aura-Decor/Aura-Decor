@@ -21,7 +21,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
-app.UseSwaggerMiddleWare(); // Always enable Swagger
+app.UseSwaggerMiddleWare(); 
 
 app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseHttpsRedirection();
