@@ -32,9 +32,9 @@ namespace AuraDecor.Servicies
             await _unitOfWork.CompleteAsync();
         }
 
-        public async Task<IReadOnlyList<Furniture>> GetAllFurnitureAsync()
+        public async Task<IReadOnlyList<Furniture>> GetAllFurnitureAsync(string sort, Guid? brandId, Guid? categoryId)
         {
-            var spec = new FurnitureWithCategoryAndBrandSpec();
+            var spec = new FurnitureWithCategoryAndBrandSpec(sort, brandId, categoryId);
             return await _unitOfWork.Repository<Furniture>().GetAllWithSpecAsync(spec);
         }
 
