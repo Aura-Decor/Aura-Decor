@@ -1,5 +1,6 @@
 ﻿using AuraDecor.Core.Entities;
 using AuraDecor.Core.Repositories.Contract;
+using AuraDecor.Core.Specifications;
 using AuraDecor.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,14 +22,17 @@ public class GenericRepository<T>: IGenericRepository<T> where T : BaseEntity
 
     public async Task<IReadOnlyList<T>> GetAllAsync()
     {
-        if (typeof(T) == typeof(Furniture))
-        {
-            return await _dbContext.Set<T>()
-                .Include(p => ((Furniture)(object)p).Category)
-                .Include(p => ((Furniture)(object)p).Brand)
-                .ToListAsync();
-        }
         return await _dbContext.Set<T>().ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<T>> GetAllWithSpecAsync(IBaseSpecification<T> spec)
+    {
+       return await SpecificationEvaluator<T>.GetQuery(_dbContext.Set<T>(), spec).ToListAsync();
+    }
+
+    public async Task<T?> GetWithSpecAsync(IBaseSpecification<T> spec)
+    {
+       return await SpecificationEvaluator<T>.GetQuery(_dbContext.Set<T>(), spec).FirstOrDefaultAsync();
     }
 
     public void Add(T entity)

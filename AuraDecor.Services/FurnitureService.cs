@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuraDecor.Core.Specifications.ProductSpecification;
 
 namespace AuraDecor.Servicies
 {
@@ -33,12 +34,14 @@ namespace AuraDecor.Servicies
 
         public async Task<IReadOnlyList<Furniture>> GetAllFurnitureAsync()
         {
-            return await _unitOfWork.Repository<Furniture>().GetAllAsync();
+            var spec = new FurnitureWithCategoryAndBrandSpec();
+            return await _unitOfWork.Repository<Furniture>().GetAllWithSpecAsync(spec);
         }
 
         public async Task<Furniture> GetFurnitureByIdAsync(Guid id)
         {
-            return await _unitOfWork.Repository<Furniture>().GetByIdAsync(id);
+            var spec = new FurnitureWithCategoryAndBrandSpec(id);
+            return await _unitOfWork.Repository<Furniture>().GetWithSpecAsync(spec);
         }
 
         public async Task UpdateFurnitureAsync(Furniture furniture)

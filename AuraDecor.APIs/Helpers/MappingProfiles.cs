@@ -10,6 +10,10 @@ public class MappingProfiles : Profile
     {
         
         CreateMap<AddressDto, Address>().ReverseMap();
+        
+        CreateMap<Furniture,FurnitureToReturnDto>()
+            .ForMember(d => d.Brand, o => o.MapFrom(s => s.Brand.Name))
+            .ForMember(d => d.Category, o => o.MapFrom(s => s.Category.Name));
 
 
     }

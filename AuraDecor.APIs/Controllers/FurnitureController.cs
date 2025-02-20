@@ -1,6 +1,8 @@
+using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.APIs.Errors;
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Services.Contract;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuraDecor.APIs.Controllers
@@ -9,10 +11,12 @@ namespace AuraDecor.APIs.Controllers
     public class FurnitureController : ApiBaseController
     {
         private readonly IFurnitureService _furnitureService;
+        private readonly IMapper _mapper;
 
-        public FurnitureController(IFurnitureService furnitureService)
+        public FurnitureController(IFurnitureService furnitureService,IMapper mapper)
         {
             _furnitureService = furnitureService;
+            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
@@ -30,7 +34,8 @@ namespace AuraDecor.APIs.Controllers
         public async Task<ActionResult<IReadOnlyList<Furniture>>> GetAllFurniture()
         {
             var furnitureList = await _furnitureService.GetAllFurnitureAsync();
-            return Ok(furnitureList);
+            var furnitureListToReturn = _mapper.Map<IReadOnlyList<Furniture>, IReadOnlyList<FurnitureToReturnDto>>(furnitureList);
+            return Ok(furnitureListToReturn);
         }
 
         [HttpPost]
