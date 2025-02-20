@@ -27,7 +27,8 @@ namespace AuraDecor.APIs.Controllers
             {
                 return NotFound(new ApiResponse(404, "Furniture not found"));
             }
-            return Ok(furniture);
+            var furnitureToReturn = _mapper.Map<Furniture, FurnitureToReturnDto>(furniture);
+            return Ok(furnitureToReturn);
         }
 
         [HttpGet]
