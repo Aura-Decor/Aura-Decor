@@ -32,11 +32,12 @@ namespace AuraDecor.APIs.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Furniture>>> GetAllFurniture()
+        public async Task<ActionResult<IReadOnlyList<Furniture>>> GetAllFurniture(string? sort, Guid? brandId, Guid? categoryId)
         {
-            var furnitureList = await _furnitureService.GetAllFurnitureAsync();
-            var furnitureListToReturn = _mapper.Map<IReadOnlyList<Furniture>, IReadOnlyList<FurnitureToReturnDto>>(furnitureList);
-            return Ok(furnitureListToReturn);
+            var furnitureList = await _furnitureService.GetAllFurnitureAsync(sort, brandId, categoryId);
+            
+            var furnitureToReturn = _mapper.Map<IReadOnlyList<Furniture>, IReadOnlyList<FurnitureToReturnDto>>(furnitureList);
+            return Ok(furnitureToReturn);
         }
 
         [HttpPost]

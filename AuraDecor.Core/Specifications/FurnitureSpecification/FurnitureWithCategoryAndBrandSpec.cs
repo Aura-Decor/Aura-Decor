@@ -4,16 +4,35 @@ namespace AuraDecor.Core.Specifications.ProductSpecification;
 
 public class FurnitureWithCategoryAndBrandSpec : BaseSpecification<Furniture>
 {
+    public FurnitureWithCategoryAndBrandSpec(string sort, Guid? brandId, Guid? categoryId)
+        : base(p =>
+            (!brandId.HasValue || p.BrandId == brandId) &&
+            (!categoryId.HasValue || p.CategoryId == categoryId))
+    {
+        AddIncludes();
+        switch (sort)
+        {
+            case "priceAsc":
+                AddOrderBy(p => p.Price);
+                break;
+            case "priceDesc":
+                AddOrderByDesc(p => p.Price);
+                break;
+            default:
+                AddOrderBy(p => p.Name);
+                break;
+        }
+    }
 
-    public FurnitureWithCategoryAndBrandSpec(Guid? id) : base(f=>f.Id == id)
+    public FurnitureWithCategoryAndBrandSpec(Guid id)
+        : base(p => p.Id == id)
     {
-        Includes.Add(F=>F.Brand);
-        Includes.Add(F=>F.Category);
+        AddIncludes();
     }
-    public FurnitureWithCategoryAndBrandSpec() : base()
+
+    private void AddIncludes()
     {
-        Includes.Add(F=>F.Brand);
-        Includes.Add(F=>F.Category);
+        Includes.Add(p => p.Brand);
+        Includes.Add(p => p.Category);
     }
-    
 }
