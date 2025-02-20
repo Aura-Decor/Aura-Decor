@@ -4,9 +4,16 @@ namespace AuraDecor.Core.Specifications.ProductSpecification;
 
 public class FurnitureWithCategoryAndBrandSpec : BaseSpecification<Furniture>
 {
-    public FurnitureWithCategoryAndBrandSpec(Guid? id = null) : base(id.HasValue ? f => f.Id == id : null)
+
+    public FurnitureWithCategoryAndBrandSpec(Guid? id) : base(f=>f.Id == id)
     {
-        Includes.Add(f => f.Brand);
-        Includes.Add(f => f.Category);
+        Includes.Add(F=>F.Brand);
+        Includes.Add(F=>F.Category);
     }
+    public FurnitureWithCategoryAndBrandSpec() : base()
+    {
+        Includes.Add(F=>F.Brand);
+        Includes.Add(F=>F.Category);
+    }
+    
 }
