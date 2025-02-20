@@ -40,7 +40,10 @@ public static class SwaggerServicesExtensions
 
     public static WebApplication UseSwaggerMiddleWare(this WebApplication app)
     {
-        app.UseSwagger();
+        app.UseSwagger(options =>
+        {
+            options.RouteTemplate = "/openapi/{documentName}.json";
+        });      
         app.UseSwaggerUI();
         return app;
     }

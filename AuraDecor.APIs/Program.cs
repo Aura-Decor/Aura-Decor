@@ -1,11 +1,10 @@
 #region Using Directives
 using AuraDecor.APIs.Extensions;
 using AuraDecor.APIs.Middlewares;
-using AuraDecor.Repository;
-using AuraDecor.Repository.Data;
 using Scalar.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
+
+
+
 #endregion
 
 #region Builder Configuration
@@ -22,7 +21,12 @@ var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseSwaggerMiddleWare(); 
-
+app.MapScalarApiReference(options => 
+    options
+        .WithTheme(ScalarTheme.Mars)
+        .WithDefaultHttpClient(ScalarTarget.CSharp,ScalarClient.HttpClient)
+                    
+);
 app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
