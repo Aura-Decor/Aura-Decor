@@ -48,7 +48,6 @@ app.MapScalarApiReference(options =>
     options
         .WithTheme(ScalarTheme.Mars)
         .WithDefaultHttpClient(ScalarTarget.CSharp,ScalarClient.HttpClient)
-                    
 );
 
 
