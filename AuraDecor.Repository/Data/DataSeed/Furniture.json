@@ -138,5 +138,145 @@
     "price": 9.00,
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1"
+  },
+  {
+    "id": "b2b78951-718d-4e72-85d4-a87312641a4e",
+    "name": "VESSLA",
+    "description": "Storage crate with casters, white",
+    "pictureUrl": "https://www.ikea.com/us/en/p/vitbjoern-storage-unit-with-drawer-white-red-40537179/",
+    "furnitureModel": "https://web-api.ikea.com/dimma/assets/1.2/30064849/PS01_S01_NV01/rqp3/glb_draco/30064849_PS01_S01_NV01_RQP3_3.0_631a276d0fa74288bad0dcefc9314f9f.glb",
+    "price": 5.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1"
+  },
+  {
+    "id": "e420cf67-4317-46de-8b07-9d9e1dfb5725",
+    "name": "VITBJÖRN",
+    "description": "Storage unit with drawer, white/red",
+    "pictureUrl": "https://www.ikea.com/us/en/p/vessla-storage-crate-with-casters-white-30064849/",
+    "furnitureModel": false,
+    "price": 149.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3"
+  },
+  {
+    "id": "e555dcd0-09e8-43ef-ba8f-f55433cf8061",
+    "name": "TARVA",
+    "description": "Bed frame, pine/Luröy, Queen",
+    "pictureUrl": "https://www.ikea.com/us/en/p/tarva-bed-frame-pine-luroey-s29007794/",
+    "furnitureModel": false,
+    "price": 149.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2"
+  },
+  {
+    "id": "d98fca99-ed5d-4eed-a612-2d603df62495",
+    "name": "HEMNES",
+    "description": "Glass-door cabinet with 3 drawers, white stain/light brown",
+    "pictureUrl": "https://www.ikea.com/us/en/p/hemnes-glass-door-cabinet-with-3-drawers-white-stain-light-brown-50413507/",
+    "furnitureModel": false,
+    "price": 379.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1"
+  },
+  {
+    "id": "98fdd724-42ef-4e39-864e-468798575ef9",
+    "name": "FLISAT",
+    "description": "Doll house/wall shelf",
+    "pictureUrl": "https://www.ikea.com/us/en/p/flisat-doll-house-wall-shelf-50290785/",
+    "furnitureModel": false,
+    "price": 39.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3"
+  },
+  {
+    "id": "f40cc16b-3df7-402f-8f1b-8fc1df14a6e2",
+    "name": "TROFAST",
+    "description": "Storage combination, white/turquoise",
+    "pictureUrl": "https://www.ikea.com/us/en/p/trofast-storage-combination-white-turquoise-s19329380/",
+    "furnitureModel": "https://web-api.ikea.com/dimma/assets/1.2/19329380/PS01_S01_NV01/isp3/glb_draco/19329380_PS01_S01_NV01_ISP3_2.0_861f860d9a7640fd93fd2a66a913ffd8.glb",
+    "price": 103.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1"
+  },
+  {
+    "id": "67a8fcd0-fce8-4b6e-901e-9290c3f39e4c",
+    "name": "SKOGSDUVA",
+    "description": "Box, green/white",
+    "pictureUrl": "https://www.ikea.com/us/en/p/skogsduva-box-green-white-40591393/",
+    "furnitureModel": false,
+    "price": 4.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3"
+  },
+  {
+    "id": "98e11393-a80d-424b-b9ea-0ec1cd979e2b",
+    "name": "HAUGA",
+    "description": "Box, green/white",
+    "pictureUrl": "https://www.ikea.com/us/en/p/hauga-2-drawer-chest-white-10572824/",
+    "furnitureModel": "https://web-api.ikea.com/dimma/assets/1.2/10572824/LPT_S01_NV01/rqp3/glb_draco/6fb60eab6ae8161613d3360fe0c7ca97-10572824_LPT_S01_NV01_RQP3_4.0.glb",
+    "price": 89.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1"
+  },
+  {
+    "id": "515b4dcf-23e2-4687-9efb-59b4c4e21984",
+    "name": "SMÅGÖRA",
+    "description": "Box, green/white",
+    "pictureUrl": "https://www.ikea.com/us/en/p/hauga-2-drawer-chest-white-10572824/",
+    "furnitureModel": "https://web-api.ikea.com/dimma/assets/1.2/60465529/PS01_S01_NV01/rqp3/glb_draco/60465529_PS01_S01_NV01_RQP3_3.0_33858c444d16482b9f036a43b97dbc2b.glb",
+    "price": 24.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3"
+  },
+  {
+    "id": "65333233-8673-4799-8250-f61823d612a2",
+    "name": "TROFAST",
+    "description": "Storage combination with boxes, white/white",
+    "pictureUrl": "https://www.ikea.com/us/en/p/trofast-storage-combination-with-boxes-white-white-s69228473/",
+    "furnitureModel": "https://web-api.ikea.com/dimma/assets/1.2/69228473/PS01_S01_NV01/isp1/glb_draco/69228473_PS01_S01_NV01_ISP1_2.0_3ca00924ce474910a3a73b9ee0da1710.glb",
+    "price": 79.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1"
+  },
+  {
+    "id": "fd9a2304-2961-45f0-a4d1-88394422c9a6",
+    "name": "TIGERFINK",
+    "description": "Storage with compartments, turquoise",
+    "pictureUrl": "https://www.ikea.com/us/en/p/tigerfink-storage-with-compartments-turquoise-40512471/",
+    "furnitureModel": false,
+    "price": 14.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3"
+  },
+  {
+    "id": "24f6e836-a14b-4802-bdd2-a99878d29513",
+    "name": "SMUSSLA",
+    "description": "Bedside table/shelf unit, white",
+    "pictureUrl": "https://www.ikea.com/us/en/p/smussla-bedside-table-shelf-unit-white-10469493/",
+    "furnitureModel": false,
+    "price": 39.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2"
+  },
+  {
+    "id": "d465bd0d-910e-45f1-8334-fa2961dd1e3f",
+    "name": "KURA",
+    "description": "Reversible bed, white/pine, Twin",
+    "pictureUrl": "https://www.ikea.com/us/en/p/kura-reversible-bed-white-pine-80253814/",
+    "furnitureModel": "https://web-api.ikea.com/dimma/assets/1.2/80253814/PS01_S01_NV01/iqp3/glb_draco/80253814_PS01_S01_NV01_IQP3_2.0_545f444de0294bf69ef8f16675064dfd.glb",
+    "price": 249.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2"
+  },
+  {
+    "id": "e841d9f2-da74-4005-bab6-0b89d81244d3",
+    "name": "TROFAST",
+    "description": "Storage combination with boxes, light white stained pine/white",
+    "pictureUrl": "https://www.ikea.com/us/en/p/trofast-storage-combination-with-boxes-light-white-stained-pine-white-s19102659/",
+    "furnitureModel": "https://web-api.ikea.com/dimma/assets/1.2/19102659/PS01_S01_NV01/isp3/glb_draco/19102659_PS01_S01_NV01_ISP3_2.0_06a32a16145045958eb2bd72e32fd0ff.glb",
+    "price": 120.0,
+    "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1"
   }
 ]
