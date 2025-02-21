@@ -9,6 +9,9 @@ public class BaseSpecification<T> : IBaseSpecification<T> where T : BaseEntity
     public List<Expression<Func<T, object>>> Includes { get; set; } = new List<Expression<Func<T, object>>>();
     public Expression<Func<T, object>> OrderByAsc { get; set; }
     public Expression<Func<T, object>> OrderByDesc { get; set; }
+    public int Skip { get; set; }
+    public int Take { get; set; }
+    public bool IsPaginationEnabled { get; set; }
 
     public BaseSpecification()
     {
@@ -27,6 +30,13 @@ public class BaseSpecification<T> : IBaseSpecification<T> where T : BaseEntity
     public void AddOrderByDesc(Expression<Func<T, object>> orderByExpressionDesc)
     {
         OrderByDesc = orderByExpressionDesc;
+    }
+    
+    public void ApplyPagingation(int skip, int take)
+    {
+        IsPaginationEnabled = true;
+        Skip = skip;
+        Take = take;
     }
 
 }
