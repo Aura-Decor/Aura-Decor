@@ -73,12 +73,5 @@ namespace AuraDecor.APIs.Controllers
             return NoContent();
         }
         
-        [HttpGet("search")]
-        public async Task<ActionResult<IReadOnlyList<Furniture>>> SearchFurniture(string searchTerm)
-        {
-            var furnitureList = await _furnitureService.SearchFurnitureAsync(searchTerm);
-            var furnitureToReturn = _mapper.Map<IReadOnlyList<Furniture>, IReadOnlyList<FurnitureToReturnDto>>(furnitureList);
-            return Ok(furnitureToReturn);
-        }
     }
 }
