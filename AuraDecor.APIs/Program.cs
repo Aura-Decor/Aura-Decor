@@ -2,34 +2,25 @@
 using AuraDecor.APIs.Extensions;
 using AuraDecor.APIs.Middlewares;
 using AuraDecor.Repository.Data;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
-using Microsoft.AspNetCore.Cors; 
+
+
+
 #endregion
 
 #region Builder Configuration
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors();
+
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddSwaggerServices();
-
-// Add CORS services
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", builder =>
-    {
-        builder.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-    });
-});
 #endregion
 
 #region Application Configuration
-
 var app = builder.Build();
 #region DatabaseMigration
 using var scope = app.Services.CreateScope();
@@ -59,10 +50,12 @@ app.MapScalarApiReference(options =>
         .WithDefaultHttpClient(ScalarTarget.CSharp,ScalarClient.HttpClient)
                     
 );
+
+
 app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseCors("AllowAll"); 
+app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
