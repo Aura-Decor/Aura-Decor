@@ -6,6 +6,7 @@ namespace AuraDecor.Core.Services.Contract
     {
         Task<Furniture> GetFurnitureByIdAsync(Guid id);
         Task<IReadOnlyList<Furniture>> GetAllFurnitureAsync(string sort, Guid? brandId, Guid? categoryId);
+        Task<IReadOnlyList<Furniture>> SearchFurnitureAsync(string searchTerm);
 
         Task AddFurnitureAsync(Furniture furniture);
         Task UpdateFurnitureAsync(Furniture furniture);
