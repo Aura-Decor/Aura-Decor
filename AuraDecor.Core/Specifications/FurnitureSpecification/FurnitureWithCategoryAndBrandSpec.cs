@@ -6,6 +6,7 @@ public class FurnitureWithCategoryAndBrandSpec : BaseSpecification<Furniture>
 {
     public FurnitureWithCategoryAndBrandSpec(FurnitureSpecParams specParams)
         : base(p =>
+            (string.IsNullOrEmpty(specParams.search) || p.Name.ToLower().Contains(specParams.search)) &&
             (!specParams.brandId.HasValue || p.BrandId == specParams.brandId) &&
             (!specParams.categoryId.HasValue || p.CategoryId == specParams.categoryId))
     {

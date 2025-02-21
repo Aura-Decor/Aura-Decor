@@ -20,12 +20,6 @@ namespace AuraDecor.Servicies
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IReadOnlyList<Furniture>> SearchFurnitureAsync(string searchTerm)
-        {
-            var spec = new FurnitureSearchSpec(searchTerm);
-            return await _unitOfWork.Repository<Furniture>().GetAllWithSpecAsync(spec);
-        }
-
         public async Task AddFurnitureAsync(Furniture furniture)
         {
             _unitOfWork.Repository<Furniture>().Add(furniture);
