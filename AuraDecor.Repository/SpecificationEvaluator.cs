@@ -24,7 +24,10 @@ public static class SpecificationEvaluator<T> where T : BaseEntity
             query = query.OrderByDescending(Spec.OrderByDesc);
         }
         query = Spec.Includes.Aggregate(query, (current, include) => current.Include(include));
-        
+        if (Spec.IsPaginationEnabled)
+        {
+            query = query.Skip(Spec.Skip).Take(Spec.Take);
+        }
         // _dbContext.Set<Furniture>().Where(p=>p.Id==1).Include(p=>p.Category).Include(p=>p.Brand)
         return query;
     }

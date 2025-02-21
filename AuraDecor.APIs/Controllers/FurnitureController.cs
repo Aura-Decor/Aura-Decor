@@ -2,6 +2,7 @@ using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.APIs.Errors;
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Services.Contract;
+using AuraDecor.Core.Specifications.ProductSpecification;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,12 +33,12 @@ namespace AuraDecor.APIs.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Furniture>>> GetAllFurniture(string? sort, Guid? brandId, Guid? categoryId)
+        public async Task<ActionResult<Pagination<Furniture>>> GetAllFurniture([FromQuery] FurnitureSpecParams specParams)
         {
-            var furnitureList = await _furnitureService.GetAllFurnitureAsync(sort, brandId, categoryId);
-            
-            var furnitureToReturn = _mapper.Map<IReadOnlyList<Furniture>, IReadOnlyList<FurnitureToReturnDto>>(furnitureList);
-            return Ok(furnitureToReturn);
+            var furnitureList = await _furnitureService.GetAllFurnitureAsync(specParams);
+            var count = await _furnitureService.GetCountAsync(specParams) ;                 
+            var data  = _mapper.Map<IReadOnlyList<Furniture>, IReadOnlyList<FurnitureToReturnDto>>(furnitureList);
+            return Ok(new Pagination<FurnitureToReturnDto>(specParams.PageIndex, specParams.PageSize, count, data));
         }
 
         [HttpPost]

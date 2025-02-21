@@ -49,7 +49,11 @@ public class GenericRepository<T>: IGenericRepository<T> where T : BaseEntity
     {
         _dbContext.Set<T>().Remove(entity);
     }
- 
+
+    public async Task<int> GetCountAsync(IBaseSpecification<T> spec)
+    {
+        return await SpecificationEvaluator<T>.GetQuery(_dbContext.Set<T>(), spec).CountAsync();
+    }
 }
 
  
