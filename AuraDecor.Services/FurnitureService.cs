@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuraDecor.Core.Specifications.ProductSpecification;
+using Microsoft.AspNetCore.Http;
 
 namespace AuraDecor.Servicies
 {
@@ -17,11 +18,15 @@ namespace AuraDecor.Servicies
 
         public FurnitureService(IUnitOfWork unitOfWork)
         {
+
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AddFurnitureAsync(Furniture furniture)
+        public async Task AddFurnitureAsync(Furniture furniture, IFormFile file)
         {
+            string furniturePictureUrl = await FileUploadService.UploadAsync(file);
+            furniture.PictureUrl = furniturePictureUrl;
+
             _unitOfWork.Repository<Furniture>().Add(furniture);
             await _unitOfWork.CompleteAsync();
         }

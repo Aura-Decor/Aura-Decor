@@ -8,6 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\AuraDecor.Repository\AuraDecor.Repository.csproj" />
     </ItemGroup>
 
