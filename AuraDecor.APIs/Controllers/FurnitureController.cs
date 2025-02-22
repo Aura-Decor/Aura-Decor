@@ -42,9 +42,9 @@ namespace AuraDecor.APIs.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddFurniture(Furniture furniture)
+        public async Task<ActionResult> AddFurniture(Furniture furniture ,IFormFile file)
         {
-            await _furnitureService.AddFurnitureAsync(furniture);
+            await _furnitureService.AddFurnitureAsync(furniture,file);
             return CreatedAtAction(nameof(GetFurnitureById), new { id = furniture.Id }, furniture);
         }
 
