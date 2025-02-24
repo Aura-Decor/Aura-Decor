@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AuraDecor.APIs.Controllers
 {
-    
+
     public class FurnitureController : ApiBaseController
     {
         private readonly IFurnitureService _furnitureService;
         private readonly IMapper _mapper;
 
-        public FurnitureController(IFurnitureService furnitureService,IMapper mapper)
+        public FurnitureController(IFurnitureService furnitureService, IMapper mapper)
         {
             _furnitureService = furnitureService;
             _mapper = mapper;
@@ -36,15 +36,15 @@ namespace AuraDecor.APIs.Controllers
         public async Task<ActionResult<Pagination<Furniture>>> GetAllFurniture([FromQuery] FurnitureSpecParams specParams)
         {
             var furnitureList = await _furnitureService.GetAllFurnitureAsync(specParams);
-            var count = await _furnitureService.GetCountAsync(specParams) ;                 
-            var data  = _mapper.Map<IReadOnlyList<Furniture>, IReadOnlyList<FurnitureToReturnDto>>(furnitureList);
+            var count = await _furnitureService.GetCountAsync(specParams);
+            var data = _mapper.Map<IReadOnlyList<Furniture>, IReadOnlyList<FurnitureToReturnDto>>(furnitureList);
             return Ok(new Pagination<FurnitureToReturnDto>(specParams.PageIndex, specParams.PageSize, count, data));
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddFurniture(Furniture furniture ,IFormFile file)
+        public async Task<ActionResult> AddFurniture(Furniture furniture, IFormFile file)
         {
-            await _furnitureService.AddFurnitureAsync(furniture,file);
+            await _furnitureService.AddFurnitureAsync(furniture, file);
             return CreatedAtAction(nameof(GetFurnitureById), new { id = furniture.Id }, furniture);
         }
 
@@ -72,6 +72,6 @@ namespace AuraDecor.APIs.Controllers
             await _furnitureService.DeleteFurnitureAsync(furniture);
             return NoContent();
         }
-        
+
     }
 }

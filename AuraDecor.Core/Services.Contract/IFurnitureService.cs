@@ -12,7 +12,7 @@ namespace AuraDecor.Core.Services.Contract
         Task AddFurnitureAsync(Furniture furniture, IFormFile file);
         Task UpdateFurnitureAsync(Furniture furniture);
         Task DeleteFurnitureAsync(Furniture furniture);
-        
+
         Task<int> GetCountAsync(FurnitureSpecParams specParams);
 
     }
