@@ -12,13 +12,13 @@ using Microsoft.AspNetCore.Http;
 
 namespace AuraDecor.Servicies
 {
-    public class FurnitureService : IFurnitureService
+    public class FurnitureService :IFurnitureService
     {
         private readonly IUnitOfWork _unitOfWork;
 
+
         public FurnitureService(IUnitOfWork unitOfWork)
         {
-
             _unitOfWork = unitOfWork;
         }
 
@@ -30,7 +30,6 @@ namespace AuraDecor.Servicies
             _unitOfWork.Repository<Furniture>().Add(furniture);
             await _unitOfWork.CompleteAsync();
         }
-
         public async Task DeleteFurnitureAsync(Furniture furniture)
         {
              _unitOfWork.Repository<Furniture>().DeleteAsync(furniture);
@@ -60,5 +59,7 @@ namespace AuraDecor.Servicies
             var count = await _unitOfWork.Repository<Furniture>().GetCountAsync(countSpec);
             return count;
         }
+
+
     }
 }
