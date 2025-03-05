@@ -23,5 +23,7 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Furniture> Furniture { get; set; }
     public DbSet<FurnitureCategory> FurnitureCategories { get; set; }
     public DbSet<FurnitureBrand> FurnitureBrands { get; set; }
+    public DbSet<Cart> Carts { get; set; }
+    public DbSet<CartItem> CartItems { get; set; }
    
 }
