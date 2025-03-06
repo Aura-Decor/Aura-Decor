@@ -9,12 +9,10 @@ namespace AuraDecor.Core.Services.Contract
 {
     public interface ICartService
     {
-      //  Task AddItemAsync(CartItem cartItem, int quantity);
-        Task DeleteItemAsync(Guid cartItemId);
-        Task UpdateItemAsync(Guid cartItemId, int quantity);
-        Task DeleteAllAsync();
 
-        Task<IReadOnlyList<CartItem>> GetAllItemsAsync();
 
+        Task<Cart> GetCartByUserIdAsync(Guid Id);
+        Task AddToCartAsync(CartItem cart);
+        Task RemoveFromCartAsync(CartItem cart);
     }
 }
