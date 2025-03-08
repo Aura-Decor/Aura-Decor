@@ -8,6 +8,11 @@ public class FurnitureToReturnDto
     public string PictureUrl { get; set; }
     public string FurnitureModel { get; set; }
     public decimal Price { get; set; }
+    public decimal? DiscountedPrice { get; set; }
+    public bool HasOffer { get; set; }
+    public DateTime? OfferStartDate { get; set; }
+    public DateTime? OfferEndDate { get; set; }
+    public decimal? DiscountPercentage { get; set; }
     public Guid BrandId { get; set; }
     public string Brand { get; set; } 
     public Guid CategoryId { get; set; }
