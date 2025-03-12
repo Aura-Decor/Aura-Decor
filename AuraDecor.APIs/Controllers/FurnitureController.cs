@@ -1,6 +1,7 @@
 using AuraDecor.APIs.Dtos.Incoming;
 using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.APIs.Errors;
+using AuraDecor.APIs.Helpers;
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Services.Contract;
 using AuraDecor.Core.Specifications.ProductSpecification;
@@ -32,7 +33,7 @@ namespace AuraDecor.APIs.Controllers
             var furnitureToReturn = _mapper.Map<Furniture, FurnitureToReturnDto>(furniture);
             return Ok(furnitureToReturn);
         }
-
+        [Cached(300)]
         [HttpGet]
         public async Task<ActionResult<Pagination<Furniture>>> GetAllFurniture([FromQuery] FurnitureSpecParams specParams)
         {
