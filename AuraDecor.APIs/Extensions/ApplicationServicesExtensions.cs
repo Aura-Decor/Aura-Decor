@@ -9,6 +9,7 @@ using AuraDecor.Servicies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 
 namespace AuraDecor.APIs.Extensions;
 
@@ -19,9 +20,15 @@ public static class ApplicationServicesExtensions
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IFurnitureService, FurnitureService>();
         services.AddScoped<IRoleService, RoleService>();
+        services.AddScoped<IResponseCacheService, ResponseCacheService>();
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+        services.AddSingleton<IConnectionMultiplexer, ConnectionMultiplexer>(c =>
+        {
+            var configuration = ConfigurationOptions.Parse(config.GetConnectionString("Redis"), true);
+            return ConnectionMultiplexer.Connect(configuration);
+        });
         services.Configure<ApiBehaviorOptions>(options =>
         {
             options.InvalidModelStateResponseFactory = context =>
