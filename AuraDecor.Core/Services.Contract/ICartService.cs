@@ -1,18 +1,12 @@
 ﻿using AuraDecor.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace AuraDecor.Core.Services.Contract
 {
     public interface ICartService
     {
 
 
-        Task<Cart> GetCartByUserIdAsync(Guid Id);
-        Task AddToCartAsync(CartItem cart);
-        Task RemoveFromCartAsync(CartItem cart);
+        Task<Cart> GetCartByUserIdAsync(string Id);
+        Task AddToCartAsync(string userId, Guid furnitureId, int quantity);
+        Task RemoveFromCartAsync(string userId, Guid furnitureId);
     }
 }
