@@ -159,13 +159,26 @@ public class AccountController : ApiBaseController
             if (result.Succeeded) return Ok(_mapper.Map<Address, AddressDto>(user.Address));
             return BadRequest("Problem updating the user");
         }
+        [HttpGet]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userManager.FindByEmailAsync(email);
+            return new UserDto
+            {
+                Email = user.Email,
+                Token = await _authService.CreateTokenAsync(user, _userManager),
+                DisplayName = user.DisplayName
+            };
 
+        }
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("emailexists")]
         public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
         {
             return await _userManager.FindByEmailAsync(email) != null;
         }
-
+        
         [Authorize]
         [HttpPut("update")]
         public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserDto updateUserDto)
