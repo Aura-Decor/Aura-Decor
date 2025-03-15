@@ -86,6 +86,9 @@ namespace AuraDecor.Repositoriy.Migrations
                     b.Property<Guid>("CartId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("CartId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("FurnitureId")
                         .HasColumnType("uniqueidentifier");
 
@@ -96,6 +99,8 @@ namespace AuraDecor.Repositoriy.Migrations
                         .HasAnnotation("MinValue", 1);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CartId1");
 
                     b.HasIndex("FurnitureId");
 
@@ -420,6 +425,10 @@ namespace AuraDecor.Repositoriy.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AuraDecor.Core.Entities.Cart", null)
+                        .WithMany("Items")
+                        .HasForeignKey("CartId1");
+
                     b.HasOne("AuraDecor.Core.Entities.Furniture", "Furniture")
                         .WithMany()
                         .HasForeignKey("FurnitureId")
@@ -499,6 +508,11 @@ namespace AuraDecor.Repositoriy.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AuraDecor.Core.Entities.Cart", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("AuraDecor.Core.Entities.User", b =>

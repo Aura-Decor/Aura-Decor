@@ -20,6 +20,7 @@ public static class ApplicationServicesExtensions
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IFurnitureService, FurnitureService>();
         services.AddScoped<IRoleService, RoleService>();
+        services.AddScoped<ICartService, CartService>();
         services.AddScoped<IResponseCacheService, ResponseCacheService>();
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>

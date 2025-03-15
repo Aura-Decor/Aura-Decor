@@ -9,6 +9,7 @@ namespace AuraDecor.Core.Entities
     public class Cart : BaseEntity
     {
         public string UserId { get; set; }
+        public ICollection<CartItem> Items { get; set; } = new List<CartItem>();
 
     }
 }

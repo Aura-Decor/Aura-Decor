@@ -8,6 +8,8 @@ namespace AuraDecor.Core.Specifications.CartSpecification
         public CartItemSpecification(Guid cartId, Guid furnitureId)
             : base(c => c.CartId == cartId && c.FurnitureId == furnitureId)
         {
+            Includes.Add(c => c.Furniture);
+   
         }
     
     }

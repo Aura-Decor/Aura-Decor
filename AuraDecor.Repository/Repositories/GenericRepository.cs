@@ -40,9 +40,10 @@ public class GenericRepository<T>: IGenericRepository<T> where T : BaseEntity
          _dbContext.Set<T>().AddAsync(entity);
     }
 
-    public void UpdateAsync(T entity)
+    public Task UpdateAsync(T entity)
     {
         _dbContext.Set<T>().Update(entity);
+        return Task.CompletedTask;
     }
 
     public void DeleteAsync(T entity)
