@@ -17,7 +17,22 @@ public static class IdentityServicesExtensions
         
         services.AddIdentity<User, IdentityRole>(options =>
         {
-        }).AddEntityFrameworkStores<AppDbContext>();
+            // Password settings
+            options.Password.RequiredLength = 6;
+            options.Password.RequireDigit = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireUppercase = true;
+            options.Password.RequireNonAlphanumeric = true;
+
+            // User settings
+            options.User.RequireUniqueEmail = true;
+
+            // Token settings
+            options.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultProvider;
+            options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
+        })
+        .AddEntityFrameworkStores<AppDbContext>()
+        .AddDefaultTokenProviders();
 
         services.AddAuthentication(options =>
             {

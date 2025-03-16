@@ -3,6 +3,7 @@ using AuraDecor.APIs.Dtos.Incoming;
 using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.APIs.Errors;
 using AuraDecor.APIs.Extensions;
+using AuraDecor.APIs.Helpers;
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Services.Contract;
 using AutoMapper;
@@ -19,14 +20,16 @@ public class AccountController : ApiBaseController
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
+        private readonly IEmailService _emailService;
         private readonly ITokenService _authService;
 
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper,
-            ITokenService authService)
+          IEmailService emailService ,ITokenService authService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
+            _emailService = emailService;
             _authService = authService;
         }
 
@@ -230,4 +233,48 @@ public class AccountController : ApiBaseController
 
             return Ok();
         }
+        [HttpPost("forgot-password")]
+        public async Task<ActionResult> ForgotPassword([FromBody] ForgotPasswordDto forgotPasswordDto)
+        {
+            var user = await _userManager.FindByEmailAsync(forgotPasswordDto.Email);
+            if (user == null)
+                return Ok();
+
+            var otp = GenerateOtp.GenerateRandomOtp();
+            await _emailService.SendOtpEmailAsync(forgotPasswordDto.Email, otp);
+    
+            return Ok();
+        }
+
+        [HttpPost("verify-otp")]
+        public async Task<ActionResult<string>> VerifyOtp([FromBody] VerifyOtpDto verifyOtpDto)
+        {
+            var isValid = await _emailService.ValidateOtpAsync(verifyOtpDto.Email, verifyOtpDto.Otp);
+            if (!isValid)
+                return BadRequest(new ApiResponse(400, "Invalid or expired OTP"));
+
+            var resetToken = await _userManager.GeneratePasswordResetTokenAsync(
+                await _userManager.FindByEmailAsync(verifyOtpDto.Email));
+    
+            return Ok(new { resetToken });
+        }
+        [HttpPost("reset-password")]
+        public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordDto resetPasswordDto)
+        {
+            var user = await _userManager.FindByEmailAsync(resetPasswordDto.Email);
+            if (user == null)
+                return BadRequest(new ApiResponse(400, "Invalid request"));
+
+            var result = await _userManager.ResetPasswordAsync(
+                user, 
+                resetPasswordDto.Token, 
+                resetPasswordDto.NewPassword);
+
+            if (!result.Succeeded)
+                return BadRequest(new ApiResponse(400, "Could not reset password"));
+
+            return Ok();
+        }
+
+           
 }

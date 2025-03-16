@@ -1,5 +1,6 @@
 using AuraDecor.APIs.Errors;
 using AuraDecor.APIs.Helpers;
+using AuraDecor.Core.Configuration;
 using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
 using AuraDecor.Repository;
@@ -22,6 +23,8 @@ public static class ApplicationServicesExtensions
         services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<ICartService, CartService>();
         services.AddScoped<IResponseCacheService, ResponseCacheService>();
+        services.AddSingleton<IEmailService, EmailService>();
+
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
@@ -47,6 +50,8 @@ public static class ApplicationServicesExtensions
                 return new BadRequestObjectResult(errorResponse);
             };
         });
+        services.Configure<EmailSettings>(
+            config.GetSection("EmailSettings"));
 
 
         return services;
