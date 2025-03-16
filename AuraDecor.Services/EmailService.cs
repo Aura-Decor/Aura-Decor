@@ -11,7 +11,6 @@ public class EmailService : IEmailService
 {
     private readonly EmailSettings _emailSettings;
     private readonly IDatabase _redisDb;
-    private const int RESET_TOKEN_EXPIRY = 15;
     private const int OTP_EXPIRY = 5;
 
     public EmailService(IOptions<EmailSettings> emailSettings, IConnectionMultiplexer redis)

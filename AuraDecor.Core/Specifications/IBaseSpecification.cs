@@ -15,6 +15,8 @@ public interface IBaseSpecification<T> where T : BaseEntity
      public int Skip { get; set; }
      
      public int Take { get; set; }
+     List<string> IncludeStrings { get; }
+
      
      public bool IsPaginationEnabled { get; set; }
 

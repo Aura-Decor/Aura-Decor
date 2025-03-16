@@ -12,6 +12,8 @@ public class BaseSpecification<T> : IBaseSpecification<T> where T : BaseEntity
     public int Skip { get; set; }
     public int Take { get; set; }
     public bool IsPaginationEnabled { get; set; }
+    public List<string> IncludeStrings { get; } = new();
+
 
     public BaseSpecification()
     {
@@ -37,6 +39,12 @@ public class BaseSpecification<T> : IBaseSpecification<T> where T : BaseEntity
         IsPaginationEnabled = true;
         Skip = skip;
         Take = take;
+    }
+  
+
+    protected void AddInclude(string includeString)
+    {
+        IncludeStrings.Add(includeString);
     }
     
 }
