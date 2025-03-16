@@ -1,6 +1,7 @@
 ﻿using AuraDecor.Core.Entities;
 using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
+using AuraDecor.Core.Specifications;
 using AuraDecor.Core.Specifications.CartSpecification;
 
 namespace AuraDecor.Servicies
@@ -56,7 +57,7 @@ namespace AuraDecor.Servicies
 
         public async Task<Cart> GetCartByUserIdAsync(string userId)
         {
-            var spec = new CartItemsWithSpecification(userId);
+            var spec = new CartWithItemsSpecification(userId);
             return await _unitOfWork.Repository<Cart>().GetWithSpecAsync(spec);
         }
 

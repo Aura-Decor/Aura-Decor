@@ -1,12 +1,11 @@
 ﻿using AuraDecor.Core.Entities;
 
-namespace AuraDecor.Core.Specifications.CartSpecification
+namespace AuraDecor.Core.Specifications;
+
+public class CartWithItemsSpecification : BaseSpecification<Cart>
 {
-    public class CartItemsWithSpecification : BaseSpecification<Cart> 
-    { 
-        public CartItemsWithSpecification (string userId) : base(u => u.UserId == userId)
-        {
-            Includes.Add(u => u.Items);
-        }
+    public CartWithItemsSpecification(string userId) 
+        : base(cart => cart.UserId == userId)
+    {
     }
 }

@@ -11,6 +11,8 @@ namespace AuraDecor.Core.Specifications.CartSpecification
     {
         public CartByUserIdSpecification(string userId) : base(c => c.UserId == userId)
         {
+            Includes.Add(c => c.CartItems);
+
         }
     }
 }

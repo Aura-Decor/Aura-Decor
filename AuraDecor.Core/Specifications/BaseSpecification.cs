@@ -15,7 +15,6 @@ public class BaseSpecification<T> : IBaseSpecification<T> where T : BaseEntity
 
     public BaseSpecification()
     {
-        
     }
 
     public BaseSpecification(Expression<Func<T,bool>> criteriaExpression)
@@ -27,6 +26,7 @@ public class BaseSpecification<T> : IBaseSpecification<T> where T : BaseEntity
     {
         OrderByAsc = orderByExpression;
     }
+
     public void AddOrderByDesc(Expression<Func<T, object>> orderByExpressionDesc)
     {
         OrderByDesc = orderByExpressionDesc;
@@ -38,5 +38,5 @@ public class BaseSpecification<T> : IBaseSpecification<T> where T : BaseEntity
         Skip = skip;
         Take = take;
     }
-
+    
 }

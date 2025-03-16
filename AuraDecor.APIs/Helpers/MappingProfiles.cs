@@ -16,7 +16,7 @@ public class MappingProfiles : Profile
 
         CreateMap<Cart, CartDto>()
             .ForMember(d => d.Items, opt => 
-                opt.MapFrom(s => s.Items));
+                opt.MapFrom(s => s.CartItems));
         
         CreateMap<CartItem, CartItemDto>()
             .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Furniture.Name))

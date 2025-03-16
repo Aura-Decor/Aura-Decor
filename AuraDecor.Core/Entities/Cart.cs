@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AuraDecor.Core.Entities;
 
-namespace AuraDecor.Core.Entities
+public class Cart : BaseEntity
 {
-    public class Cart : BaseEntity
-    {
-        public string UserId { get; set; }
-        public ICollection<CartItem> Items { get; set; } = new List<CartItem>();
-
-    }
+    public string UserId { get; set; }
+    public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 }

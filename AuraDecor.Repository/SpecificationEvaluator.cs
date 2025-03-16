@@ -6,30 +6,42 @@ namespace AuraDecor.Repository;
 
 public static class SpecificationEvaluator<T> where T : BaseEntity
 {
-    public static IQueryable<T> GetQuery(IQueryable<T> inputQuery, IBaseSpecification<T> Spec)
+    public static IQueryable<T> GetQuery(IQueryable<T> inputQuery, IBaseSpecification<T> spec)
     {
-        var query = inputQuery; // _dbContext.Set<Furniture>();
+        var query = inputQuery;
 
-        if (Spec.Criteria is not null)
+        if (spec.Criteria is not null)
         {
-            query =  query.Where(Spec.Criteria); // _dbContext.Set<Furniture>().Where(p=>p.Id==1)
+            query = query.Where(spec.Criteria);
         }
-        if (Spec.OrderByAsc is not null)
-        {
-            query = query.OrderBy(Spec.OrderByAsc);
-        }
-
-        else if (Spec.OrderByDesc is not null )
-        {
-            query = query.OrderByDescending(Spec.OrderByDesc);
-        }
-        query = Spec.Includes.Aggregate(query, (current, include) => current.Include(include));
-        if (Spec.IsPaginationEnabled)
-        {
-            query = query.Skip(Spec.Skip).Take(Spec.Take);
-        }
-        // _dbContext.Set<Furniture>().Where(p=>p.Id==1).Include(p=>p.Category).Include(p=>p.Brand)
-        return query;
-    }
     
+        query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
+    
+        if (typeof(T) == typeof(Cart))
+        {
+            var cartQuery = query as IQueryable<Cart>;
+            if (cartQuery != null)
+            {
+                cartQuery = cartQuery.Include(c => c.CartItems)
+                    .ThenInclude(ci => ci.Furniture);
+                query = cartQuery as IQueryable<T>;
+            }
+        }
+    
+        if (spec.OrderByAsc is not null)
+        {
+            query = query.OrderBy(spec.OrderByAsc);
+        }
+        else if (spec.OrderByDesc is not null)
+        {
+            query = query.OrderByDescending(spec.OrderByDesc);
+        }
+    
+        if (spec.IsPaginationEnabled)
+        {
+            query = query.Skip(spec.Skip).Take(spec.Take);
+        }
+    
+        return query;
+    }    
 }

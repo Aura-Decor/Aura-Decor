@@ -7,15 +7,22 @@ namespace AuraDecor.Repository.Data.Config
     public class CartConfig : IEntityTypeConfiguration<Cart>
     {
         public void Configure(EntityTypeBuilder<Cart> builder)
-        { builder.Property(c => c.UserId)
+        {
+            builder.Property(c => c.UserId)
                 .IsRequired();
 
-            builder.HasOne<User>() 
-                .WithMany()
-                .HasForeignKey(c => c.UserId)
+            builder.HasOne<User>()
+                .WithOne()
+                .HasForeignKey<Cart>(c => c.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasIndex(c => c.UserId);
+            
+            // Configure relationship with CartItems
+            builder.HasMany(c => c.CartItems)
+                .WithOne(ci => ci.Cart)
+                .HasForeignKey(ci => ci.CartId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 
@@ -29,7 +36,7 @@ namespace AuraDecor.Repository.Data.Config
                 .HasAnnotation("MinValue", 1);
 
             builder.HasOne(ci => ci.Cart)
-                .WithMany()
+                .WithMany(c => c.CartItems)
                 .HasForeignKey(ci => ci.CartId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired();
@@ -42,7 +49,6 @@ namespace AuraDecor.Repository.Data.Config
 
             builder.HasIndex(ci => new { ci.CartId, ci.FurnitureId })
                 .IsUnique();
-
         }
     }
 }

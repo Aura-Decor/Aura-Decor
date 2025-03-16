@@ -4,6 +4,7 @@ using AuraDecor.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuraDecor.Repositoriy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250315215555_items")]
+    partial class items
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,6 +63,23 @@ namespace AuraDecor.Repositoriy.Migrations
                     b.ToTable("Address");
                 });
 
+            modelBuilder.Entity("AuraDecor.Core.Entities.Cart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Carts");
+                });
+
             modelBuilder.Entity("AuraDecor.Core.Entities.CartItem", b =>
                 {
                     b.Property<Guid>("Id")
@@ -67,6 +87,9 @@ namespace AuraDecor.Repositoriy.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CartId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("FurnitureId")
@@ -79,6 +102,8 @@ namespace AuraDecor.Repositoriy.Migrations
                         .HasAnnotation("MinValue", 1);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CartId1");
 
                     b.HasIndex("FurnitureId");
 
@@ -244,24 +269,6 @@ namespace AuraDecor.Repositoriy.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Cart", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Carts");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -404,13 +411,26 @@ namespace AuraDecor.Repositoriy.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("AuraDecor.Core.Entities.Cart", b =>
+                {
+                    b.HasOne("AuraDecor.Core.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AuraDecor.Core.Entities.CartItem", b =>
                 {
-                    b.HasOne("Cart", "Cart")
-                        .WithMany("CartItems")
+                    b.HasOne("AuraDecor.Core.Entities.Cart", "Cart")
+                        .WithMany()
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("AuraDecor.Core.Entities.Cart", null)
+                        .WithMany("Items")
+                        .HasForeignKey("CartId1");
 
                     b.HasOne("AuraDecor.Core.Entities.Furniture", "Furniture")
                         .WithMany()
@@ -440,15 +460,6 @@ namespace AuraDecor.Repositoriy.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Cart", b =>
-                {
-                    b.HasOne("AuraDecor.Core.Entities.User", null)
-                        .WithOne()
-                        .HasForeignKey("Cart", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -502,15 +513,15 @@ namespace AuraDecor.Repositoriy.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("AuraDecor.Core.Entities.Cart", b =>
+                {
+                    b.Navigation("Items");
+                });
+
             modelBuilder.Entity("AuraDecor.Core.Entities.User", b =>
                 {
                     b.Navigation("Address")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Cart", b =>
-                {
-                    b.Navigation("CartItems");
                 });
 #pragma warning restore 612, 618
         }
