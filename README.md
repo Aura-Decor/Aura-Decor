@@ -18,8 +18,10 @@ The solution follows the Clean Architecture pattern with separate layers for cle
 - **ASP.NET Core Identity**: Authentication and authorization
 - **JWT Authentication**: Token-based authentication
 - **Google Authentication**: External authentication provider
+- **Redis**: Distributed caching and session storage
 - **Swagger/Scalar**: API documentation
 - **AutoMapper**: Object mapping
+- **MailKit**: Email sending functionality
 
 ## Features
 
@@ -74,6 +76,9 @@ The API provides the following key endpoints:
 - GET `/api/account/google-response` - Handle Google authentication callback
 - GET `/api/account/emailexists?email={email}` - Check if email already exists
 - PUT `/api/account/updatepassword` - Update user password (requires authentication)
+- POST `/api/account/forgot-password` - Initiate password reset process
+- POST `/api/account/verify-otp` - Verify one-time password for password reset
+- POST `/api/account/reset-password` - Complete password reset with token
 
 ### User Profile Management
 - GET `/api/account` - Get current user information (requires authentication)
@@ -99,6 +104,13 @@ The API provides the following key endpoints:
 - DELETE `/api/furniture/{id}/offers` - Remove offer from a furniture item (Admin)
 - GET `/api/furniture/offers/active` - Get all furniture with active offers
 - POST `/api/furniture/offers/update-status` - Update status of all offers
+
+### Cart Management
+- GET `/api/cart` - Get user's shopping cart (requires authentication)
+- POST `/api/cart` - Add item to shopping cart (requires authentication)
+- DELETE `/api/cart/{id}` - Remove item from cart (requires authentication)
+- PUT `/api/cart/{id}` - Update cart item quantity (requires authentication)
+
 
 ### Admin Operations
 - GET `/api/admin` - Get current admin information (Admin only)
