@@ -16,5 +16,9 @@ public class FurnitureConfig : IEntityTypeConfiguration<Furniture>
         builder.HasOne(F => F.Brand).WithMany();
         builder.HasOne(F => F.Category)
             .WithMany();
+
+        builder.HasIndex(f => f.HasOffer);
+        builder.HasIndex(f => new { f.CategoryId, f.BrandId });
+        builder.HasIndex(f => f.Price);
     }
 }

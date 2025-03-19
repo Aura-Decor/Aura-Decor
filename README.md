@@ -1,6 +1,15 @@
 # AuraDecor
-
+- 
 AuraDecor is a comprehensive furniture management system with a modern web API backend built on ASP.NET Core 8.0. The application allows users to browse furniture items, manage their shopping cart, and place orders, while administrators can manage inventory, users, and special offers.
+## to do 
+- Order Module
+- Coupon Module
+- Payment Module
+- Refresh Token
+- Notification Module
+- Rate Limiting
+- Recommendation Module
+- Unit Testing
 
 ## Project Architecture
 

@@ -10,7 +10,8 @@ public class FurnitureWithCategoryAndBrandSpec : BaseSpecification<Furniture>
             (!specParams.brandId.HasValue || p.BrandId == specParams.brandId) &&
             (!specParams.categoryId.HasValue || p.CategoryId == specParams.categoryId))
     {
-        AddIncludes();
+        Includes.Add(p => p.Brand);
+        Includes.Add(p => p.Category);
         switch (specParams.sort)
         {
             case "priceAsc":
@@ -23,18 +24,16 @@ public class FurnitureWithCategoryAndBrandSpec : BaseSpecification<Furniture>
                 AddOrderBy(p => p.Name);
                 break;
         }
+       
         ApplyPagingation((specParams.PageIndex - 1) * specParams.PageSize, specParams.PageSize);
     }
 
     public FurnitureWithCategoryAndBrandSpec(Guid id)
         : base(p => p.Id == id)
     {
-        AddIncludes();
-    }
-
-    private void AddIncludes()
-    {
         Includes.Add(p => p.Brand);
         Includes.Add(p => p.Category);
     }
+
+ 
 }

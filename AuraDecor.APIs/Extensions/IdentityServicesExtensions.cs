@@ -4,6 +4,7 @@ using AuraDecor.Core.Services.Contract;
 using AuraDecor.Repository.Data;
 using AuraDecor.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.Twitter;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 
@@ -57,6 +58,16 @@ public static class IdentityServicesExtensions
             {
                 options.ClientId = config["Authentication:Google:ClientId"];
                 options.ClientSecret = config["Authentication:Google:ClientSecret"];
+                options.CallbackPath = "/api/account/google-response";
+            })
+            .AddTwitter(options =>
+            {
+                options.ConsumerKey = config["Authentication:Twitter:ConsumerKey"];
+                options.ConsumerSecret = config["Authentication:Twitter:ConsumerSecret"];
+                options.RetrieveUserDetails = true;
+                options.SaveTokens = true;
+                options.CallbackPath = "/account/twitter-response"; // Updated to match controller route
+
             });
 
         return services;

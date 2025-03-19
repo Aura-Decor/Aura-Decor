@@ -9,6 +9,7 @@ using AuraDecor.Core.Services.Contract;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication.Twitter;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -122,6 +123,59 @@ public class AccountController : ApiBaseController
                     UserName = email,
                     DisplayName = name,
                     EmailConfirmed = true 
+                };
+
+                var createResult = await _userManager.CreateAsync(user);
+                if (!createResult.Succeeded)
+                    return BadRequest(new ApiResponse(400, "Failed to create user"));
+            }
+
+            return Ok(new UserDto
+            {
+                Email = user.Email,
+                Token = await _authService.CreateTokenAsync(user, _userManager),
+                DisplayName = user.DisplayName
+            });
+        }
+
+        [HttpGet("twitter-login")]
+        public IActionResult TwitterLogin()
+        {
+            var properties = new AuthenticationProperties 
+            { 
+                RedirectUri = Url.Action("TwitterResponse") 
+            };
+            return Challenge(properties, TwitterDefaults.AuthenticationScheme);
+        }
+
+        [HttpGet("twitter-response")]
+        public async Task<IActionResult> TwitterResponse()
+        {
+            var result = await HttpContext.AuthenticateAsync(TwitterDefaults.AuthenticationScheme);
+    
+            if (!result.Succeeded)
+                return Unauthorized(new ApiResponse(401));
+
+            var twitterUser = result.Principal;
+            var nameIdentifier = twitterUser.FindFirst(ClaimTypes.NameIdentifier)?.Value; // Twitter ID
+            var name = twitterUser.FindFirst(ClaimTypes.Name)?.Value;
+            var screenName = twitterUser.FindFirst("urn:twitter:screenname")?.Value;
+            
+            // Twitter doesn't provide email by default, so we'll use the screen name as a unique identifier
+            var username = $"twitter_{nameIdentifier}";
+            var email = $"{screenName}@twitter.com"; // Create a placeholder email
+            
+            // Check if user exists by the twitter ID stored in UserName
+            var user = await _userManager.FindByNameAsync(username);
+    
+            if (user == null)
+            {
+                user = new User
+                {
+                    Email = email,
+                    UserName = username,
+                    DisplayName = name,
+                    EmailConfirmed = true // We consider Twitter accounts as pre-verified
                 };
 
                 var createResult = await _userManager.CreateAsync(user);

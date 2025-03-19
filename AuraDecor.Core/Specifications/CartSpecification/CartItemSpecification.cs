@@ -9,7 +9,6 @@ namespace AuraDecor.Core.Specifications.CartSpecification
             : base(c => c.CartId == cartId && c.FurnitureId == furnitureId)
         {
             Includes.Add(c => c.Furniture);
-   
         }
     
     }

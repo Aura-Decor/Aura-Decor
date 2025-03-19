@@ -29,7 +29,7 @@ namespace AuraDecor.Servicies
             var spec = new CartItemSpecification(cart.Id, furnitureId);
             var existingItem = await _unitOfWork.Repository<CartItem>().GetWithSpecAsync(spec);
 
-            if (existingItem != null)
+            if (existingItem != null) 
             {
                 existingItem.Quantity += quantity;
                await _unitOfWork.Repository<CartItem>().UpdateAsync(existingItem);

@@ -21,7 +21,7 @@ namespace AuraDecor.APIs.Controllers
             _furnitureService = furnitureService;
             _mapper = mapper;
         }
-
+        [Cached(300)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Furniture>> GetFurnitureById(Guid id)
         {
@@ -100,7 +100,7 @@ namespace AuraDecor.APIs.Controllers
             await _furnitureService.RemoveOfferAsync(id);
             return NoContent();
         }
-
+        [Cached(300)]
         [HttpGet("offers/active")]
         public async Task<ActionResult<IReadOnlyList<FurnitureToReturnDto>>> GetFurnituresWithActiveOffers()
         {
