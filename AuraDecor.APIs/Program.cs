@@ -43,6 +43,7 @@ catch (Exception e)
 #endregion
 
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseRateLimiting(); 
 app.UseSwaggerMiddleWare(); 
 app.MapScalarApiReference(options => 
     options
