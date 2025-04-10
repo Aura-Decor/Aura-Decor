@@ -39,7 +39,6 @@ public class RateLimitingMiddleware
             return;
         }
 
-        // Directly get attribute from endpoint metadata to avoid reflection cost
         var rateLimit = endpoint.Metadata.GetMetadata<RateLimitAttribute>();
         if (rateLimit == null)
         {
@@ -50,7 +49,6 @@ public class RateLimitingMiddleware
         var clientId = GetClientIdentifier(context);
         var resource = context.Request.Path;
 
-        // Select the appropriate algorithm
         bool isAllowed;
         int remaining = 0;
         TimeSpan? resetTime = null;
@@ -72,13 +70,12 @@ public class RateLimitingMiddleware
                 break;
         }
 
-        // Add rate limit headers for client transparency
         context.Response.OnStarting(() => {
-            context.Response.Headers.Add("X-RateLimit-Limit", rateLimit.MaxRequests.ToString());
-            context.Response.Headers.Add("X-RateLimit-Remaining", remaining.ToString());
+            context.Response.Headers.Append("X-RateLimit-Limit", rateLimit.MaxRequests.ToString());
+            context.Response.Headers.Append("X-RateLimit-Remaining", remaining.ToString());
             if (resetTime.HasValue)
             {
-                context.Response.Headers.Add("X-RateLimit-Reset", 
+                context.Response.Headers.Append("X-RateLimit-Reset", 
                     ((DateTimeOffset)DateTime.UtcNow.Add(resetTime.Value)).ToUnixTimeSeconds().ToString());
             }
             return Task.CompletedTask;
@@ -146,7 +143,6 @@ public class RateLimitingMiddleware
         var now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         var windowStart = now - (windowSeconds * 1000);
         
-        // Using Lua for atomic operations
         var script = @"
             local key = KEYS[1]
             local now = tonumber(ARGV[1])
@@ -273,7 +269,7 @@ public class RateLimitingMiddleware
         }
         else
         {
-            resetTime = TimeSpan.FromSeconds(windowSeconds); // Default fallback
+            resetTime = TimeSpan.FromSeconds(windowSeconds); 
         }
         
         return (isAllowed, remaining, resetTime);

@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuraDecor.APIs.Controllers;
-
 public class AccountController : ApiBaseController
 {
         private readonly UserManager<User> _userManager;
@@ -33,6 +32,7 @@ public class AccountController : ApiBaseController
             _emailService = emailService;
             _authService = authService;
         }
+        [RateLimit(2, 10, RateLimitAlgorithm.SlidingWindow)]  
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
@@ -57,6 +57,7 @@ public class AccountController : ApiBaseController
                 DisplayName = user.DisplayName
             };
         }
+        [RateLimit(2, 10, RateLimitAlgorithm.SlidingWindow)]  
 
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
@@ -90,6 +91,7 @@ public class AccountController : ApiBaseController
                 DisplayName = user.DisplayName
             };
         }
+        [RateLimit(2, 10, RateLimitAlgorithm.SlidingWindow)]  
         [HttpGet("google-login")]
         public IActionResult GoogleLogin()
         {

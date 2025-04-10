@@ -15,10 +15,10 @@ public class ApiResponse
     {
         return statusCode switch
         {
-            400 => "A bad request, you have made",
-            401 => "Authorized, you are not",
-            404 => "Resource found, it was not",
-            500 => "Errors are the path to the dark side. Errors lead to anger. Anger leads to hate. Hate leads to career change",
+            400 => "What you just said makes no sense",
+            401 => "Get the hell out of here",
+            404 => "Lost? just like your mind", 
+            500 => "Something broke, probably my soul",
             _ => null
         };
     }
