@@ -22,5 +22,11 @@ public class MappingProfiles : Profile
             .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Furniture.Name))
             .ForMember(d => d.Price, opt => opt.MapFrom(s => s.Furniture.Price))
             .ForMember(d => d.PictureUrl, opt => opt.MapFrom(s => s.Furniture.PictureUrl));
+
+        CreateMap<CartItem, OrderItem>()
+            .ForMember(d => d.FurnitureId, opt => opt.MapFrom(s => s.FurnitureId))
+            .ForMember(d => d.CartId, opt => opt.MapFrom(s => s.CartId))
+            .ForMember(d => d.Quantity, opt => opt.MapFrom(s => s.Quantity));
+
     }
 }

@@ -14,6 +14,19 @@ namespace AuraDecor.Core.Entities
         public Cart Cart { get; set; }
         public DateTime OrderDate { get; set; }
         public Decimal OrderAmount { get; set; }
+        public OrderStatus Status { get; set; }
+
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+
 
     }
+    public enum OrderStatus
+    {
+        Pending,
+        Processing,
+        Completed,
+        Cancelled
+    }
+
 }

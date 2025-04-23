@@ -1,6 +1,9 @@
 ﻿using AuraDecor.Core.Entities;
 using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
+using AuraDecor.Core.Specifications.OrderSpecification;
+using AutoMapper;
+using Org.BouncyCastle.Crypto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +16,58 @@ namespace AuraDecor.Servicies
     {
         public readonly IUnitOfWork _unitOfWork;
 
-        public OrderService(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+
+        public OrderService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-                _unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public Task<Order> CreateOrderAysnc(string UserId, Guid CartId)
+
+        public async Task<Order> CreateOrderAysnc(string userId, Guid cartId)
         {
-            throw new NotImplementedException();
+            var cart = await _unitOfWork.Repository<Cart>().GetByIdAsync(cartId);
+
+            if (cart == null || cart.UserId != userId || !cart.CartItems.Any())
+                throw new Exception("cart is not valid");
+
+            var orderItems = _mapper.Map<List<OrderItem>>(cart.CartItems);
+
+            var order = new Order
+            {
+                UserId = userId,
+                OrderDate = DateTime.UtcNow,
+                Status = OrderStatus.Pending,
+                OrderItems = orderItems
+            };
+
+             _unitOfWork.Repository<Order>().Add(order);
+            await _unitOfWork.CompleteAsync();
+
+            return order;
         }
 
-        public Task<bool> CancelOrderAysnc(string UserId, Guid OrderId)
+        public async Task<bool> CancelOrderAysnc(string UserId, Guid OrderId)
         {
-            throw new NotImplementedException();
+            var order = await _unitOfWork.Repository<Order>().GetByIdAsync(OrderId);
+
+            if (order == null || order.UserId != UserId)
+                return false;
+
+            if (order.Status == OrderStatus.Cancelled)
+                return false;
+
+            order.Status = OrderStatus.Cancelled;
+            await _unitOfWork.CompleteAsync();
+
+            return true;
+        }
+
+        public async Task<Order> GetOrderByUserIdAysnc(string Id)
+        {
+            var spec = new OrdersWithSpecification(Id);
+            return await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
         }
     }
 }
