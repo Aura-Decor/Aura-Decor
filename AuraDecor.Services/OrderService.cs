@@ -25,7 +25,7 @@ namespace AuraDecor.Servicies
         }
 
 
-        public async Task<Order> CreateOrderAysnc(string userId, Guid cartId)
+        public async Task<Order> CreateOrderAsync(string userId, Guid cartId)
         {
             var cart = await _unitOfWork.Repository<Cart>().GetByIdAsync(cartId);
 
@@ -48,7 +48,7 @@ namespace AuraDecor.Servicies
             return order;
         }
 
-        public async Task<bool> CancelOrderAysnc(string UserId, Guid OrderId)
+        public async Task<bool> CancelOrderAsync(string UserId, Guid OrderId)
         {
             var order = await _unitOfWork.Repository<Order>().GetByIdAsync(OrderId);
 
@@ -64,7 +64,7 @@ namespace AuraDecor.Servicies
             return true;
         }
 
-        public async Task<Order> GetOrderByUserIdAysnc(string Id)
+        public async Task<Order> GetOrderByUserIdAsync(string Id)
         {
             var spec = new OrdersWithSpecification(Id);
             return await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
