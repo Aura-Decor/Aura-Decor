@@ -9,8 +9,8 @@ namespace AuraDecor.Core.Services.Contract
 {
     public interface IOrderService
     {
-        Task<Order> CreateOrderAysnc(string UserId , Guid CartId);
-        Task<bool> CancelOrderAysnc(string UserId, Guid OrderId);
-        Task<Order> GetOrderByUserIdAysnc(string Id);
+        Task<Order> CreateOrderAsync(string UserId , Guid CartId);
+        Task<bool> CancelOrderAsync(string UserId, Guid OrderId);
+        Task<Order> GetOrderByUserIdAsync(string Id);
     }
 }
