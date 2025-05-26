@@ -37,6 +37,7 @@ The solution follows the Clean Architecture pattern with separate layers for cle
 - **JWT Authentication**: Token-based authentication
 - **Google Authentication**: External authentication provider
 - **Redis**: Distributed caching and session storage
+- **RabbitMQ**: Message broker for asynchronous processing
 - **Swagger/Scalar**: API documentation
 - **AutoMapper**: Object mapping
 - **MailKit**: Email sending functionality
@@ -49,6 +50,90 @@ The solution follows the Clean Architecture pattern with separate layers for cle
 - Special offers and discounts
 - User profile and address management
 - Admin panel for user management and inventory control
+
+## Message Broker Architecture
+
+AuraDecor implements a robust message processing system using RabbitMQ for handling asynchronous operations, particularly for email notifications.
+
+### RabbitMQ Configuration
+
+```json
+"RabbitMqSettings": {
+  "Uri": "amqp://guest:guest@localhost:5672/",
+  "HostName": "localhost",
+  "UserName": "guest",
+  "Password": "guest",
+  "VirtualHost": "/",
+  "Port": 5672,
+  "UseTls": false,
+  "Queues": {
+    "EmailNotifications": "email-notifications",
+    "OtpEmails": "otp-emails",
+    "NotificationEmails": "notification-emails"
+  },
+  "Exchanges": {
+    "EmailExchange": "email-exchange"
+  },
+  "RetryPolicy": {
+    "MaxRetries": 3,
+    "RetryDelayMs": 5000
+  }
+}
+```
+
+### Message Flow
+
+1. **Message Production**:
+   - When an email needs to be sent (notification, OTP, etc.), a message is published to the appropriate RabbitMQ queue
+   - Messages are serialized to JSON format and published with persistent delivery mode
+   - The system returns control to the user immediately without waiting for email processing
+
+2. **Message Consumption**:
+   - A background service (`EmailQueueConsumer`) continuously listens to the configured queues
+   - When a message arrives, it's deserialized and processed asynchronously
+   - Emails are sent via SMTP using the configured email provider
+   - Processing metrics are logged for monitoring performance
+
+3. **Fault Tolerance**:
+   - Connection recovery is automatic if RabbitMQ becomes temporarily unavailable
+   - Failed message processing triggers requeuing with exponential backoff
+   - Direct email sending is used as a fallback mechanism when queue operations fail
+
+### Queue Structure
+
+- **OTP Emails**: Handles time-sensitive one-time password emails
+- **Notification Emails**: Processes system notifications (order updates, promotions, etc.)
+- **Email Notifications**: General purpose email delivery
+
+### Benefits
+
+- **Scalability**: Easily scales to handle high message volumes
+- **Resilience**: System continues functioning even during temporary email provider outages
+- **Performance**: User operations complete quickly without waiting for email delivery
+- **Monitoring**: Comprehensive logging of processing times helps identify bottlenecks
+
+### Setup Instructions
+
+1. Install RabbitMQ server:
+   ```bash
+   # For Ubuntu/Debian
+   apt-get install rabbitmq-server
+   
+   # For macOS
+   brew install rabbitmq
+   
+   # For Windows
+   # Download and install from rabbitmq.com
+   ```
+
+2. Enable the RabbitMQ management plugin:
+   ```bash
+   rabbitmq-plugins enable rabbitmq_management
+   ```
+
+3. Access the management interface at http://localhost:15672 (default credentials: guest/guest)
+
+4. Configure the connection string in `appsettings.json` under RabbitMqSettings section
 
 ## Setup Instructions
 
