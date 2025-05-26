@@ -1,13 +1,22 @@
 # AuraDecor
 - 
 AuraDecor is a comprehensive furniture management system with a modern web API backend built on ASP.NET Core 8.0. The application allows users to browse furniture items, manage their shopping cart, and place orders, while administrators can manage inventory, users, and special offers.
+
+## Features Completed ✅
+
+- ✅ User Authentication & Authorization (JWT + Google OAuth)
+- ✅ Furniture Catalog Management
+- ✅ Shopping Cart System
+- ✅ Order Management
+- ✅ Special Offers & Discounts
+- ✅ Notification System
+- ✅ Rate Limiting
+- ✅ Email Services (OTP, Notifications)
+
 ## to do 
-- Order Module
 - Coupon Module
 - Payment Module
 - Refresh Token
-- Notification Module
-- Rate Limiting
 - Recommendation Module
 - Unit Testing
 
@@ -120,12 +129,75 @@ The API provides the following key endpoints:
 - DELETE `/api/cart/{id}` - Remove item from cart (requires authentication)
 - PUT `/api/cart/{id}` - Update cart item quantity (requires authentication)
 
+### Notification System
+#### User Notification Endpoints (Requires Authentication)
+- GET `/api/notification` - Get paginated user notifications
+  - `page` - Page number (default: 1)
+  - `pageSize` - Items per page (default: 10)
+- GET `/api/notification/unread` - Get all unread notifications for the current user
+- GET `/api/notification/summary` - Get notification summary with unread count
+- PUT `/api/notification/{id}/mark-read` - Mark a specific notification as read
+- PUT `/api/notification/mark-all-read` - Mark all notifications as read for the current user
+- DELETE `/api/notification/{id}` - Delete a specific notification
+- DELETE `/api/notification/all` - Delete all notifications for the current user
 
-### Admin Operations
-- GET `/api/admin` - Get current admin information (Admin only)
-- GET `/api/admin/users` - Get all system users (Admin only)
-- POST `/api/admin/create-role` - Create a new system role (Admin only)
-- POST `/api/admin/assign-role` - Assign role to a user (Admin only)
+#### Notification Preferences (Requires Authentication)
+- GET `/api/notification/preferences` - Get user notification preferences
+- PUT `/api/notification/preferences` - Update notification preferences
+  ```json
+  {
+    "emailNotifications": true,
+    "orderUpdates": true,
+    "promotionalOffers": false,
+    "systemAlerts": true,
+    "cartReminders": true
+  }
+  ```
+
+#### Admin Notification Endpoints (Admin Only)
+- POST `/api/notification/admin/create` - Create notification for a specific user
+  ```json
+  {
+    "userId": "user-guid-id",
+    "title": "Notification Title",
+    "message": "Notification message content",
+    "type": 0
+  }
+  ```
+- POST `/api/notification/admin/bulk` - Send bulk notifications
+  ```json
+  {
+    "title": "System Announcement",
+    "message": "Important system message",
+    "type": 6,
+    "userIds": ["user1-id", "user2-id"] // null for all users
+  }
+  ```
+
+#### Notification Types
+- `0` - Info
+- `1` - Success  
+- `2` - Warning
+- `3` - Error
+- `4` - OrderUpdate
+- `5` - PromotionalOffer
+- `6` - SystemAlert
+- `7` - CartReminder
+- `8` - WelcomeMessage
+
+#### Automatic Notifications
+The system automatically sends notifications for:
+- **Welcome messages** when users register
+- **Order status updates** when order status changes
+- **Cart reminders** for abandoned carts
+- **Promotional offers** when new deals are available
+- **System alerts** for important announcements
+
+#### Email Integration
+- Notifications can be sent via email based on user preferences
+- Users can control which notification types trigger emails
+- Styled email templates with company branding
+- OTP verification emails for password reset
 
 ## Documentation
 

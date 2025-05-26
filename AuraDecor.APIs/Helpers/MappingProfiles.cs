@@ -1,3 +1,4 @@
+using AuraDecor.APIs.Dtos.Incoming;
 using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.Core.Entities;
 using AutoMapper;
@@ -28,5 +29,12 @@ public class MappingProfiles : Profile
             .ForMember(d => d.CartId, opt => opt.MapFrom(s => s.CartId))
             .ForMember(d => d.Quantity, opt => opt.MapFrom(s => s.Quantity));
 
+        // Notification mappings
+        CreateMap<Notification, NotificationDto>()
+            .ForMember(d => d.Type, opt => opt.MapFrom(s => s.Type.ToString()));
+
+        CreateMap<NotificationPreference, NotificationPreferencesDto>().ReverseMap();
+        
+        CreateMap<UpdateNotificationPreferencesDto, NotificationPreference>();
     }
 }

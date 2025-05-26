@@ -27,6 +27,8 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<CartItem> CartItems { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrdersItems { get; set; }
-
-   
+    
+    // Notification entities
+    public DbSet<Notification> Notifications { get; set; }
+    public DbSet<NotificationPreference> NotificationPreferences { get; set; }
 }

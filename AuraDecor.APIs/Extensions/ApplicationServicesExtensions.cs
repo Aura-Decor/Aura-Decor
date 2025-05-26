@@ -1,12 +1,14 @@
 using AuraDecor.APIs.Errors;
 using AuraDecor.APIs.Helpers;
 using AuraDecor.Core.Configuration;
+using AuraDecor.Core.Entities;
 using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
 using AuraDecor.Repository;
 using AuraDecor.Repository.Data;
 using AuraDecor.Services;
 using AuraDecor.Servicies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +25,11 @@ public static class ApplicationServicesExtensions
         services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<ICartService, CartService>();
         services.AddScoped<IOrderService, OrderService>();
+        services.AddScoped<INotificationService>(provider =>
+            new NotificationService(
+                provider.GetRequiredService<IUnitOfWork>(),
+                provider.GetRequiredService<IEmailService>(),
+                provider.GetRequiredService<UserManager<User>>()));
 
         services.AddScoped<IResponseCacheService, ResponseCacheService>();
         services.AddSingleton<IEmailService, EmailService>();
