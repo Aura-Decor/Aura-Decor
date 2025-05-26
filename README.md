@@ -1,5 +1,5 @@
 # AuraDecor
-- 
+
 AuraDecor is a comprehensive furniture management system with a modern web API backend built on ASP.NET Core 8.0. The application allows users to browse furniture items, manage their shopping cart, and place orders, while administrators can manage inventory, users, and special offers.
 
 ## Features Completed ✅
@@ -85,65 +85,271 @@ The solution follows the Clean Architecture pattern with separate layers for cle
 
 ## API Endpoints
 
-The API provides the following key endpoints:
+The API provides comprehensive endpoints organized by functionality. All endpoints return JSON responses and follow RESTful conventions.
 
-### Authentication
-- POST `/api/account/login` - User login with credentials
-- POST `/api/account/register` - Register a new user
-- GET `/api/account/google-login` - Initiate Google authentication
-- GET `/api/account/google-response` - Handle Google authentication callback
-- GET `/api/account/emailexists?email={email}` - Check if email already exists
-- PUT `/api/account/updatepassword` - Update user password (requires authentication)
-- POST `/api/account/forgot-password` - Initiate password reset process
-- POST `/api/account/verify-otp` - Verify one-time password for password reset
-- POST `/api/account/reset-password` - Complete password reset with token
+### 🔐 Authentication Endpoints
 
-### User Profile Management
-- GET `/api/account` - Get current user information (requires authentication)
-- PUT `/api/account/update` - Update user profile (requires authentication)
-- GET `/api/account/address` - Get user's address (requires authentication)
-- PUT `/api/account/address` - Update or add user's address (requires authentication)
+#### User Authentication
+- **POST** `/api/account/login` - User login with email and password
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "Password123!"
+  }
+  ```
+  **Response**: Returns JWT token and user details
+  **Rate Limited**: 2 requests per 10 seconds
 
-### Furniture Management
-- GET `/api/furniture` - Get all furniture with filtering, sorting and pagination:
-  - `brandId` - Filter by brand
-  - `categoryId` - Filter by category
-  - `sort` - Sort options (name, price, etc.)
-  - `pageIndex` - Page number
-  - `pageSize` - Items per page
-  - `search` - Search by name
-- GET `/api/furniture/{id}` - Get a specific furniture item by ID
-- POST `/api/furniture` - Add a new furniture item (Admin)
-- PUT `/api/furniture/{id}` - Update a furniture item (Admin)
-- DELETE `/api/furniture/{id}` - Delete a furniture item (Admin)
+- **POST** `/api/account/register` - Register a new user account
+  ```json
+  {
+    "displayName": "John Doe",
+    "email": "user@example.com",
+    "userName": "johndoe",
+    "phoneNumber": "+1234567890",
+    "password": "Password123!"
+  }
+  ```
+  **Response**: Returns JWT token and user details
+  **Rate Limited**: 2 requests per 10 seconds
 
-### Offers & Discounts
-- POST `/api/furniture/{id}/offers` - Apply special offer to a furniture item (Admin)
-- DELETE `/api/furniture/{id}/offers` - Remove offer from a furniture item (Admin)
-- GET `/api/furniture/offers/active` - Get all furniture with active offers
-- POST `/api/furniture/offers/update-status` - Update status of all offers
+#### External Authentication
+- **GET** `/api/account/google-login` - Initiate Google OAuth authentication
+  **Rate Limited**: 2 requests per 10 seconds
 
-### Cart Management
-- GET `/api/cart` - Get user's shopping cart (requires authentication)
-- POST `/api/cart` - Add item to shopping cart (requires authentication)
-- DELETE `/api/cart/{id}` - Remove item from cart (requires authentication)
-- PUT `/api/cart/{id}` - Update cart item quantity (requires authentication)
+- **GET** `/api/account/google-response` - Handle Google OAuth callback
+  **Response**: Returns JWT token and user details
 
-### Notification System
-#### User Notification Endpoints (Requires Authentication)
-- GET `/api/notification` - Get paginated user notifications
-  - `page` - Page number (default: 1)
-  - `pageSize` - Items per page (default: 10)
-- GET `/api/notification/unread` - Get all unread notifications for the current user
-- GET `/api/notification/summary` - Get notification summary with unread count
-- PUT `/api/notification/{id}/mark-read` - Mark a specific notification as read
-- PUT `/api/notification/mark-all-read` - Mark all notifications as read for the current user
-- DELETE `/api/notification/{id}` - Delete a specific notification
-- DELETE `/api/notification/all` - Delete all notifications for the current user
+- **GET** `/api/account/twitter-login` - Initiate Twitter OAuth authentication
 
-#### Notification Preferences (Requires Authentication)
-- GET `/api/notification/preferences` - Get user notification preferences
-- PUT `/api/notification/preferences` - Update notification preferences
+- **GET** `/api/account/twitter-response` - Handle Twitter OAuth callback
+  **Response**: Returns JWT token and user details
+
+#### Password Management
+- **POST** `/api/account/forgot-password` - Request password reset
+  ```json
+  {
+    "email": "user@example.com"
+  }
+  ```
+  **Response**: Sends OTP to email
+
+- **POST** `/api/account/verify-otp` - Verify OTP for password reset
+  ```json
+  {
+    "email": "user@example.com",
+    "otp": "123456"
+  }
+  ```
+  **Response**: Returns password reset token
+
+- **POST** `/api/account/reset-password` - Complete password reset
+  ```json
+  {
+    "email": "user@example.com",
+    "token": "reset-token",
+    "newPassword": "NewPassword123!"
+  }
+  ```
+
+- **PUT** `/api/account/updatepassword` - Update current user's password
+  ```json
+  {
+    "currentPassword": "OldPassword123!",
+    "newPassword": "NewPassword123!"
+  }
+  ```
+  **Authentication**: Required (JWT Bearer token)
+
+#### Utility
+- **GET** `/api/account/emailexists?email={email}` - Check if email is already registered
+  **Response**: Boolean value
+
+### 👤 User Profile Management
+
+- **GET** `/api/account` - Get current authenticated user information
+  **Authentication**: Required
+  **Response**: User details with refreshed JWT token
+
+- **PUT** `/api/account/update` - Update user profile information
+  ```json
+  {
+    "displayName": "Updated Name",
+    "phoneNumber": "+1234567890"
+  }
+  ```
+  **Authentication**: Required
+  **Response**: Updated user details with new JWT token
+
+#### Address Management
+- **GET** `/api/account/address` - Get user's saved address
+  **Authentication**: Required
+  **Response**: Address details or 404 if no address saved
+
+- **PUT** `/api/account/address` - Add or update user's address
+  ```json
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "street": "123 Main St",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "country": "USA"
+  }
+  ```
+  **Authentication**: Required
+
+### 🪑 Furniture Management
+
+#### Public Endpoints
+- **GET** `/api/furniture` - Get all furniture with advanced filtering and pagination
+  **Query Parameters**:
+  - `brandId` (Guid) - Filter by specific brand
+  - `categoryId` (Guid) - Filter by category
+  - `sort` (string) - Sort options: "name", "priceAsc", "priceDesc", "newest"
+  - `pageIndex` (int, default: 1) - Page number for pagination
+  - `pageSize` (int, default: 6) - Number of items per page
+  - `search` (string) - Search in furniture names and descriptions
+  - `minPrice` (decimal) - Minimum price filter
+  - `maxPrice` (decimal) - Maximum price filter
+  
+  **Response**: Paginated list with total count
+  **Caching**: 5 minutes
+  **Rate Limited**: 5 requests per 60 seconds
+
+- **GET** `/api/furniture/{id}` - Get specific furniture item by ID
+  **Response**: Detailed furniture information including images and specifications
+  **Caching**: 5 minutes
+
+#### Admin Only Endpoints
+- **POST** `/api/furniture` - Add new furniture item
+  **Content-Type**: multipart/form-data (supports file upload for images)
+  ```json
+  {
+    "name": "Modern Sofa",
+    "description": "Comfortable 3-seater sofa",
+    "price": 899.99,
+    "stock": 10,
+    "brandId": "brand-guid",
+    "categoryId": "category-guid"
+  }
+  ```
+  **Authentication**: Admin role required
+
+- **PUT** `/api/furniture/{id}` - Update existing furniture item
+  **Authentication**: Admin role required
+
+- **DELETE** `/api/furniture/{id}` - Delete furniture item
+  **Authentication**: Admin role required
+  **Response**: 204 No Content on success
+
+### 🏷️ Offers & Discounts
+
+#### Admin Endpoints
+- **POST** `/api/furniture/{id}/offers` - Apply special offer to furniture item
+  ```json
+  {
+    "discountPercentage": 20.0,
+    "startDate": "2025-05-26T00:00:00Z",
+    "endDate": "2025-06-26T23:59:59Z"
+  }
+  ```
+  **Authentication**: Admin role required
+
+- **DELETE** `/api/furniture/{id}/offers` - Remove offer from furniture item
+  **Authentication**: Admin role required
+
+- **POST** `/api/furniture/offers/update-status` - Update status of all offers (expire old ones)
+  **Authentication**: Admin role required
+
+#### Public Endpoints
+- **GET** `/api/furniture/offers/active` - Get all furniture items with active offers
+  **Response**: List of furniture with current discounts
+  **Caching**: 5 minutes
+
+### 🛒 Shopping Cart Management
+
+All cart endpoints require authentication.
+
+- **GET** `/api/cart` - Get user's current shopping cart
+  **Response**: Cart with items, quantities, and total price
+
+- **POST** `/api/cart/add` - Add item to shopping cart
+  ```json
+  {
+    "furnitureId": "furniture-guid",
+    "quantity": 2
+  }
+  ```
+
+- **DELETE** `/api/cart/remove` - Remove item from cart
+  ```json
+  {
+    "furnitureId": "furniture-guid"
+  }
+  ```
+
+### 📦 Order Management
+
+All order endpoints require authentication.
+
+- **POST** `/api/order/CreatOrder` - Create new order from cart
+  **Query Parameters**:
+  - `UserId` (string) - User ID
+  - `CartId` (Guid) - Cart ID to convert to order
+  
+  **Response**: Created order details
+
+- **GET** `/api/order/{Id}` - Get order details by user ID
+  **Response**: Order information with items and status
+
+- **POST** `/api/order/CancelOrder` - Cancel an existing order
+  **Query Parameters**:
+  - `UserId` (string) - User ID
+  - `OrderId` (Guid) - Order to cancel
+  
+  **Response**: Boolean indicating success
+
+### 🔔 Notification System
+
+#### User Notification Endpoints (Authentication Required)
+- **GET** `/api/notification` - Get paginated user notifications
+  **Query Parameters**:
+  - `page` (int, default: 1) - Page number
+  - `pageSize` (int, default: 10) - Items per page
+  
+  **Response**: Paginated list of notifications
+
+- **GET** `/api/notification/unread` - Get all unread notifications
+  **Response**: List of unread notifications only
+
+- **GET** `/api/notification/summary` - Get notification summary with count
+  **Response**: 
+  ```json
+  {
+    "unreadCount": 5,
+    "recentNotifications": [...]
+  }
+  ```
+
+- **PUT** `/api/notification/{id}/mark-read` - Mark specific notification as read
+  **Response**: 200 OK or 404 if notification not found
+
+- **PUT** `/api/notification/mark-all-read` - Mark all notifications as read
+  **Response**: 200 OK or 400 if no unread notifications
+
+- **DELETE** `/api/notification/{id}` - Delete specific notification
+  **Response**: 200 OK or 404 if notification not found
+
+- **DELETE** `/api/notification/all` - Delete all user notifications
+  **Response**: 200 OK or 400 if no notifications to delete
+
+#### Notification Preferences (Authentication Required)
+- **GET** `/api/notification/preferences` - Get user notification preferences
+  **Response**: Current preference settings
+
+- **PUT** `/api/notification/preferences` - Update notification preferences
   ```json
   {
     "emailNotifications": true,
@@ -154,50 +360,157 @@ The API provides the following key endpoints:
   }
   ```
 
-#### Admin Notification Endpoints (Admin Only)
-- POST `/api/notification/admin/create` - Create notification for a specific user
+#### Admin Notification Endpoints (Admin Role Required)
+- **POST** `/api/notification/admin/create` - Create notification for specific user
   ```json
   {
     "userId": "user-guid-id",
-    "title": "Notification Title",
-    "message": "Notification message content",
-    "type": 0
+    "title": "Important Notice",
+    "message": "Your order has been shipped!",
+    "type": 4,
+    "relatedEntityId": "order-guid",
+    "relatedEntityType": "Order"
   }
   ```
-- POST `/api/notification/admin/bulk` - Send bulk notifications
+
+- **POST** `/api/notification/admin/bulk` - Send bulk notifications
   ```json
   {
-    "title": "System Announcement",
-    "message": "Important system message",
+    "title": "System Maintenance",
+    "message": "Scheduled maintenance tonight from 2-4 AM",
     "type": 6,
-    "userIds": ["user1-id", "user2-id"] // null for all users
+    "userIds": ["user1-id", "user2-id"]
+  }
+  ```
+  **Note**: Leave `userIds` null to send to all users
+
+#### Notification Types Reference
+- `0` - Info (General information)
+- `1` - Success (Positive confirmations)
+- `2` - Warning (Important alerts)
+- `3` - Error (Error notifications)
+- `4` - OrderUpdate (Order status changes)
+- `5` - PromotionalOffer (Marketing offers)
+- `6` - SystemAlert (System announcements)
+- `7` - CartReminder (Cart abandonment reminders)
+- `8` - WelcomeMessage (New user welcome)
+
+#### Automatic Notifications
+The system automatically generates notifications for:
+- **User Registration**: Welcome message with account setup tips
+- **Order Creation**: Order confirmation with details
+- **Order Status Updates**: Shipping, delivery, cancellation notifications
+- **Cart Abandonment**: Reminders for items left in cart (configurable timing)
+- **Promotional Campaigns**: New offers and discounts (if user opted in)
+- **System Maintenance**: Important system announcements
+
+### 👨‍💼 Admin Management
+
+All admin endpoints require Admin role authentication.
+
+- **GET** `/api/admin/users` - Get list of all system users
+  **Response**: Array of user objects with basic information
+
+- **POST** `/api/admin/create-role` - Create new system role
+  ```json
+  "Manager"
+  ```
+  **Request Body**: Role name as string
+
+- **POST** `/api/admin/assign-role` - Assign role to user
+  ```json
+  {
+    "email": "user@example.com",
+    "roleName": "Manager"
   }
   ```
 
-#### Notification Types
-- `0` - Info
-- `1` - Success  
-- `2` - Warning
-- `3` - Error
-- `4` - OrderUpdate
-- `5` - PromotionalOffer
-- `6` - SystemAlert
-- `7` - CartReminder
-- `8` - WelcomeMessage
+### ⚠️ Error Handling
 
-#### Automatic Notifications
-The system automatically sends notifications for:
-- **Welcome messages** when users register
-- **Order status updates** when order status changes
-- **Cart reminders** for abandoned carts
-- **Promotional offers** when new deals are available
-- **System alerts** for important announcements
+- **GET** `/errors/{code}` - Error page endpoint for HTTP status codes
+  **Response**: Standardized error response format
+
+#### Standard Error Response Format
+```json
+{
+  "statusCode": 404,
+  "message": "Resource not found",
+  "details": "Additional error details when available"
+}
+```
+
+#### Validation Error Response Format
+```json
+{
+  "statusCode": 400,
+  "message": "Validation failed",
+  "errors": [
+    "Email is required",
+    "Password must be at least 8 characters"
+  ]
+}
+```
+
+### 🛡️ Security & Rate Limiting
+
+#### Authentication
+- **JWT Bearer Tokens**: Required for protected endpoints
+- **Token Format**: `Authorization: Bearer {jwt-token}`
+- **Token Expiration**: Configurable (typically 24 hours)
+
+#### Rate Limiting
+- **Login/Register**: 2 requests per 10 seconds per IP
+- **Furniture Browsing**: 5 requests per 60 seconds per IP
+- **Google OAuth**: 2 requests per 10 seconds per IP
+
+#### Authorization Levels
+- **Public**: No authentication required
+- **Authenticated**: Valid JWT token required
+- **Admin**: Admin role required in JWT token
+
+### 📱 Response Formats
+
+#### Success Responses
+- **200 OK**: Request successful with data
+- **201 Created**: Resource created successfully
+- **204 No Content**: Request successful, no data returned
+
+#### Pagination Response Format
+```json
+{
+  "pageIndex": 1,
+  "pageSize": 10,
+  "count": 150,
+  "data": [...]
+}
+```
+
+#### User Response Format
+```json
+{
+  "email": "user@example.com",
+  "displayName": "John Doe",
+  "token": "jwt-token-string"
+}
+```
+
+### 🔧 Additional Features
+
+#### Caching
+- Furniture listings cached for 5 minutes
+- Individual furniture items cached for 5 minutes
+- Active offers cached for 5 minutes
 
 #### Email Integration
-- Notifications can be sent via email based on user preferences
-- Users can control which notification types trigger emails
-- Styled email templates with company branding
-- OTP verification emails for password reset
+- OTP verification for password reset
+- Welcome emails for new users
+- Order confirmation emails
+- Notification emails (based on user preferences)
+
+#### File Upload
+- Furniture images support
+- Multiple file formats accepted
+- Automatic image optimization
 
 ## Documentation
 
