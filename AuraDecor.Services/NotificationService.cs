@@ -10,12 +10,14 @@ public class NotificationService : INotificationService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IEmailService _emailService;
+    private readonly IEmailTemplateService _emailTemplateService;
     private readonly UserManager<User> _userManager;
 
-    public NotificationService(IUnitOfWork unitOfWork, IEmailService emailService, UserManager<User> userManager)
+    public NotificationService(IUnitOfWork unitOfWork, IEmailService emailService, IEmailTemplateService emailTemplateService, UserManager<User> userManager)
     {
         _unitOfWork = unitOfWork;
         _emailService = emailService;
+        _emailTemplateService = emailTemplateService;
         _userManager = userManager;
     }
 
@@ -137,7 +139,6 @@ public class NotificationService : INotificationService
         
         if (userPreference == null)
         {
-            // Create default preferences for new user
             userPreference = new NotificationPreference
             {
                 UserId = userId,
@@ -250,7 +251,6 @@ public class NotificationService : INotificationService
             if (!preferences.EmailNotifications)
                 return;
 
-            // Check specific notification type preferences
             bool shouldSendEmail = type switch
             {
                 NotificationType.OrderUpdate => preferences.OrderUpdates,
@@ -278,57 +278,11 @@ public class NotificationService : INotificationService
 
     private async Task SendNotificationEmailAsync(string email, string title, string message, NotificationType type)
     {
-        // Create a styled email for notifications
+        // Create a styled email for notifications using EmailTemplateService
         var emailSubject = $"AuraDecor - {title}";
-        var emailBody = CreateNotificationEmailTemplate(title, message, type);
+        var emailBody = _emailTemplateService.CreateNotificationEmailTemplate(title, message, type);
 
-        // Note: You might want to extend IEmailService to support custom email templates
-        // For now, we'll use a simple approach
-        await Task.Run(() => {
-            // This is a placeholder - you would need to extend EmailService
-            // to support notification emails with custom templates
-        });
-    }
-
-    private string CreateNotificationEmailTemplate(string title, string message, NotificationType type)
-    {
-        var typeColor = type switch
-        {
-            NotificationType.Success => "#28a745",
-            NotificationType.Error => "#dc3545",
-            NotificationType.Warning => "#ffc107",
-            NotificationType.OrderUpdate => "#007bff",
-            NotificationType.PromotionalOffer => "#17a2b8",
-            _ => "#6c757d"
-        };
-
-        return $@"
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <style>
-                    body {{ font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f5f5f5; }}
-                    .container {{ max-width: 600px; margin: 0 auto; background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }}
-                    .header {{ background-color: {typeColor}; color: white; padding: 20px; text-align: center; }}
-                    .content {{ padding: 30px; }}
-                    .footer {{ background-color: #f8f9fa; padding: 20px; text-align: center; color: #6c757d; font-size: 12px; }}
-                </style>
-            </head>
-            <body>
-                <div class='container'>
-                    <div class='header'>
-                        <h1>AuraDecor</h1>
-                        <h2>{title}</h2>
-                    </div>
-                    <div class='content'>
-                        <p>{message}</p>
-                    </div>
-                    <div class='footer'>
-                        <p>© 2025 AuraDecor. All rights reserved.</p>
-                        <p>This is an automated notification from AuraDecor.</p>
-                    </div>
-                </div>
-            </body>
-            </html>";
+        // Send email using the EmailService
+        await _emailService.SendNotificationEmailAsync(email, emailSubject, emailBody);
     }
 }

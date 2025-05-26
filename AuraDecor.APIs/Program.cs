@@ -47,7 +47,7 @@ app.UseRateLimiting();
 app.UseSwaggerMiddleWare(); 
 app.MapScalarApiReference(options => 
     options
-        .WithTheme(ScalarTheme.Mars)
+        .WithTheme(ScalarTheme.BluePlanet)
         .WithDefaultHttpClient(ScalarTarget.CSharp,ScalarClient.HttpClient)
 );
 

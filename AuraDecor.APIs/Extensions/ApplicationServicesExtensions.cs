@@ -25,15 +25,10 @@ public static class ApplicationServicesExtensions
         services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<ICartService, CartService>();
         services.AddScoped<IOrderService, OrderService>();
-        services.AddScoped<INotificationService>(provider =>
-            new NotificationService(
-                provider.GetRequiredService<IUnitOfWork>(),
-                provider.GetRequiredService<IEmailService>(),
-                provider.GetRequiredService<UserManager<User>>()));
-
+        services.AddScoped<INotificationService, NotificationService>();
         services.AddScoped<IResponseCacheService, ResponseCacheService>();
         services.AddSingleton<IEmailService, EmailService>();
-
+        services.AddSingleton<IEmailTemplateService, EmailTemplateService>();
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
