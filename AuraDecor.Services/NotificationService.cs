@@ -37,7 +37,6 @@ public class NotificationService : INotificationService
         _unitOfWork.Repository<Notification>().Add(notification);
         await _unitOfWork.CompleteAsync();
 
-        // Send email notification if user preferences allow
         await SendEmailNotificationIfEnabled(userId, title, message, type);
 
         return notification;
@@ -271,18 +270,15 @@ public class NotificationService : INotificationService
         }
         catch (Exception)
         {
-            // Log error but don't fail notification creation
-            // Could implement proper logging here
+            console.WriteLine("Failed to send email notification. Please check your email settings.");
         }
     }
 
     private async Task SendNotificationEmailAsync(string email, string title, string message, NotificationType type)
     {
-        // Create a styled email for notifications using EmailTemplateService
         var emailSubject = $"AuraDecor - {title}";
         var emailBody = _emailTemplateService.CreateNotificationEmailTemplate(title, message, type);
 
-        // Send email using the EmailService
         await _emailService.SendNotificationEmailAsync(email, emailSubject, emailBody);
     }
 }

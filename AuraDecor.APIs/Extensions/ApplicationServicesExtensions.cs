@@ -54,9 +54,11 @@ public static class ApplicationServicesExtensions
                 return new BadRequestObjectResult(errorResponse);
             };
         });
-        services.Configure<EmailSettings>(
-            config.GetSection("EmailSettings"));
-
+        
+        services.Configure<EmailSettings>(config.GetSection("EmailSettings"));
+        services.Configure<RabbitMqSettings>(config.GetSection("RabbitMQ"));
+        
+        services.AddHostedService<EmailQueueConsumer>();
 
         return services;
     }
