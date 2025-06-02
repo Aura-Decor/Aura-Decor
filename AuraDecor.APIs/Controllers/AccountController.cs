@@ -1,4 +1,6 @@
 using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 using AuraDecor.APIs.Dtos.Incoming;
 using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.APIs.Errors;
@@ -35,8 +37,7 @@ public class AccountController : ApiBaseController
         [RateLimit(2, 10, RateLimitAlgorithm.SlidingWindow)]  
 
         [HttpPost("login")]
-        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
-
+        public async Task<ActionResult<AuthResponseDto>> Login(LoginDto loginDto)
         {
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
             if (user == null)
@@ -50,17 +51,29 @@ public class AccountController : ApiBaseController
                 return Unauthorized(new ApiResponse(401));
             }
 
-            return new UserDto
+            var token = await _authService.CreateTokenAsync(user, _userManager);
+            
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadJwtToken(token);
+            var jwtId = jwtToken.Id;
+            
+            var refreshToken = await _authService.GenerateRefreshTokenAsync(user.Id, jwtId);
+            
+            await _authService.StoreRefreshTokenAsync(refreshToken);
+            
+            return new AuthResponseDto
             {
                 Email = user.Email,
-                Token = await _authService.CreateTokenAsync(user, _userManager),
-                DisplayName = user.DisplayName
+                Token = token,
+                DisplayName = user.DisplayName,
+                RefreshToken = refreshToken.Token,
+                RefreshTokenExpiry = refreshToken.Expires
             };
         }
         [RateLimit(2, 10, RateLimitAlgorithm.SlidingWindow)]  
 
         [HttpPost("register")]
-        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
+        public async Task<ActionResult<AuthResponseDto>> Register(RegisterDto registerDto)
         {
             if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
             {
@@ -78,19 +91,92 @@ public class AccountController : ApiBaseController
                 UserName = registerDto.UserName,
                 PhoneNumber = registerDto.PhoneNumber
             };
+            
             var result = await _userManager.CreateAsync(user, registerDto.Password);
             if (!result.Succeeded)
             {
                 return BadRequest(new ApiResponse(400));
             }
 
-            return new UserDto
+            var token = await _authService.CreateTokenAsync(user, _userManager);
+            
+            var tokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadJwtToken(token);
+            var jwtId = jwtToken.Id;
+            
+            var refreshToken = await _authService.GenerateRefreshTokenAsync(user.Id, jwtId);
+            
+            await _authService.StoreRefreshTokenAsync(refreshToken);
+            
+            return new AuthResponseDto
             {
                 Email = user.Email,
-                Token = await _authService.CreateTokenAsync(user, _userManager),
-                DisplayName = user.DisplayName
+                Token = token,
+                DisplayName = user.DisplayName,
+                RefreshToken = refreshToken.Token,
+                RefreshTokenExpiry = refreshToken.Expires
             };
         }
+        
+        [HttpPost("refresh")]
+        public async Task<ActionResult<AuthResponseDto>> RefreshToken(RefreshTokenDto refreshTokenDto)
+        {
+            if (refreshTokenDto == null || string.IsNullOrEmpty(refreshTokenDto.AccessToken) || 
+                string.IsNullOrEmpty(refreshTokenDto.RefreshToken))
+            {
+                return BadRequest(new ApiResponse(400, "Invalid token information"));
+            }
+            
+            try
+            {
+                var (accessToken, refreshToken) = await _authService.RefreshTokenAsync(
+                    refreshTokenDto.AccessToken,
+                    refreshTokenDto.RefreshToken,
+                    _userManager);
+                
+                var userId = refreshToken.UserId;
+                var user = await _userManager.FindByIdAsync(userId);
+                
+                return new AuthResponseDto
+                {
+                    Email = user.Email,
+                    Token = accessToken,
+                    DisplayName = user.DisplayName,
+                    RefreshToken = refreshToken.Token,
+                    RefreshTokenExpiry = refreshToken.Expires
+                };
+            }
+            catch (SecurityTokenException ex)
+            {
+                return Unauthorized(new ApiResponse(401, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiResponse(400, ex.Message));
+            }
+        }
+        
+        [Authorize]
+        [HttpPost("revoke")]
+        public async Task<ActionResult> RevokeToken(RefreshTokenDto refreshTokenDto)
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.NameId);
+            
+            if (string.IsNullOrEmpty(refreshTokenDto.RefreshToken))
+            {
+                return BadRequest(new ApiResponse(400, "Token is required"));
+            }
+            
+            var result = await _authService.RevokeTokenAsync(userId, refreshTokenDto.RefreshToken);
+            
+            if (!result)
+            {
+                return BadRequest(new ApiResponse(400, "Failed to revoke token"));
+            }
+            
+            return Ok(new ApiResponse(200, "Token revoked"));
+        }
+        
         [RateLimit(2, 10, RateLimitAlgorithm.SlidingWindow)]  
         [HttpGet("google-login")]
         public IActionResult GoogleLogin()
@@ -114,7 +200,6 @@ public class AccountController : ApiBaseController
             var email = googleUser.FindFirst(ClaimTypes.Email)?.Value;
             var name = googleUser.FindFirst(ClaimTypes.Name)?.Value;
 
-            // Check if user exists
             var user = await _userManager.FindByEmailAsync(email);
     
             if (user == null)
@@ -132,11 +217,23 @@ public class AccountController : ApiBaseController
                     return BadRequest(new ApiResponse(400, "Failed to create user"));
             }
 
-            return Ok(new UserDto
+            var token = await _authService.CreateTokenAsync(user, _userManager);
+            
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadJwtToken(token);
+            var jwtId = jwtToken.Id;
+            
+            var refreshToken = await _authService.GenerateRefreshTokenAsync(user.Id, jwtId);
+            
+            await _authService.StoreRefreshTokenAsync(refreshToken);
+
+            return Ok(new AuthResponseDto
             {
                 Email = user.Email,
-                Token = await _authService.CreateTokenAsync(user, _userManager),
-                DisplayName = user.DisplayName
+                Token = token,
+                DisplayName = user.DisplayName,
+                RefreshToken = refreshToken.Token,
+                RefreshTokenExpiry = refreshToken.Expires
             });
         }
 
@@ -159,15 +256,13 @@ public class AccountController : ApiBaseController
                 return Unauthorized(new ApiResponse(401));
 
             var twitterUser = result.Principal;
-            var nameIdentifier = twitterUser.FindFirst(ClaimTypes.NameIdentifier)?.Value; // Twitter ID
+            var nameIdentifier = twitterUser.FindFirst(ClaimTypes.NameIdentifier)?.Value; 
             var name = twitterUser.FindFirst(ClaimTypes.Name)?.Value;
             var screenName = twitterUser.FindFirst("urn:twitter:screenname")?.Value;
             
-            // Twitter doesn't provide email by default, so we'll use the screen name as a unique identifier
             var username = $"twitter_{nameIdentifier}";
-            var email = $"{screenName}@twitter.com"; // Create a placeholder email
+            var email = $"{screenName}@twitter.com"; 
             
-            // Check if user exists by the twitter ID stored in UserName
             var user = await _userManager.FindByNameAsync(username);
     
             if (user == null)
@@ -177,7 +272,7 @@ public class AccountController : ApiBaseController
                     Email = email,
                     UserName = username,
                     DisplayName = name,
-                    EmailConfirmed = true // We consider Twitter accounts as pre-verified
+                    EmailConfirmed = true 
                 };
 
                 var createResult = await _userManager.CreateAsync(user);
@@ -185,11 +280,23 @@ public class AccountController : ApiBaseController
                     return BadRequest(new ApiResponse(400, "Failed to create user"));
             }
 
-            return Ok(new UserDto
+            var token = await _authService.CreateTokenAsync(user, _userManager);
+            
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadJwtToken(token);
+            var jwtId = jwtToken.Id;
+            
+            var refreshToken = await _authService.GenerateRefreshTokenAsync(user.Id, jwtId);
+            
+            await _authService.StoreRefreshTokenAsync(refreshToken);
+
+            return Ok(new AuthResponseDto
             {
                 Email = user.Email,
-                Token = await _authService.CreateTokenAsync(user, _userManager),
-                DisplayName = user.DisplayName
+                Token = token,
+                DisplayName = user.DisplayName,
+                RefreshToken = refreshToken.Token,
+                RefreshTokenExpiry = refreshToken.Expires
             });
         }
         
@@ -219,18 +326,31 @@ public class AccountController : ApiBaseController
             return BadRequest("Problem updating the user");
         }
         [HttpGet]
-        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        public async Task<ActionResult<AuthResponseDto>> GetCurrentUser()
         {
             var email = User.FindFirstValue(ClaimTypes.Email);
             var user = await _userManager.FindByEmailAsync(email);
-            return new UserDto
+            
+            var token = await _authService.CreateTokenAsync(user, _userManager);
+            
+            var tokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadJwtToken(token);
+            var jwtId = jwtToken.Id;
+            
+            var refreshToken = await _authService.GenerateRefreshTokenAsync(user.Id, jwtId);
+            
+            await _authService.StoreRefreshTokenAsync(refreshToken);
+
+            return new AuthResponseDto
             {
                 Email = user.Email,
-                Token = await _authService.CreateTokenAsync(user, _userManager),
-                DisplayName = user.DisplayName
+                Token = token,
+                DisplayName = user.DisplayName,
+                RefreshToken = refreshToken.Token,
+                RefreshTokenExpiry = refreshToken.Expires
             };
-
         }
+        
         [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("emailexists")]
         public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
@@ -240,7 +360,7 @@ public class AccountController : ApiBaseController
         
         [Authorize]
         [HttpPut("update")]
-        public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserDto updateUserDto)
+        public async Task<ActionResult<AuthResponseDto>> UpdateUser(UpdateUserDto updateUserDto)
         {
             var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
             if (user == null)
@@ -257,7 +377,7 @@ public class AccountController : ApiBaseController
                 return BadRequest(new ApiResponse(400, "Problem updating the user"));
             }
 
-            return new UserDto
+            return new AuthResponseDto
             {
                 Email = user.Email,
                 Token = await _authService.CreateTokenAsync(user, _userManager),

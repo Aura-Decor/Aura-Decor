@@ -10,4 +10,7 @@ public class User : IdentityUser
     // Navigation properties for notifications
     public ICollection<Notification> Notifications { get; set; } = new List<Notification>();
     public NotificationPreference NotificationPreference { get; set; }
+    
+    // Refresh tokens
+    public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 }

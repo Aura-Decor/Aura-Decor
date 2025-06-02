@@ -1,5 +1,3 @@
-using System.Net;
-using System.Net.Mail;
 using System.Text;
 using System.Text.Json;
 using System.Diagnostics;
@@ -10,8 +8,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using StackExchange.Redis;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using MimeKit;
 
-namespace AuraDecor.Servicies;
+namespace AuraDecor.Services;
 
 public class EmailService : IEmailService, IDisposable
 {
@@ -21,24 +22,24 @@ public class EmailService : IEmailService, IDisposable
     private readonly IEmailTemplateService _emailTemplateService;
     private readonly ILogger<EmailService> _logger;
     private const int OTP_EXPIRY = 5;
-    
+
     private static IConnection _connection;
     private static IModel _channel;
     private readonly object _connectionLock = new object();
 
     public EmailService(
-        IOptions<EmailSettings> emailSettings, 
+        IOptions<EmailSettings> emailSettings,
         IOptions<RabbitMqSettings> rabbitMqSettings,
-        IConnectionMultiplexer redis, 
+        IConnectionMultiplexer redis,
         IEmailTemplateService emailTemplateService,
         ILogger<EmailService> logger)
     {
-        _emailSettings = emailSettings.Value;
-        _rabbitMqSettings = rabbitMqSettings.Value;
+        _emailSettings = emailSettings.Value ?? throw new ArgumentNullException(nameof(emailSettings));
+        _rabbitMqSettings = rabbitMqSettings.Value ?? throw new ArgumentNullException(nameof(rabbitMqSettings));
         _redisDb = redis.GetDatabase();
-        _emailTemplateService = emailTemplateService;
-        _logger = logger;
-        
+        _emailTemplateService = emailTemplateService ?? throw new ArgumentNullException(nameof(emailTemplateService));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
         InitializeRabbitMqConnection();
     }
 
@@ -55,6 +56,8 @@ public class EmailService : IEmailService, IDisposable
             var factory = new ConnectionFactory
             {
                 Uri = new Uri(_rabbitMqSettings.GetConnectionString()),
+                AutomaticRecoveryEnabled = true,
+                NetworkRecoveryInterval = TimeSpan.FromSeconds(10)
             };
 
             _connection = factory.CreateConnection();
@@ -85,7 +88,7 @@ public class EmailService : IEmailService, IDisposable
             };
 
             PublishToQueue(
-                _rabbitMqSettings.Queues.OtpEmails, 
+                _rabbitMqSettings.Queues.OtpEmails,
                 _rabbitMqSettings.Exchanges.EmailExchange,
                 otpEmailMessage
             );
@@ -101,18 +104,19 @@ public class EmailService : IEmailService, IDisposable
         catch (Exception ex)
         {
             _logger.LogError(ex, "Failed to queue OTP email for {Email} after {ElapsedMs}ms", email, stopwatch.ElapsedMilliseconds);
-            await SendDirectEmailAsync(
-                email, 
-                "Your AuraDecor Verification Code", 
-                _emailTemplateService.CreateOtpEmailTemplate(otp, OTP_EXPIRY)
-            );
+            await SendDirectEmailAsync(email, "Your AuraDecor Verification Code", _emailTemplateService.CreateOtpEmailTemplate(otp, OTP_EXPIRY));
         }
     }
 
     public async Task<bool> ValidateOtpAsync(string email, string otp)
     {
-        var storedotp = await _redisDb.StringGetAsync($"otp:{email}");
-        return !storedotp.IsNull && storedotp.ToString() == otp;
+        var storedOtp = await _redisDb.StringGetAsync($"otp:{email}");
+        if (!storedOtp.IsNull && storedOtp.ToString() == otp)
+        {
+            await _redisDb.KeyDeleteAsync($"otp:{email}"); 
+            return true;
+        }
+        return false;
     }
 
     public async Task SendNotificationEmailAsync(string email, string subject, string htmlBody)
@@ -131,7 +135,7 @@ public class EmailService : IEmailService, IDisposable
 
             PublishToQueue(
                 _rabbitMqSettings.Queues.NotificationEmails,
-                _rabbitMqSettings.Exchanges.EmailExchange, 
+                _rabbitMqSettings.Exchanges.EmailExchange,
                 notificationEmail
             );
 
@@ -155,6 +159,7 @@ public class EmailService : IEmailService, IDisposable
             properties.Persistent = true;
             properties.ContentType = "application/json";
             properties.Timestamp = new AmqpTimestamp(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+            properties.CorrelationId = Guid.NewGuid().ToString();
 
             _channel.BasicPublish(
                 exchange: exchangeName,
@@ -165,35 +170,55 @@ public class EmailService : IEmailService, IDisposable
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error publishing to queue {QueueName}: {Message}", queueName, ex.Message);
+            _logger.LogError(ex, "Error publishing to queue {QueueName}", queueName);
             throw;
         }
     }
 
     private async Task SendDirectEmailAsync(string email, string subject, string htmlBody)
     {
-        var message = new MailMessage
-        {
-            From = new MailAddress(_emailSettings.FromEmail, _emailSettings.FromName),
-            Subject = subject,
-            Body = htmlBody,
-            IsBodyHtml = true
-        };
-        message.To.Add(new MailAddress(email));
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress(_emailSettings.FromName, _emailSettings.FromEmail));
+        message.To.Add(new MailboxAddress("", email));
+        message.Subject = subject;
 
-        using var client = new SmtpClient(_emailSettings.SmtpServer, _emailSettings.SmtpPort)
-        {
-            EnableSsl = true,
-            Credentials = new NetworkCredential(_emailSettings.SmtpUsername, _emailSettings.SmtpPassword)
-        };
+        var bodyBuilder = new BodyBuilder { HtmlBody = htmlBody };
+        message.Body = bodyBuilder.ToMessageBody();
 
-        await client.SendMailAsync(message);
-        _logger.LogInformation("Email sent directly to {Email} as fallback", email);
+        using var client = new SmtpClient();
+        try
+        {
+            await client.ConnectAsync(_emailSettings.SmtpServer, _emailSettings.SmtpPort, SecureSocketOptions.StartTls);
+            await client.AuthenticateAsync(_emailSettings.SmtpUsername, _emailSettings.SmtpPassword);
+            await client.SendAsync(message);
+            _logger.LogInformation("Email sent directly to {Email} as fallback", email);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to send email directly to {Email}", email);
+            throw;
+        }
+        finally
+        {
+            await client.DisconnectAsync(true);
+        }
     }
 
     public void Dispose()
     {
-        _channel?.Dispose();
-        _connection?.Dispose();
+        try
+        {
+            _channel?.Close();
+            _connection?.Close();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Error during disposal of RabbitMQ resources");
+        }
+        finally
+        {
+            _channel?.Dispose();
+            _connection?.Dispose();
+        }
     }
 }

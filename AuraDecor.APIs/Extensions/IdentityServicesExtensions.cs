@@ -14,7 +14,8 @@ public static class IdentityServicesExtensions
 {
     public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
     {
-        services.AddScoped(typeof(ITokenService), typeof(TokenService));
+        // Register TokenService with IUnitOfWork instead of AppDbContext directly
+        services.AddScoped<ITokenService, TokenService>();
         
         services.AddIdentity<User, IdentityRole>(options =>
         {
@@ -66,7 +67,7 @@ public static class IdentityServicesExtensions
                 options.ConsumerSecret = config["Authentication:Twitter:ConsumerSecret"];
                 options.RetrieveUserDetails = true;
                 options.SaveTokens = true;
-                options.CallbackPath = "/account/twitter-response"; // Updated to match controller route
+                options.CallbackPath = "/account/twitter-response"; 
 
             });
 

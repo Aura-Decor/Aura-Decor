@@ -30,7 +30,7 @@ namespace AuraDecor.APIs.Controllers
 
   
         [HttpGet("users")]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsers()
+        public async Task<ActionResult<IEnumerable<AuthResponseDto>>> GetAllUsers()
         {
             var users = await _context.Users.ToListAsync();
 

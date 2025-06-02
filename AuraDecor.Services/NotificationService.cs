@@ -270,7 +270,7 @@ public class NotificationService : INotificationService
         }
         catch (Exception)
         {
-            console.WriteLine("Failed to send email notification. Please check your email settings.");
+            Console.WriteLine("Failed to send email notification. Please check your email settings.");
         }
     }
 
