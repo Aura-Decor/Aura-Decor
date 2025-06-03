@@ -37,8 +37,6 @@ The solution follows the Clean Architecture pattern with separate layers for cle
 #### System Architecture Overview
 ![System Architecture Overview](./docs/svgviewer-output.svg)
 
-#### Component Interaction Diagram
-![Component Interaction Diagram](./docs/svgviewer-output%20(1).svg)
 
 #### Request Flow and Middleware Pipeline
 ![Request Flow and Middleware Pipeline](./docs/svgviewer-output%20(2).svg)
