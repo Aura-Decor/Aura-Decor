@@ -32,6 +32,17 @@ The solution follows the Clean Architecture pattern with separate layers for cle
 - **AuraDecor.Repository**: Data access and Entity Framework Core implementation
 - **AuraDecor.Services**: Business logic implementation
 
+### Architecture Diagrams
+
+#### System Architecture Overview
+![System Architecture Overview](./docs/svgviewer-output.svg)
+
+#### Component Interaction Diagram
+![Component Interaction Diagram](./docs/svgviewer-output%20(1).svg)
+
+#### Request Flow and Middleware Pipeline
+![Request Flow and Middleware Pipeline](./docs/svgviewer-output%20(2).svg)
+
 ## Technology Stack
 
 - **ASP.NET Core 8.0**: Backend framework
