@@ -2,6 +2,30 @@
 
 AuraDecor is a comprehensive furniture management system with a modern web API backend built on ASP.NET Core 8.0. The application allows users to browse furniture items, manage their shopping cart, and place orders, while administrators can manage inventory, users, and special offers.
 
+## Table of Contents
+
+1. [Project Status](#project-status)
+2. [Project Architecture](#project-architecture)
+3. [Technology Stack](#technology-stack)
+4. [Core Features](#core-features)
+5. [RabbitMQ Configuration](#rabbitmq-configuration)
+6. [Installation and Setup](#installation-and-setup)
+7. [Docker Deployment](#docker-deployment)
+8. [API Documentation](#api-documentation)
+   - [Authentication Endpoints](#authentication-endpoints)
+   - [User Profile Management](#user-profile-management)
+   - [Furniture Management](#furniture-management)
+   - [Offers and Discounts](#offers-and-discounts)
+   - [Shopping Cart Management](#shopping-cart-management)
+   - [Order Management](#order-management)
+   - [Notification System](#notification-system)
+   - [Admin Management](#admin-management)
+9. [Error Handling](#error-handling)
+10. [Security and Rate Limiting](#security-and-rate-limiting)
+11. [Response Formats](#response-formats)
+12. [Additional Features](#additional-features)
+13. [License](#license)
+
 ## Project Status
 
 ### Completed Features
@@ -14,12 +38,12 @@ AuraDecor is a comprehensive furniture management system with a modern web API b
 - Notification System
 - Rate Limiting
 - Email Services (OTP, Notifications)
+- Refresh Token Implementation
 
 ### Pending Development
 
 - Coupon Module
 - Payment Module
-- Refresh Token Implementation
 - Recommendation Module
 - Unit Testing
 
@@ -35,7 +59,7 @@ The solution follows the Clean Architecture pattern with separate layers for cle
 ### Architecture Diagrams
 
 #### System Architecture Overview
-![System Architecture Overview](./docs/svgviewer-output.svg)
+![System Architecture Overview](./docs/Architecture-Overview.svg)
 
 
 #### Request Flow and Middleware Pipeline
@@ -597,8 +621,17 @@ Request Body:
 ```json
 {
   "statusCode": 404,
-  "message": "Resource not found",
-  "details": "Additional error details when available"
+  "message": "Lost? just like your mind"
+}
+```
+
+#### Exception Response Format
+
+```json
+{
+  "statusCode": 500,
+  "message": "Something broke, probably my soul",
+  "details": "Detailed exception information in development environment"
 }
 ```
 
@@ -607,13 +640,35 @@ Request Body:
 ```json
 {
   "statusCode": 400,
-  "message": "Validation failed",
+  "message": "What you just said makes no sense",
   "errors": [
-    "Email is required",
+    "Email address is in use",
     "Password must be at least 8 characters"
   ]
 }
 ```
+
+#### Rate Limiting Error Response
+
+```json
+{
+  "statusCode": 429,
+  "message": "you're banned for being gay"
+}
+```
+
+#### Common Status Codes
+
+- **400 Bad Request**: "What you just said makes no sense"
+- **401 Unauthorized**: "Get the hell out of here"
+- **404 Not Found**: "Lost? just like your mind"
+- **429 Too Many Requests**: Rate limit exceeded
+- **500 Internal Server Error**: "Something broke, probably my soul"
+
+Rate limited endpoints include headers:
+- `X-RateLimit-Limit`: Maximum number of requests allowed
+- `X-RateLimit-Remaining`: Number of requests remaining
+- `X-RateLimit-Reset`: Unix timestamp when the rate limit resets
 
 ## Security and Rate Limiting
 
@@ -660,7 +715,9 @@ Request Body:
 {
   "email": "user@example.com",
   "displayName": "John Doe",
-  "token": "jwt-token-string"
+  "token": "jwt-token-string",
+  "refreshToken": "refresh-token-string",
+  "refreshTokenExpiry": "2023-06-25T14:30:00Z"
 }
 ```
 
@@ -687,7 +744,7 @@ Request Body:
 
 ## API Documentation
 
-API documentation is available through Swagger UI when running the application in development mode. Access it at `/swagger`.
+API documentation is available through Swagger UI when running the application in development mode. Access it at `/scalar`.
 
 ## License
 
