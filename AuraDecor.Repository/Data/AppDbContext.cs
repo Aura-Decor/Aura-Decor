@@ -16,10 +16,9 @@ public class AppDbContext : IdentityDbContext<User>
         base.OnModelCreating(modelBuilder); 
 
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        // var FurnitureData = AppDbContextDataSeed.DataSeeder.GetFurnitureData();
-        // modelBuilder.Entity<Furniture>().HasData(FurnitureData);
     }
 
+    public DbSet<Rating> Ratings { get; set; }
     public DbSet<Furniture> Furniture { get; set; }
     public DbSet<FurnitureCategory> FurnitureCategories { get; set; }
     public DbSet<FurnitureBrand> FurnitureBrands { get; set; }

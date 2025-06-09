@@ -9,8 +9,10 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
+        // Address mappings
         CreateMap<AddressDto, Address>().ReverseMap();
 
+        // Furniture mappings
         CreateMap<AddFurnitureDto, Furniture>()
             .ForMember(dest => dest.PictureUrl, opt => opt.Ignore());
 
@@ -18,6 +20,7 @@ public class MappingProfiles : Profile
             .ForMember(d => d.Brand, o => o.MapFrom(s => s.Brand.Name))
             .ForMember(d => d.Category, o => o.MapFrom(s => s.Category.Name));
 
+        // Cart mappings
         CreateMap<Cart, CartDto>()
             .ForMember(d => d.Items, opt => 
                 opt.MapFrom(s => s.CartItems));
@@ -39,5 +42,12 @@ public class MappingProfiles : Profile
         CreateMap<NotificationPreference, NotificationPreferencesDto>().ReverseMap();
         
         CreateMap<UpdateNotificationPreferencesDto, NotificationPreference>();
+
+
+        // Rating mappings
+        CreateMap<AddRatingDto, Rating>();
+        
+        CreateMap<Rating, RatingDto>()
+            .ForMember(d => d.UserDisplayName, o => o.MapFrom(s => s.User.DisplayName));
     }
 }

@@ -480,6 +480,59 @@ Query Parameters:
 
 - **Response**: Boolean indicating success
 
+### Rating Management
+
+All rating endpoints require authentication for adding a rating.
+
+**POST** `/api/Ratings` - Add or update a rating for a product.
+- **Authentication**: Required (JWT Bearer token)
+
+Request Body:
+```json
+{
+  "productId": "furniture-guid",
+  "stars": 5,
+  "review": "This is a great product!"
+}
+```
+- **Response**: The created or updated rating object.
+
+Response Body:
+```json
+{
+  "id": "rating-guid",
+  "stars": 5,
+  "review": "This is a great product!",
+  "userDisplayName": "John Doe",
+  "createdAt": "2023-10-27T10:00:00Z"
+}
+```
+
+**GET** `/api/Ratings/{productId}` - Get all ratings for a specific product.
+- **Authentication**: Not required.
+
+- **Response**: A list of ratings for the product.
+
+Response Body:
+```json
+[
+  {
+    "id": "rating-guid",
+    "stars": 5,
+    "review": "This is a great product!",
+    "userDisplayName": "John Doe",
+    "createdAt": "2023-10-27T10:00:00Z"
+  },
+  {
+    "id": "another-rating-guid",
+    "stars": 4,
+    "review": "Good, but could be better.",
+    "userDisplayName": "Jane Smith",
+    "createdAt": "2023-10-28T12:00:00Z"
+  }
+]
+```
+
 ### Notification System
 
 #### User Notification Endpoints (Authentication Required)
