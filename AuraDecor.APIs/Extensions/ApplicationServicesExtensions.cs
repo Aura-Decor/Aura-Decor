@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
+using HealthChecks.UI.Core.Extensions;
 
 namespace AuraDecor.APIs.Extensions;
 
@@ -60,6 +63,18 @@ public static class ApplicationServicesExtensions
         services.Configure<RabbitMqSettings>(config.GetSection("RabbitMQ"));
         
         services.AddHostedService<EmailQueueConsumer>();
+
+        services.AddHealthChecks()
+            .AddDbContextCheck<AppDbContext>(name: "Database")
+            .AddRedis(config.GetConnectionString("Redis"), name: "Redis")
+            .AddRabbitMQ(config["RabbitMQ:Uri"], name: "RabbitMQ");
+
+        services.AddHealthChecksUI(options =>
+        {
+            options.SetEvaluationTimeInSeconds(10); //time in seconds between check
+            options.MaximumHistoryEntriesPerEndpoint(60); //maximum history of checks
+            options.AddHealthCheckEndpoint("AuraDecor API", "/health");
+        }).AddInMemoryStorage();
 
         return services;
     }

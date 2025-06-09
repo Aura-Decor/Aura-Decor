@@ -11,7 +11,8 @@ AuraDecor is a comprehensive furniture management system with a modern web API b
 5. [RabbitMQ Configuration](#rabbitmq-configuration)
 6. [Installation and Setup](#installation-and-setup)
 7. [Docker Deployment](#docker-deployment)
-8. [API Documentation](#api-documentation)
+8. [Health Monitoring](#health-checks)
+9. [API Documentation](#api-documentation)
    - [Authentication Endpoints](#authentication-endpoints)
    - [User Profile Management](#user-profile-management)
    - [Furniture Management](#furniture-management)
@@ -775,6 +776,17 @@ Rate limited endpoints include headers:
 ```
 
 ## Additional Features
+
+### Health Checks
+
+The application includes health monitoring for critical system dependencies:
+
+- Database health monitoring
+- Redis connection monitoring
+- RabbitMQ connection monitoring
+
+Access the health status JSON endpoint at: `/health`
+Access the Health Checks UI dashboard at: `/healthchecks-ui`
 
 ### Caching
 

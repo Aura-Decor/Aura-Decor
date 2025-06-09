@@ -4,6 +4,9 @@ using AuraDecor.APIs.Middlewares;
 using AuraDecor.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Http;
+using HealthChecks.UI.Client;
 
 
 
@@ -58,6 +61,15 @@ app.UseStaticFiles();
 app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapHealthChecks("/health", new HealthCheckOptions
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
+app.MapHealthChecksUI();
+
 app.MapControllers();
 
 app.Run();
