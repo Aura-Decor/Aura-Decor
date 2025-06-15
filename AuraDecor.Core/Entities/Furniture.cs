@@ -19,4 +19,20 @@ public class Furniture : BaseEntity
     public Guid CategoryId { get; set; }
     public FurnitureCategory Category { get; set; } // Navigation property one to many
     public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
+    public StyleType Style { get; set; }
+    public string Color { get; set; }
+    
 }
+
+
+    public enum StyleType
+    {
+     
+        Modern,
+        Classic,
+        Bohemian,
+        Victorian,
+        French,
+        American
+    
+    }
