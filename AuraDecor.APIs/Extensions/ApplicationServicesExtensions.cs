@@ -71,8 +71,8 @@ public static class ApplicationServicesExtensions
 
         services.AddHealthChecksUI(options =>
         {
-            options.SetEvaluationTimeInSeconds(10); //time in seconds between check
-            options.MaximumHistoryEntriesPerEndpoint(60); //maximum history of checks
+            options.SetEvaluationTimeInSeconds(10); 
+            options.MaximumHistoryEntriesPerEndpoint(60); 
             options.AddHealthCheckEndpoint("AuraDecor API", "/health");
         }).AddInMemoryStorage();
 
