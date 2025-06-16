@@ -9,7 +9,9 @@ public class FurnitureWithFiltrationForCountSpec : BaseSpecification<Furniture>
         : base(p =>
             (string.IsNullOrEmpty(specParams.Search) || p.Name.ToLower().Contains(specParams.Search)) &&
             (!specParams.brandId.HasValue || p.BrandId == specParams.brandId) &&
-            (!specParams.categoryId.HasValue || p.CategoryId == specParams.categoryId))
+            (!specParams.categoryId.HasValue || p.CategoryId == specParams.categoryId) &&
+           (!specParams.ColorId.HasValue || p.CategoryId == specParams.categoryId) &&
+           (!specParams.StyleTypeId.HasValue || p.StyleTypeId == specParams.StyleTypeId))
     {
         
     }

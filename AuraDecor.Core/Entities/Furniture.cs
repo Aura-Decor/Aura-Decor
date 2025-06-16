@@ -18,5 +18,12 @@ public class Furniture : BaseEntity
     public FurnitureBrand Brand { get; set; } // Navigation property one to many 
     public Guid CategoryId { get; set; }
     public FurnitureCategory Category { get; set; } // Navigation property one to many
+    public Guid StyleTypeId { get; set; }
+    public StyleType StyleType { get; set; }
+    public Guid ColorId { get; set; }
+    public Color Color { get; set; }
     public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
+
+    
 }
+
