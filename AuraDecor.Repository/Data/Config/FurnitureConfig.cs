@@ -17,6 +17,12 @@ public class FurnitureConfig : IEntityTypeConfiguration<Furniture>
         builder.HasOne(F => F.Category)
             .WithMany();
 
+        builder.HasOne(F => F.StyleType).WithMany().HasForeignKey(F => F.StyleTypeId)
+         .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(F => F.Color).WithMany().HasForeignKey(F => F.ColorId)
+         .OnDelete(DeleteBehavior.Restrict);
+
         builder.HasIndex(f => f.HasOffer);
         builder.HasIndex(f => new { f.CategoryId, f.BrandId });
         builder.HasIndex(f => f.Price);
