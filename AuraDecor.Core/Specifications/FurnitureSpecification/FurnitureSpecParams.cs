@@ -6,7 +6,10 @@ public class FurnitureSpecParams
     public string? sort { get; set; }
     public Guid? brandId { get; set; }
     public Guid? categoryId { get; set; }
-    
+    public Guid? StyleTypeId { get; set; }
+    public Guid? ColorId { get; set; }
+
+
     public string? search { get; set; }
     
     private const int MaxPageSize = 10;

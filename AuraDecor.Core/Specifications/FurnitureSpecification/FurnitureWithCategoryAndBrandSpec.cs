@@ -2,16 +2,21 @@ using AuraDecor.Core.Entities;
 
 namespace AuraDecor.Core.Specifications.ProductSpecification;
 
-public class FurnitureWithCategoryAndBrandSpec : BaseSpecification<Furniture>
+public class FurnitureWithCategoryAndBrandAndStyleTypeAndColorSpec : BaseSpecification<Furniture>
 {
-    public FurnitureWithCategoryAndBrandSpec(FurnitureSpecParams specParams)
+    public FurnitureWithCategoryAndBrandAndStyleTypeAndColorSpec(FurnitureSpecParams specParams)
         : base(p =>
             (string.IsNullOrEmpty(specParams.search) || p.Name.ToLower().Contains(specParams.search)) &&
             (!specParams.brandId.HasValue || p.BrandId == specParams.brandId) &&
-            (!specParams.categoryId.HasValue || p.CategoryId == specParams.categoryId))
-    {
+            (!specParams.categoryId.HasValue || p.CategoryId == specParams.categoryId) &&
+            (!specParams.StyleTypeId.HasValue ||p.StyleTypeId == specParams.StyleTypeId) &&
+            (!specParams.ColorId.HasValue || p.ColorId == specParams.ColorId)) 
+        {
         Includes.Add(p => p.Brand);
         Includes.Add(p => p.Category);
+        Includes.Add(p => p.StyleType);
+        Includes.Add(p => p.Color);
+
         switch (specParams.sort)
         {
             case "priceAsc":
@@ -28,11 +33,13 @@ public class FurnitureWithCategoryAndBrandSpec : BaseSpecification<Furniture>
         ApplyPagingation((specParams.PageIndex - 1) * specParams.PageSize, specParams.PageSize);
     }
 
-    public FurnitureWithCategoryAndBrandSpec(Guid id)
+    public FurnitureWithCategoryAndBrandAndStyleTypeAndColorSpec(Guid id)
         : base(p => p.Id == id)
     {
         Includes.Add(p => p.Brand);
         Includes.Add(p => p.Category);
+        Includes.Add(p => p.StyleType);
+        Includes.Add(p => p.Color);
     }
 
  
