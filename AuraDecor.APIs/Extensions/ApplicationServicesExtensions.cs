@@ -31,6 +31,10 @@ public static class ApplicationServicesExtensions
         services.AddScoped<INotificationService, NotificationService>();
         services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IResponseCacheService, ResponseCacheService>();
+        services.AddScoped<IBrandService, BrandService>();
+        services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<IStyleService, StyleService>();
+        services.AddScoped<IColorService, ColorService>();
         services.AddSingleton<IEmailService, EmailService>();
         services.AddSingleton<IEmailTemplateService, EmailTemplateService>();
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());

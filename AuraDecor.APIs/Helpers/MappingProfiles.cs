@@ -47,11 +47,23 @@ public class MappingProfiles : Profile
         
         CreateMap<UpdateNotificationPreferencesDto, NotificationPreference>();
 
-
         // Rating mappings
         CreateMap<AddRatingDto, Rating>();
         
         CreateMap<Rating, RatingDto>()
             .ForMember(d => d.UserDisplayName, o => o.MapFrom(s => s.User.DisplayName));
+            
+        // Brand, Category, StyleType, Color mappings
+        CreateMap<CreateBrandDto, FurnitureBrand>();
+        CreateMap<FurnitureBrand, BrandDto>();
+        
+        CreateMap<CreateCategoryDto, FurnitureCategory>();
+        CreateMap<FurnitureCategory, CategoryDto>();
+        
+        CreateMap<CreateStyleTypeDto, StyleType>();
+        CreateMap<StyleType, StyleTypeDto>();
+        
+        CreateMap<CreateColorDto, Color>();
+        CreateMap<Color, ColorDto>();
     }
 }
