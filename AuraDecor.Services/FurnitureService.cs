@@ -39,13 +39,13 @@ namespace AuraDecor.Servicies
 
         public async Task<IReadOnlyList<Furniture>> GetAllFurnitureAsync(FurnitureSpecParams specParams)
         {
-            var spec = new FurnitureWithCategoryAndBrandAndStyleTypeAndColorSpec(specParams);
+            var spec = new FurnitureWithDetailsSpec(specParams);
             return await _unitOfWork.Repository<Furniture>().GetAllWithSpecAsync(spec);
         }
 
         public async Task<Furniture> GetFurnitureByIdAsync(Guid id)
         {
-            var spec = new FurnitureWithCategoryAndBrandAndStyleTypeAndColorSpec(id);
+            var spec = new FurnitureWithDetailsSpec(id);
             return await _unitOfWork.Repository<Furniture>().GetWithSpecAsync(spec);
         }
 

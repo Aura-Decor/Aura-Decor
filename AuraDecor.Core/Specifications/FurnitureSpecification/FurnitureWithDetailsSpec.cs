@@ -2,9 +2,9 @@ using AuraDecor.Core.Entities;
 
 namespace AuraDecor.Core.Specifications.ProductSpecification;
 
-public class FurnitureWithCategoryAndBrandAndStyleTypeAndColorSpec : BaseSpecification<Furniture>
+public class FurnitureWithDetailsSpec : BaseSpecification<Furniture>
 {
-    public FurnitureWithCategoryAndBrandAndStyleTypeAndColorSpec(FurnitureSpecParams specParams)
+    public FurnitureWithDetailsSpec(FurnitureSpecParams specParams)
         : base(p =>
             (string.IsNullOrEmpty(specParams.search) || p.Name.ToLower().Contains(specParams.search)) &&
             (!specParams.brandId.HasValue || p.BrandId == specParams.brandId) &&
@@ -33,7 +33,7 @@ public class FurnitureWithCategoryAndBrandAndStyleTypeAndColorSpec : BaseSpecifi
         ApplyPagingation((specParams.PageIndex - 1) * specParams.PageSize, specParams.PageSize);
     }
 
-    public FurnitureWithCategoryAndBrandAndStyleTypeAndColorSpec(Guid id)
+    public FurnitureWithDetailsSpec(Guid id)
         : base(p => p.Id == id)
     {
         Includes.Add(p => p.Brand);
