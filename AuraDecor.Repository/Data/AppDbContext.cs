@@ -29,4 +29,6 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<NotificationPreference> NotificationPreferences { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
+    public DbSet<StyleType> StyleTypes { get; set; }
+    public DbSet<Color> Colors { get; set; }
 }

@@ -88,6 +88,25 @@ namespace AuraDecor.Repositoriy.Migrations
                     b.ToTable("CartItems");
                 });
 
+            modelBuilder.Entity("AuraDecor.Core.Entities.Color", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Hex")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+                });
+
             modelBuilder.Entity("AuraDecor.Core.Entities.Furniture", b =>
                 {
                     b.Property<Guid>("Id")
@@ -100,9 +119,8 @@ namespace AuraDecor.Repositoriy.Migrations
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("ColorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -140,16 +158,20 @@ namespace AuraDecor.Repositoriy.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Style")
-                        .HasColumnType("int");
+                    b.Property<Guid>("StyleTypeId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
 
+                    b.HasIndex("ColorId");
+
                     b.HasIndex("HasOffer");
 
                     b.HasIndex("Price");
+
+                    b.HasIndex("StyleTypeId");
 
                     b.HasIndex("CategoryId", "BrandId");
 
@@ -410,6 +432,21 @@ namespace AuraDecor.Repositoriy.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("RefreshTokens");
+                });
+
+            modelBuilder.Entity("AuraDecor.Core.Entities.StyleType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StyleTypes");
                 });
 
             modelBuilder.Entity("AuraDecor.Core.Entities.User", b =>
@@ -674,9 +711,25 @@ namespace AuraDecor.Repositoriy.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AuraDecor.Core.Entities.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AuraDecor.Core.Entities.StyleType", "StyleType")
+                        .WithMany("Furnitures")
+                        .HasForeignKey("StyleTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
+
+                    b.Navigation("Color");
+
+                    b.Navigation("StyleType");
                 });
 
             modelBuilder.Entity("AuraDecor.Core.Entities.Notification", b =>
@@ -839,6 +892,11 @@ namespace AuraDecor.Repositoriy.Migrations
             modelBuilder.Entity("AuraDecor.Core.Entities.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("AuraDecor.Core.Entities.StyleType", b =>
+                {
+                    b.Navigation("Furnitures");
                 });
 
             modelBuilder.Entity("AuraDecor.Core.Entities.User", b =>
