@@ -10,7 +10,7 @@ public class AddFurnitureDto
     public string Name { get; set; }
     
     [Required]
-    [StringLength(180, MinimumLength = 10)]
+    [StringLength(400, MinimumLength = 10)]
     public string Description { get; set; }
     
     [Required]
@@ -25,6 +25,12 @@ public class AddFurnitureDto
     
     [Required]
     public Guid CategoryId { get; set; }
+    
+    [Required]
+    public Guid StyleTypeId { get; set; }
+    
+    [Required]
+    public Guid ColorId { get; set; }
     
     [Required]
     public IFormFile Image { get; set; }

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "name": "White",
+    "hex": "#FFFFFF"
+  },
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "name": "Black",
+    "hex": "#000000"
+  },
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "name": "Brown",
+    "hex": "#8B4513"
+  },
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "name": "Walnut",
+    "hex": "#73503B"
+  },
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "name": "Oak",
+    "hex": "#D2B48C"
+  },
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "name": "Gray",
+    "hex": "#808080"
+  },
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1d7",
+    "name": "Natural Wood",
+    "hex": "#DEB887"
+  },
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1d8",
+    "name": "Metal",
+    "hex": "#C0C0C0"
+  },
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "name": "Beige",
+    "hex": "#F5F5DC"
+  },
+  {
+    "id": "9e94f147-004e-4886-8a60-a9f3c98ad1da",
+    "name": "Black-Brown",
+    "hex": "#3C2414"
+  }
+]

@@ -17,5 +17,7 @@ public class FurnitureWithActiveOffersSpec : BaseSpecification<Furniture>
     {
         Includes.Add(p => p.Brand);
         Includes.Add(p => p.Category);
+        Includes.Add(p => p.StyleType);
+        Includes.Add(p => p.Color);
     }
 }

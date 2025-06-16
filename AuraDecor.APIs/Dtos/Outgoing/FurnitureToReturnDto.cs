@@ -17,4 +17,8 @@ public class FurnitureToReturnDto
     public string Brand { get; set; } 
     public Guid CategoryId { get; set; }
     public string Category { get; set; } 
+    public Guid StyleTypeId { get; set; }
+    public string StyleType { get; set; }
+    public Guid ColorId { get; set; }
+    public string Color { get; set; }
 }

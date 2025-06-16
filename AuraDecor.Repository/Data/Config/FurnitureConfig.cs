@@ -9,15 +9,17 @@ public class FurnitureConfig : IEntityTypeConfiguration<Furniture>
     public void Configure(EntityTypeBuilder<Furniture> builder)
     {
         builder.Property(F=>F.Name).IsRequired().HasMaxLength(100);
-        builder.Property(F=>F.Description).IsRequired().HasMaxLength(180);
+        builder.Property(F=>F.Description).IsRequired().HasMaxLength(400);
         builder.Property(F=>F.Price).HasColumnType("decimal(18,2)");
+        builder.Property(F=>F.DiscountedPrice).HasColumnType("decimal(18,2)");
+        builder.Property(F=>F.DiscountPercentage).HasColumnType("decimal(18,2)");
         builder.Property(F=>F.PictureUrl).IsRequired();
         builder.Property(F=>F.FurnitureModel).IsRequired();
         builder.HasOne(F => F.Brand).WithMany();
         builder.HasOne(F => F.Category)
             .WithMany();
 
-        builder.HasOne(F => F.StyleType).WithMany().HasForeignKey(F => F.StyleTypeId)
+        builder.HasOne(F => F.StyleType).WithMany(st => st.Furnitures).HasForeignKey(F => F.StyleTypeId)
          .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(F => F.Color).WithMany().HasForeignKey(F => F.ColorId)

@@ -68,21 +68,21 @@ namespace AuraDecor.Repositoriy.Migrations
                 table: "Furniture",
                 column: "StyleTypeId");
 
-            //migrationBuilder.AddForeignKey(
-            //    name: "FK_Furniture_Colors_ColorId",
-            //    table: "Furniture",
-            //    column: "ColorId",
-            //    principalTable: "Colors",
-            //    principalColumn: "Id",
-            //    onDelete: ReferentialAction.Restrict);
+            migrationBuilder.AddForeignKey(
+                name: "FK_Furniture_Colors_ColorId",
+                table: "Furniture",
+                column: "ColorId",
+                principalTable: "Colors",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
 
-            //migrationBuilder.AddForeignKey(
-            //    name: "FK_Furniture_StyleTypes_StyleTypeId",
-            //    table: "Furniture",
-            //    column: "StyleTypeId",
-            //    principalTable: "StyleTypes",
-            //    principalColumn: "Id",
-            //    onDelete: ReferentialAction.Restrict);
+            migrationBuilder.AddForeignKey(
+                name: "FK_Furniture_StyleTypes_StyleTypeId",
+                table: "Furniture",
+                column: "StyleTypeId",
+                principalTable: "StyleTypes",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
         }
 
         /// <inheritdoc />
