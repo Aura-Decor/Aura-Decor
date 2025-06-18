@@ -1,4 +1,5 @@
-﻿using AuraDecor.Core.Repositories.Contract;
+﻿using AuraDecor.Core.Entities;
+using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +23,8 @@ namespace AuraDecor.Servicies
         {
              _mapper = mapper;
             _unitOfWork = unitOfWork;
-            StripeConfiguration.ApiKey = _config["StripeSettings:SecretKey"];
+            _config = config;
+            StripeConfiguration.ApiKey = _config["Stripe:SecretKey"];
 
         }
 
@@ -40,11 +42,24 @@ namespace AuraDecor.Servicies
                 throw new Exception("Empty cart");
             }
 
-            var amount = cart.CartItems.Sum(i => i.Quantity * i.Furniture.Price);
+            decimal deliveryCost = 0;
+
+            if (cart.DeliveryMethodId.HasValue)
+            {
+                var delivery = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(cart.DeliveryMethodId.Value);
+                if (delivery != null)
+                {
+                    deliveryCost = delivery.Cost;
+                }
+
+            }
+            var amount = cart.CartItems.Sum(i => i.Quantity * i.Furniture.Price) + deliveryCost;
+
+            long amountInCents = (long)(amount * 100);
+
             var service = new PaymentIntentService();
             PaymentIntent intent;
 
-            long amountInCents = (long)(amount * 100);
 
             if (string.IsNullOrEmpty(cart.PaymentIntentId))
             {

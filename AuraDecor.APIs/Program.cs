@@ -7,7 +7,6 @@ using Scalar.AspNetCore;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
 using HealthChecks.UI.Client;
-using AuraDecor.Core.Services.Contract.PaymentServices.Stripe;
 
 
 

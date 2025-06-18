@@ -31,4 +31,5 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<StyleType> StyleTypes { get; set; }
     public DbSet<Color> Colors { get; set; }
+    public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
 }

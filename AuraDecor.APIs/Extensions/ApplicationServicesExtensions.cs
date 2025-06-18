@@ -4,7 +4,6 @@ using AuraDecor.Core.Configuration;
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
-using AuraDecor.Core.Services.Contract.PaymentServices.Stripe;
 using AuraDecor.Repository;
 using AuraDecor.Repository.Data;
 using AuraDecor.Services;
@@ -47,7 +46,7 @@ public static class ApplicationServicesExtensions
             var configuration = ConfigurationOptions.Parse(config.GetConnectionString("Redis"), true);
             return ConnectionMultiplexer.Connect(configuration);
         });
-        services.Configure<StripeModel>(config.GetSection("Stripe"));
+
 
         services.Configure<ApiBehaviorOptions>(options =>
         {
