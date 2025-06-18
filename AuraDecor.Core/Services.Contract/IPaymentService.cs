@@ -1,9 +1,10 @@
+using Stripe;
+
 namespace AuraDecor.Core.Services.Contract;
 
 public interface IPaymentService
 {
-    // create - update payment intent strip
-    
 
+    Task<PaymentIntent> CreateOrUpdatePaymentIntentAysnc(Guid CartId);
 
 }
