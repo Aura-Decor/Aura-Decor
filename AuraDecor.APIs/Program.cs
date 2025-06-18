@@ -27,7 +27,7 @@ builder.Services.AddSwaggerServices();
 var app = builder.Build();
 #region DatabaseMigration
 using var scope = app.Services.CreateScope();
-          
+
 // Ask CLR to create a scope for the service provider
 var services = scope.ServiceProvider;
 var _dbcontext = services.GetRequiredService<AppDbContext>();
@@ -36,7 +36,7 @@ try
 {
     await _dbcontext.Database.MigrateAsync();
     await AppDbContextDataSeed.SeedAsync(_dbcontext);
-                
+
 }
 catch (Exception e)
 {
@@ -46,12 +46,12 @@ catch (Exception e)
 #endregion
 
 app.UseMiddleware<ExceptionMiddleware>();
-app.UseRateLimiting(); 
-app.UseSwaggerMiddleWare(); 
-app.MapScalarApiReference(options => 
+app.UseRateLimiting();
+app.UseSwaggerMiddleWare();
+app.MapScalarApiReference(options =>
     options
         .WithTheme(ScalarTheme.BluePlanet)
-        .WithDefaultHttpClient(ScalarTarget.CSharp,ScalarClient.HttpClient)
+        .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
 );
 
 

@@ -35,6 +35,7 @@ public static class ApplicationServicesExtensions
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IStyleService, StyleService>();
         services.AddScoped<IColorService, ColorService>();
+        services.AddScoped<IPaymentService, PaymentService>();
         services.AddSingleton<IEmailService, EmailService>();
         services.AddSingleton<IEmailTemplateService, EmailTemplateService>();
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());

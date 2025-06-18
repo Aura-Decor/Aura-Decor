@@ -43,7 +43,7 @@ public static class SwaggerServicesExtensions
         app.UseSwagger(options =>
         {
             options.RouteTemplate = "/openapi/{documentName}.json";
-        });      
+        });
         app.UseSwaggerUI();
         return app;
     }
