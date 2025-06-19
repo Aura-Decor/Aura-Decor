@@ -152,6 +152,103 @@ namespace AuraDecor.Servicies
             }
         }
 
+        public async Task<ImageSearchResponseDto> SearchFurnitureByTextAsync(string description, int limit = 10)
+        {
+            try
+            {
+                var formData = new MultipartFormDataContent();
+                formData.Add(new StringContent(description), "description");
+                formData.Add(new StringContent(limit.ToString()), "limit");
+
+                var response = await _httpClient.PostAsync(
+                    "https://A7medAyman-image-text-search.hf.space/api/v1/text/TextSearchQuery", 
+                    formData);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var results = JsonSerializer.Deserialize<List<ImageSearchResultDto>>(jsonResponse, 
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                    return new ImageSearchResponseDto
+                    {
+                        Success = true,
+                        Results = results ?? new List<ImageSearchResultDto>()
+                    };
+                }
+                else
+                {
+                    return new ImageSearchResponseDto
+                    {
+                        Success = false,
+                        Message = $"API request failed with status: {response.StatusCode}"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ImageSearchResponseDto
+                {
+                    Success = false,
+                    Message = $"Error searching by text: {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<ImageSearchResponseDto> SearchFurnitureByImageAsync(IFormFile image, int limit = 10, string? color = null)
+        {
+            try
+            {
+                var formData = new MultipartFormDataContent();
+                
+                // Add the image file
+                using var imageStream = image.OpenReadStream();
+                var imageContent = new StreamContent(imageStream);
+                imageContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(image.ContentType);
+                formData.Add(imageContent, "file", image.FileName);
+                
+                // Add optional parameters
+                formData.Add(new StringContent(limit.ToString()), "limit");
+                if (!string.IsNullOrEmpty(color))
+                {
+                    formData.Add(new StringContent(color), "color");
+                }
+
+                var response = await _httpClient.PostAsync(
+                    "https://A7medAyman-image-text-search.hf.space/api/v1/image/ImageSearchQuery", 
+                    formData);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var results = JsonSerializer.Deserialize<List<ImageSearchResultDto>>(jsonResponse, 
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                    return new ImageSearchResponseDto
+                    {
+                        Success = true,
+                        Results = results ?? new List<ImageSearchResultDto>()
+                    };
+                }
+                else
+                {
+                    return new ImageSearchResponseDto
+                    {
+                        Success = false,
+                        Message = $"API request failed with status: {response.StatusCode}"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ImageSearchResponseDto
+                {
+                    Success = false,
+                    Message = $"Error searching by image: {ex.Message}"
+                };
+            }
+        }
+
 
     }
 }

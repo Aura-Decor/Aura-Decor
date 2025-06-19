@@ -20,7 +20,8 @@ public class MappingProfiles : Profile
             .ForMember(d => d.Brand, o => o.MapFrom(s => s.Brand.Name))
             .ForMember(d => d.Category, o => o.MapFrom(s => s.Category.Name))
             .ForMember(d => d.StyleType, o => o.MapFrom(s => s.StyleType.Name))
-            .ForMember(d => d.Color, o => o.MapFrom(s => s.Color.Name));
+            .ForMember(d => d.Color, o => o.MapFrom(s => s.Color.Name))
+            .ForMember(d => d.PictureUrl, o => o.MapFrom<FurniturePicUrlResolver>());
 
         // Cart mappings
         CreateMap<Cart, CartDto>()
@@ -30,7 +31,7 @@ public class MappingProfiles : Profile
         CreateMap<CartItem, CartItemDto>()
             .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Furniture.Name))
             .ForMember(d => d.Price, opt => opt.MapFrom(s => s.Furniture.Price))
-            .ForMember(d => d.PictureUrl, opt => opt.MapFrom(s => s.Furniture.PictureUrl))
+            .ForMember(d => d.PictureUrl, opt => opt.MapFrom<CartItemPicUrlResolver>())
             .ForMember(d => d.StyleType, opt => opt.MapFrom(s => s.Furniture.StyleType.Name))
             .ForMember(d => d.Color, opt => opt.MapFrom(s => s.Furniture.Color.Name));
 

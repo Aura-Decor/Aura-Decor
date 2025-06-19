@@ -37,6 +37,10 @@ public static class ApplicationServicesExtensions
         services.AddScoped<IColorService, ColorService>();
         services.AddSingleton<IEmailService, EmailService>();
         services.AddSingleton<IEmailTemplateService, EmailTemplateService>();
+        
+        services.AddScoped<FurniturePicUrlResolver>();
+        services.AddScoped<CartItemPicUrlResolver>();
+        
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
