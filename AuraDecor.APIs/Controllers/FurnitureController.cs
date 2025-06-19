@@ -7,6 +7,8 @@ using AuraDecor.Core.Services.Contract;
 using AuraDecor.Core.Specifications.ProductSpecification;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using AuraDecor.Servicies;
 
 namespace AuraDecor.APIs.Controllers
 {
@@ -116,6 +118,80 @@ namespace AuraDecor.APIs.Controllers
         {
             await _furnitureService.UpdateOffersStatusAsync();
             return Ok();
+        }
+
+        [HttpPost("search/text")]
+        public async Task<ActionResult<ImageSearchResponseDto>> SearchFurnitureByText([FromForm] string description, [FromForm] int limit = 10)
+        {
+            if (string.IsNullOrWhiteSpace(description))
+            {
+                return BadRequest(new ApiResponse(400, "Description is required"));
+            }
+
+            var jsonResult = await ((FurnitureService)_furnitureService).SearchFurnitureByTextAsync(description, limit);
+            
+            try
+            {
+                var results = JsonSerializer.Deserialize<List<ImageSearchResultDto>>(jsonResult, 
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                
+                var response = new ImageSearchResponseDto
+                {
+                    Success = true,
+                    Results = results ?? new List<ImageSearchResultDto>()
+                };
+                
+                return Ok(response);
+            }
+            catch
+            {
+                try
+                {
+                    var errorResponse = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonResult);
+                    return BadRequest(new ApiResponse(400, errorResponse.GetValueOrDefault("Message", "Search failed").ToString()));
+                }
+                catch
+                {
+                    return BadRequest(new ApiResponse(400, "Failed to process search results"));
+                }
+            }
+        }
+
+        [HttpPost("search/image")]
+        public async Task<ActionResult<ImageSearchResponseDto>> SearchFurnitureByImage([FromForm] IFormFile File, [FromForm] int limit = 10, [FromForm] string? color = null)
+        {
+            if (File == null || File.Length == 0)
+            {
+                return BadRequest(new ApiResponse(400, "Image file is required"));
+            }
+
+            var jsonResult = await ((FurnitureService)_furnitureService).SearchFurnitureByImageAsync(File, limit, color);
+            
+            try
+            {
+                var results = JsonSerializer.Deserialize<List<ImageSearchResultDto>>(jsonResult, 
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                
+                var response = new ImageSearchResponseDto
+                {
+                    Success = true,
+                    Results = results ?? new List<ImageSearchResultDto>()
+                };
+                
+                return Ok(response);
+            }
+            catch
+            {
+                try
+                {
+                    var errorResponse = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonResult);
+                    return BadRequest(new ApiResponse(400, errorResponse.GetValueOrDefault("Message", "Search failed").ToString()));
+                }
+                catch
+                {
+                    return BadRequest(new ApiResponse(400, "Failed to process search results"));
+                }
+            }
         }
 
     }

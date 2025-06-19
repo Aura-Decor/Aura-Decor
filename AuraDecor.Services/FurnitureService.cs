@@ -9,17 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using AuraDecor.Core.Specifications.ProductSpecification;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 
 namespace AuraDecor.Servicies
 {
     public class FurnitureService : IFurnitureService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly HttpClient _httpClient;
 
-
-        public FurnitureService(IUnitOfWork unitOfWork)
+        public FurnitureService(IUnitOfWork unitOfWork, HttpClient httpClient)
         {
             _unitOfWork = unitOfWork;
+            _httpClient = httpClient;
         }
 
         public async Task AddFurnitureAsync(Furniture furniture, IFormFile file)
@@ -152,7 +154,7 @@ namespace AuraDecor.Servicies
             }
         }
 
-        public async Task<ImageSearchResponseDto> SearchFurnitureByTextAsync(string description, int limit = 10)
+        public async Task<string> SearchFurnitureByTextAsync(string description, int limit = 10)
         {
             try
             {
@@ -166,48 +168,33 @@ namespace AuraDecor.Servicies
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var jsonResponse = await response.Content.ReadAsStringAsync();
-                    var results = JsonSerializer.Deserialize<List<ImageSearchResultDto>>(jsonResponse, 
-                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                    return new ImageSearchResponseDto
-                    {
-                        Success = true,
-                        Results = results ?? new List<ImageSearchResultDto>()
-                    };
+                    return await response.Content.ReadAsStringAsync();
                 }
                 else
                 {
-                    return new ImageSearchResponseDto
-                    {
-                        Success = false,
-                        Message = $"API request failed with status: {response.StatusCode}"
-                    };
+                    return JsonSerializer.Serialize(new { Success = false, Message = $"API request failed with status: {response.StatusCode}" });
                 }
             }
             catch (Exception ex)
             {
-                return new ImageSearchResponseDto
-                {
-                    Success = false,
-                    Message = $"Error searching by text: {ex.Message}"
-                };
+                return JsonSerializer.Serialize(new { Success = false, Message = $"Error searching by text: {ex.Message}" });
             }
         }
 
-        public async Task<ImageSearchResponseDto> SearchFurnitureByImageAsync(IFormFile image, int limit = 10, string? color = null)
+        public async Task<string> SearchFurnitureByImageAsync(IFormFile image, int limit = 10, string? color = null)
         {
             try
             {
                 var formData = new MultipartFormDataContent();
                 
-                // Add the image file
                 using var imageStream = image.OpenReadStream();
-                var imageContent = new StreamContent(imageStream);
-                imageContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(image.ContentType);
-                formData.Add(imageContent, "file", image.FileName);
+                var imageBytes = new byte[imageStream.Length];
+                await imageStream.ReadAsync(imageBytes, 0, (int)imageStream.Length);
                 
-                // Add optional parameters
+                var imageContent = new ByteArrayContent(imageBytes);
+                imageContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(image.ContentType ?? "image/jpeg");
+                formData.Add(imageContent, "File", image.FileName ?? "image.jpg");
+                
                 formData.Add(new StringContent(limit.ToString()), "limit");
                 if (!string.IsNullOrEmpty(color))
                 {
@@ -220,32 +207,17 @@ namespace AuraDecor.Servicies
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var jsonResponse = await response.Content.ReadAsStringAsync();
-                    var results = JsonSerializer.Deserialize<List<ImageSearchResultDto>>(jsonResponse, 
-                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                    return new ImageSearchResponseDto
-                    {
-                        Success = true,
-                        Results = results ?? new List<ImageSearchResultDto>()
-                    };
+                    return await response.Content.ReadAsStringAsync();
                 }
                 else
                 {
-                    return new ImageSearchResponseDto
-                    {
-                        Success = false,
-                        Message = $"API request failed with status: {response.StatusCode}"
-                    };
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    return JsonSerializer.Serialize(new { Success = false, Message = $"API request failed with status: {response.StatusCode}. Error: {errorContent}" });
                 }
             }
             catch (Exception ex)
             {
-                return new ImageSearchResponseDto
-                {
-                    Success = false,
-                    Message = $"Error searching by image: {ex.Message}"
-                };
+                return JsonSerializer.Serialize(new { Success = false, Message = $"Error searching by image: {ex.Message}" });
             }
         }
 

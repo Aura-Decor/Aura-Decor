@@ -1,7 +1,6 @@
 ﻿using AuraDecor.Core.Entities;
 using AuraDecor.Core.Specifications.ProductSpecification;
 using Microsoft.AspNetCore.Http;
-using AuraDecor.APIs.Dtos.Outgoing;
 
 namespace AuraDecor.Core.Services.Contract
 {
@@ -19,10 +18,6 @@ namespace AuraDecor.Core.Services.Contract
         Task<IReadOnlyList<Furniture>> GetFurnituresWithActiveOffersAsync();
         Task UpdateOffersStatusAsync(); 
         Task<int> GetCountAsync(FurnitureSpecParams specParams);
-        
-        // Image search functionality
-        Task<ImageSearchResponseDto> SearchFurnitureByTextAsync(string description, int limit = 10);
-        Task<ImageSearchResponseDto> SearchFurnitureByImageAsync(IFormFile image, int limit = 10, string? color = null);
     }
 
 

@@ -41,6 +41,8 @@ public static class ApplicationServicesExtensions
         services.AddScoped<FurniturePicUrlResolver>();
         services.AddScoped<CartItemPicUrlResolver>();
         
+        services.AddHttpClient();
+        
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
