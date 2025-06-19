@@ -158,14 +158,14 @@ namespace AuraDecor.APIs.Controllers
         }
 
         [HttpPost("search/image")]
-        public async Task<ActionResult<ImageSearchResponseDto>> SearchFurnitureByImage([FromForm] IFormFile File, [FromForm] int limit = 10, [FromForm] string? color = null)
+        public async Task<ActionResult<ImageSearchResponseDto>> SearchFurnitureByImage([FromForm] ImageSearchDto searchDto)
         {
-            if (File == null || File.Length == 0)
+            if (!ModelState.IsValid)
             {
-                return BadRequest(new ApiResponse(400, "Image file is required"));
+                return BadRequest(ModelState);
             }
 
-            var jsonResult = await ((FurnitureService)_furnitureService).SearchFurnitureByImageAsync(File, limit, color);
+            var jsonResult = await ((FurnitureService)_furnitureService).SearchFurnitureByImageAsync(searchDto.File, searchDto.Limit, searchDto.Color);
             
             try
             {
