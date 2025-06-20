@@ -17,11 +17,13 @@ namespace AuraDecor.Servicies
         public readonly IUnitOfWork _unitOfWork;
 
         private readonly IMapper _mapper;
+        private readonly IPaymentService _paymentService;
 
-        public OrderService(IUnitOfWork unitOfWork, IMapper mapper)
+        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, IPaymentService paymentService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _paymentService = paymentService;
         }
 
 
@@ -31,6 +33,8 @@ namespace AuraDecor.Servicies
 
             if (cart == null || cart.UserId != userId || !cart.CartItems.Any())
                 throw new Exception("cart is not valid");
+
+            var paymentIntent = await _paymentService.CreateOrUpdatePaymentIntentAysnc(cartId);
 
             var orderItems = _mapper.Map<List<OrderItem>>(cart.CartItems);
 
