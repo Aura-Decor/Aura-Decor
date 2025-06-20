@@ -8,14 +8,14 @@ using AuraDecor.Repository;
 using AuraDecor.Repository.Data;
 using AuraDecor.Services;
 using AuraDecor.Servicies;
+using HealthChecks.UI.Client;
+using HealthChecks.UI.Core.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using StackExchange.Redis;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using HealthChecks.UI.Client;
-using HealthChecks.UI.Core.Extensions;
+using StackExchange.Redis;
 
 namespace AuraDecor.APIs.Extensions;
 
@@ -35,6 +35,7 @@ public static class ApplicationServicesExtensions
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IStyleService, StyleService>();
         services.AddScoped<IColorService, ColorService>();
+        services.AddScoped<IPaymentService, PaymentService>();
         services.AddSingleton<IEmailService, EmailService>();
         services.AddSingleton<IEmailTemplateService, EmailTemplateService>();
         
@@ -46,11 +47,14 @@ public static class ApplicationServicesExtensions
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+
         services.AddSingleton<IConnectionMultiplexer, ConnectionMultiplexer>(c =>
         {
             var configuration = ConfigurationOptions.Parse(config.GetConnectionString("Redis"), true);
             return ConnectionMultiplexer.Connect(configuration);
         });
+
+
         services.Configure<ApiBehaviorOptions>(options =>
         {
             options.InvalidModelStateResponseFactory = context =>

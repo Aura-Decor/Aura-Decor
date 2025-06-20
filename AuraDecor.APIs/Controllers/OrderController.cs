@@ -2,9 +2,11 @@
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Services.Contract;
 using AuraDecor.Core.Specifications.OrderSpecification;
+using AuraDecor.Servicies;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Stripe;
 
 namespace AuraDecor.APIs.Controllers
 {
@@ -14,11 +16,13 @@ namespace AuraDecor.APIs.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly IMapper _mapper;
+        private readonly IPaymentService _paymentService;
 
-        public OrderController(IOrderService orderService , IMapper mapper)
+        public OrderController(IOrderService orderService , IMapper mapper , IPaymentService paymentService)
         {
             _orderService = orderService;
             _mapper = mapper;
+            _paymentService = paymentService;
         }
 
         [HttpPost("CreatOrder")]
@@ -49,5 +53,20 @@ namespace AuraDecor.APIs.Controllers
             return Ok(true);
 
         }
+
+        [HttpPost("payment-intent")]
+        public async Task<ActionResult<PaymentIntent>> CreateOrUpdatePaymentIntent(Guid cartId)
+        {
+            try
+            {
+                var intent = await _paymentService.CreateOrUpdatePaymentIntentAysnc(cartId);
+                return Ok(intent);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiResponse(400, ex.Message));
+            }
+        }
+
     }
 }
