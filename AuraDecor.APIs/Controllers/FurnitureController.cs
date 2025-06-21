@@ -6,6 +6,7 @@ using AuraDecor.Core.Entities;
 using AuraDecor.Core.Services.Contract;
 using AuraDecor.Core.Specifications.ProductSpecification;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using AuraDecor.Servicies;
@@ -60,6 +61,7 @@ namespace AuraDecor.APIs.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateFurniture(Guid id, Furniture furniture)
         {
             if (id != furniture.Id)
@@ -73,6 +75,36 @@ namespace AuraDecor.APIs.Controllers
             await CacheInvalidationHelper.InvalidateFurnitureCacheAsync(_cacheService);
             
             return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> UpdateFurniturePartial(Guid id, [FromForm] UpdateFurnitureDto updateDto)
+        {
+            try
+            {
+                await _furnitureService.UpdateFurniturePartialAsync(
+                    id, 
+                    updateDto.Name, 
+                    updateDto.Description,
+                    updateDto.FurnitureModel,
+                    updateDto.Price,
+                    updateDto.BrandId,
+                    updateDto.CategoryId,
+                    updateDto.StyleTypeId,
+                    updateDto.ColorId,
+                    updateDto.Image
+                );
+                
+                await CacheInvalidationHelper.InvalidateFurnitureByIdCacheAsync(_cacheService, id);
+                await CacheInvalidationHelper.InvalidateFurnitureCacheAsync(_cacheService);
+                
+                return NoContent();
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(new ApiResponse(404, ex.Message));
+            }
         }
 
         [HttpDelete("{id}")]

@@ -11,6 +11,9 @@ namespace AuraDecor.Core.Services.Contract
 
         Task AddFurnitureAsync(Furniture furniture, IFormFile file);
         Task UpdateFurnitureAsync(Furniture furniture);
+        Task UpdateFurniturePartialAsync(Guid furnitureId, string? name = null, string? description = null, 
+            string? furnitureModel = null, decimal? price = null, Guid? brandId = null, Guid? categoryId = null, 
+            Guid? styleTypeId = null, Guid? colorId = null, IFormFile? image = null);
         Task DeleteFurnitureAsync(Furniture furniture);
         
         Task ApplyOfferAsync(Guid furnitureId, decimal discountPercentage, DateTime startDate, DateTime endDate);

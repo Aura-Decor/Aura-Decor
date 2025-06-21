@@ -57,6 +57,56 @@ namespace AuraDecor.Servicies
             await _unitOfWork.CompleteAsync();
         }
 
+        public async Task UpdateFurniturePartialAsync(Guid furnitureId, string? name = null, string? description = null, 
+            string? furnitureModel = null, decimal? price = null, Guid? brandId = null, Guid? categoryId = null, 
+            Guid? styleTypeId = null, Guid? colorId = null, IFormFile? image = null)
+        {
+            var furniture = await _unitOfWork.Repository<Furniture>().GetByIdAsync(furnitureId);
+            if (furniture == null)
+                throw new ArgumentException($"Furniture with ID {furnitureId} not found");
+
+            if (!string.IsNullOrWhiteSpace(name))
+                furniture.Name = name;
+            
+            if (!string.IsNullOrWhiteSpace(description))
+                furniture.Description = description;
+            
+            if (!string.IsNullOrWhiteSpace(furnitureModel))
+                furniture.FurnitureModel = furnitureModel;
+            
+            if (price.HasValue)
+            {
+                furniture.Price = price.Value;
+                
+                if (furniture.HasOffer && furniture.DiscountPercentage.HasValue)
+                {
+                    decimal discount = furniture.Price * (furniture.DiscountPercentage.Value / 100);
+                    furniture.DiscountedPrice = furniture.Price - discount;
+                }
+            }
+            
+            if (brandId.HasValue)
+                furniture.BrandId = brandId.Value;
+            
+            if (categoryId.HasValue)
+                furniture.CategoryId = categoryId.Value;
+            
+            if (styleTypeId.HasValue)
+                furniture.StyleTypeId = styleTypeId.Value;
+            
+            if (colorId.HasValue)
+                furniture.ColorId = colorId.Value;
+            
+            if (image != null)
+            {
+                string furniturePictureUrl = await FileUploadService.UploadAsync(image);
+                furniture.PictureUrl = furniturePictureUrl;
+            }
+
+            _unitOfWork.Repository<Furniture>().UpdateAsync(furniture);
+            await _unitOfWork.CompleteAsync();
+        }
+
         public async Task<int> GetCountAsync(FurnitureSpecParams specParams)
         {
             var countSpec = new FurnitureWithFiltrationForCountSpec(specParams);
