@@ -19,7 +19,13 @@ AuraDecor is a comprehensive furniture management system with a modern web API b
    - [Offers and Discounts](#offers-and-discounts)
    - [Shopping Cart Management](#shopping-cart-management)
    - [Order Management](#order-management)
+   - [Payment Processing](#payment-processing)
+   - [Rating System](#rating-system)
    - [Notification System](#notification-system)
+   - [Brand Management](#brand-management)
+   - [Category Management](#category-management)
+   - [Color Management](#color-management)
+   - [Style Management](#style-management)
    - [Admin Management](#admin-management)
 9. [Error Handling](#error-handling)
 10. [Security and Rate Limiting](#security-and-rate-limiting)
@@ -31,22 +37,26 @@ AuraDecor is a comprehensive furniture management system with a modern web API b
 
 ### Completed Features
 
-- User Authentication & Authorization (JWT + Google OAuth + Twitter OAuth)
-- Furniture Catalog Management
+- User Authentication & Authorization (JWT + Google OAuth + Twitter OAuth + Refresh Tokens)
+- Furniture Catalog Management with AI-powered search
 - Shopping Cart System
-- Order Management
+- Order Management with Payment Integration
 - Special Offers & Discounts
-- Notification System
-- Rate Limiting
-- Email Services (OTP, Notifications)
-- Refresh Token Implementation
+- Notification System with Preferences
+- Payment Processing (Stripe Integration)
+- Rating & Review System
+- Rate Limiting (Multiple Algorithms)
+- Email Services (OTP, Notifications via RabbitMQ)
+- Admin Management Dashboard
+- Health Monitoring & Checks
+- Brand, Category, Color, and Style Management
 
 ### Pending Development
 
 - Coupon Module
-- Payment Module
 - Recommendation Module
 - Unit Testing
+- Advanced Analytics
 
 ## Project Architecture
 
@@ -71,22 +81,35 @@ The solution follows the Clean Architecture pattern with separate layers for cle
 - **ASP.NET Core 8.0**: Backend framework
 - **Entity Framework Core**: ORM for database operations
 - **ASP.NET Core Identity**: Authentication and authorization
-- **JWT Authentication**: Token-based authentication
+- **JWT Authentication**: Token-based authentication with refresh tokens
 - **Google Authentication**: External authentication provider
-- **Redis**: Distributed caching and Rate limiting
-- **RabbitMQ**: Message broker for asynchronous processing
+- **Twitter Authentication**: External authentication provider
+- **Stripe**: Payment processing and webhooks
+- **Redis**: Distributed caching and rate limiting
+- **RabbitMQ**: Message broker for asynchronous email processing
 - **Swagger/Scalar**: API documentation
 - **AutoMapper**: Object mapping
 - **MailKit**: Email sending functionality
+- **Health Checks UI**: Application health monitoring
+- **Rate Limiting**: Multiple algorithms (Fixed Window, Sliding Window, Token Bucket)
+- **SQL Server**: Primary database
+- **Docker**: Containerization support
+- **AI-Powered Search**: Text and image-based furniture search capabilities
 
 ## Core Features
 
 - User authentication and authorization with role-based access control
 - Comprehensive furniture catalog with search and filtering
+- AI-powered image and text-based furniture search
 - Shopping cart functionality
-- Special offers and discounts
+- Payment processing with Stripe integration
+- Special offers and discounts management
 - User profile and address management
-- Admin panel for user management and inventory control
+- Rating and review system
+- Advanced notification system with user preferences
+- Admin panel for comprehensive system management
+- Health monitoring and performance metrics
+- Multi-algorithm rate limiting protection
 
 
 ### RabbitMQ Configuration
@@ -265,6 +288,30 @@ Request Body:
 **GET** `/api/account/twitter-response` - Handle Twitter OAuth callback
 - **Response**: Returns JWT token and user details
 
+#### Token Management
+
+**POST** `/api/account/refresh` - Refresh JWT token using refresh token
+
+Request Body:
+```json
+{
+  "accessToken": "expired-jwt-token",
+  "refreshToken": "valid-refresh-token"
+}
+```
+- **Response**: Returns new JWT token and refresh token
+
+**POST** `/api/account/revoke` - Revoke refresh token
+
+Request Body:
+```json
+{
+  "refreshToken": "refresh-token-to-revoke"
+}
+```
+- **Authentication**: Required (JWT Bearer token)
+- **Response**: Confirmation of token revocation
+
 #### Password Management
 
 **POST** `/api/account/forgot-password` - Request password reset
@@ -404,6 +451,51 @@ Request Body:
 - **Authentication**: Admin role required
 - **Response**: 204 No Content on success
 
+#### AI-Powered Search
+
+**POST** `/api/furniture/search/text` - Search furniture using text description
+
+Request (multipart/form-data):
+- `description` (string): Natural language description of desired furniture
+- `limit` (int, optional): Maximum number of results (default: 10)
+
+Response:
+```json
+{
+  "success": true,
+  "results": [
+    {
+      "id": "furniture-guid",
+      "name": "Modern Leather Sofa",
+      "score": 0.95,
+      "description": "Contemporary 3-seater leather sofa"
+    }
+  ]
+}
+```
+
+**POST** `/api/furniture/search/image` - Search furniture using image
+
+Request (multipart/form-data):
+- `file` (file): Image file to search with
+- `limit` (int, optional): Maximum number of results (default: 10)
+- `color` (string, optional): Preferred color filter
+
+Response:
+```json
+{
+  "success": true,
+  "results": [
+    {
+      "id": "furniture-guid",
+      "name": "Similar Dining Table",
+      "score": 0.88,
+      "description": "Wooden dining table with similar design"
+    }
+  ]
+}
+```
+
 ### Offers and Discounts
 
 #### Admin Endpoints
@@ -473,13 +565,82 @@ Query Parameters:
 **GET** `/api/order/{Id}` - Get order details by user ID
 - **Response**: Order information with items and status
 
-**POST** `/api/order/CancelOrder` - Cancel an existing order
+**POST** `/api/order/cancel` - Cancel an existing order
+
+Request Body:
+```json
+"order-guid-id"
+```
+
+- **Response**: Boolean indicating success with confirmation message
+
+**GET** `/api/order/user-orders` - Get all orders for authenticated user
+- **Authentication**: Required
+- **Response**: List of user's orders with details and status
+
+#### Admin Order Management
+
+**PUT** `/api/order/update-status` - Update order status (Admin only)
+
+Request Body:
+```json
+{
+  "orderId": "order-guid",
+  "status": "Processing"
+}
+```
+
+- **Authentication**: Admin role required
+- **Response**: Updated order details
+- **Valid Status Values**: Pending, Processing, Shipped, Delivered, Cancelled
+
+### Payment Processing
+
+The payment system integrates with Stripe for secure payment processing, supporting webhooks for real-time payment status updates.
+
+**POST** `/api/order/payment` - Create payment intent for order
 
 Query Parameters:
 - `UserId` (string) - User ID
-- `OrderId` (Guid) - Order to cancel
+- `CartId` (Guid) - Cart ID for payment
 
-- **Response**: Boolean indicating success
+- **Response**: Payment intent details with client secret
+
+**GET** `/api/payment/verify/{paymentIntentId}` - Verify payment status
+- **Response**: Current payment status (Succeeded, Failed, Pending)
+
+**GET** `/api/payment/order-details/{paymentIntentId}` - Get order details by payment intent
+- **Response**: Order information with payment status
+
+#### Webhook Processing
+
+**POST** `/api/payment/webhook` - Stripe webhook endpoint
+- **Authentication**: Webhook signature verification
+- **Purpose**: Handles payment lifecycle events (success, failure, refunds, disputes)
+- **Events Supported**:
+  - `payment_intent.succeeded`
+  - `payment_intent.payment_failed`
+  - `payment_intent.canceled`
+  - `charge.refunded`
+  - `charge.dispute.created`
+  - `charge.dispute.resolved`
+
+#### Admin Payment Management
+
+**POST** `/api/payment/refund` - Process refund for order (Admin only)
+
+Request Body:
+```json
+{
+  "orderId": "order-guid",
+  "amount": 99.99,
+  "reason": "Customer request"
+}
+```
+
+- **Authentication**: Admin role required
+- **Response**: Refund details including refund ID and status
+- **Note**: If amount is omitted, processes full refund and cancels order
 
 ### Rating Management
 
@@ -665,6 +826,82 @@ Request Body:
 }
 ```
 
+### Brand Management
+
+Brand management endpoints provide functionality for managing furniture brands.
+
+#### Admin Endpoints (Admin Role Required)
+
+**GET** `/api/brands` - Get all furniture brands
+- **Response**: List of all brands with ID and name
+
+**POST** `/api/brands` - Create new furniture brand
+
+Request Body:
+```json
+{
+  "name": "IKEA"
+}
+```
+- **Response**: Created brand object with ID and name
+
+### Category Management
+
+Category management endpoints provide functionality for managing furniture categories.
+
+#### Admin Endpoints (Admin Role Required)
+
+**GET** `/api/categories` - Get all furniture categories
+- **Response**: List of all categories with ID and name
+
+**POST** `/api/categories` - Create new furniture category
+
+Request Body:
+```json
+{
+  "name": "Living Room"
+}
+```
+- **Response**: Created category object with ID and name
+
+### Color Management
+
+Color management endpoints provide functionality for managing furniture colors.
+
+#### Admin Endpoints (Admin Role Required)
+
+**GET** `/api/colors` - Get all furniture colors
+- **Response**: List of all colors with ID and name
+
+**POST** `/api/colors` - Create new furniture color
+
+Request Body:
+```json
+{
+  "name": "Navy Blue"
+}
+```
+- **Response**: Created color object with ID and name
+
+### Style Management
+
+Style management endpoints provide functionality for managing furniture styles.
+
+#### Admin Endpoints (Admin Role Required)
+
+**GET** `/api/styles` - Get all furniture style types
+- **Response**: List of all style types with ID and name
+
+**POST** `/api/styles` - Create new furniture style type
+
+Request Body:
+```json
+{
+  "name": "Contemporary"
+}
+```
+- **Response**: Created style type object with ID and name
+
 ### Error Handling
 
 **GET** `/errors/{code}` - Error page endpoint for HTTP status codes
@@ -821,4 +1058,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - [Mohammed Mostafa](https://github.com/mo7ammedd)
 - [Hasnaa Abdelrahman](https://github.com/HAsNaaAbdelRahman)
-- [Albassel Abobakr](https://github.com/Bassel-11)
