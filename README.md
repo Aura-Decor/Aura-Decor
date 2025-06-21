@@ -1058,3 +1058,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - [Mohammed Mostafa](https://github.com/mo7ammedd)
 - [Hasnaa Abdelrahman](https://github.com/HAsNaaAbdelRahman)
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Mo7ammedd/Aura-Decor)
