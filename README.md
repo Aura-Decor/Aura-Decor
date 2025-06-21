@@ -27,11 +27,11 @@ AuraDecor is a comprehensive furniture management system with a modern web API b
    - [Color Management](#color-management)
    - [Style Management](#style-management)
    - [Admin Management](#admin-management)
-9. [Error Handling](#error-handling)
-10. [Security and Rate Limiting](#security-and-rate-limiting)
-11. [Response Formats](#response-formats)
-12. [Additional Features](#additional-features)
-13. [License](#license)
+10. [Error Handling](#error-handling)
+11. [Security and Rate Limiting](#security-and-rate-limiting)
+12. [Response Formats](#response-formats)
+13. [Additional Features](#additional-features)
+15. [License](#license)
 
 ## Project Status
 
@@ -69,12 +69,29 @@ The solution follows the Clean Architecture pattern with separate layers for cle
 
 ### Architecture Diagrams
 
-#### System Architecture Overview
-![System Architecture Overview](./docs/Architecture-Overview.svg)
+The following diagrams provide a comprehensive overview of the AuraDecor system architecture, design patterns, and data flow.
+
+####  System Architecture Overview
+![Clean Architecture Overview](./docs/clean-architecture-overview.svg)
+
+*Clean Architecture implementation showing the separation of concerns across presentation, application, domain, and infrastructure layers.*
+
+#### Request Processing Flow
+![Request Processing Flow](./docs/request-processing-flow.svg)
+
+*Complete request lifecycle from client to database, including middleware pipeline, authentication, caching, and error handling.*
+
+#### Business Domains Structure
+![Business Domains Overview](./docs/business-domains-overview.svg)
+
+*Core business domains and their relationships: User Management, Product Catalog, Shopping & Orders, and Communication systems.*
 
 
-#### Request Flow and Middleware Pipeline
-![Request Flow and Middleware Pipeline](./docs/svgviewer-output%20(2).svg)
+
+#### 🔧 Technical Patterns
+![Repository Pattern](./docs/repository-pattern.svg)
+
+*Implementation of Repository and Unit of Work patterns for clean data access architecture.*
 
 ## Technology Stack
 
@@ -1047,6 +1064,30 @@ Access the Health Checks UI dashboard at: `/healthchecks-ui`
 ## API Documentation
 
 API documentation is available through Swagger UI when running the application in development mode. Access it at `/scalar`.
+
+## Complete Architecture Documentation
+
+For detailed architectural insights, the following diagrams are available in the `docs/` folder:
+
+###  Security & Authentication
+- **[JWT Authentication Flow](./docs/jwt-authentication-flow.svg)** - Complete authentication process with token management
+- **[OAuth Integration Flow](./docs/oauth-integration-flow.svg)** - Google and Twitter OAuth implementation
+- **[Security Middleware Pipeline](./docs/security-middleware-pipeline.svg)** - Security layers and middleware ordering
+
+###  Domain Architecture
+- **[Domain Layer Structure](./docs/domain-layer-structure.svg)** - Core domain entities and interfaces
+- **[Domain Services Architecture](./docs/domain-services-architecture.svg)** - Business logic organization
+- **[Specification Pattern](./docs/specification-pattern.svg)** - Query specification implementation
+
+###  Data Management
+- **[Repository Pattern](./docs/repository-pattern.svg)** - Data access pattern implementation
+- **[Unit of Work Pattern](./docs/unit-of-work-pattern.svg)** - Transaction management
+- **[External Dependencies](./docs/external-dependencies.svg)** - Third-party integrations
+
+### Compliance & Legal
+- **[Software Licensing](./docs/software-licensing.svg)** - Open source license overview
+- **[Data Protection Framework](./docs/data-protection-framework.svg)** - Privacy and data handling
+- **[User Data Handling](./docs/user-data-handling.svg)** - Data processing workflows
 
 ## License
 
