@@ -11,8 +11,8 @@ public class MappingProfiles : Profile
     {
         // Address mappings
         CreateMap<AuraDecor.APIs.Dtos.Incoming.CreateAddressDto, Address>()
-            .ForMember(d => d.FName, opt => opt.MapFrom(s => s.FirstName))
-            .ForMember(d => d.LName, opt => opt.MapFrom(s => s.LastName));
+            .ForMember(d => d.FirstName, opt => opt.MapFrom(s => s.FirstName))
+            .ForMember(d => d.LastName, opt => opt.MapFrom(s => s.LastName));
         CreateMap<Address, AuraDecor.APIs.Dtos.Outgoing.AddressDto>();
 
         // Furniture mappings

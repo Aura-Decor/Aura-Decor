@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuraDecor.Core.Entities.Enums;
-// Use Stripe with alias to avoid conflict
 using StripeNamespace = Stripe;
 
 namespace AuraDecor.Servicies
@@ -35,30 +34,25 @@ namespace AuraDecor.Servicies
             _logger = logger;
         }
 
-        public async Task<Order> CreateOrderAsync(string userId, Guid cartId, Address shippingAddress)
+        public async Task<(Order order, PaymentIntentResponse paymentIntent)> CreateOrderAsync(string userId, Guid cartId, Address shippingAddress)
         {
-            try
+            var cartSpec = new CartWithItemsSpecification(cartId);
+            var cart = await _unitOfWork.Repository<Cart>().GetWithSpecAsync(cartSpec);
+            
+            if (cart == null || cart.UserId != userId || cart.CartItems == null || !cart.CartItems.Any())
             {
-                var cartSpec = new CartWithItemsSpecification(cartId);
-                var cart = await _unitOfWork.Repository<Cart>().GetWithSpecAsync(cartSpec);
-                
-                if (cart == null || cart.UserId != userId || cart.CartItems == null || !cart.CartItems.Any())
-                {
-                    _logger.LogError($"Invalid cart: {cartId} for user {userId}. Cart: {cart != null}, UserId match: {cart?.UserId == userId}, Items count: {cart?.CartItems?.Count ?? 0}");
-                    throw new Exception("Cart is not valid");
-                }
-                
-                // Validate shipping address
-                if (shippingAddress == null || 
-                    string.IsNullOrEmpty(shippingAddress.FName) || 
-                    string.IsNullOrEmpty(shippingAddress.LName) ||
-                    string.IsNullOrEmpty(shippingAddress.Street) ||
-                    string.IsNullOrEmpty(shippingAddress.City) ||
-                    string.IsNullOrEmpty(shippingAddress.Country))
-                {
-                    _logger.LogError("Invalid shipping address");
-                    throw new Exception("A valid shipping address is required");
-                }
+                throw new Exception("Cart is not valid");
+            }
+            
+            if (shippingAddress == null || 
+                string.IsNullOrEmpty(shippingAddress.FirstName) || 
+                string.IsNullOrEmpty(shippingAddress.LastName) ||
+                string.IsNullOrEmpty(shippingAddress.Street) ||
+                string.IsNullOrEmpty(shippingAddress.City) ||
+                string.IsNullOrEmpty(shippingAddress.Country))
+            {
+                throw new Exception("A valid shipping address is required");
+            }
 
                 shippingAddress.UserId = userId;
 
@@ -67,11 +61,15 @@ namespace AuraDecor.Servicies
 
                 if (existingAddress != null)
                 {
-                    existingAddress.FName = shippingAddress.FName;
-                    existingAddress.LName = shippingAddress.LName;
+                    existingAddress.FirstName = shippingAddress.FirstName;
+                    existingAddress.LastName = shippingAddress.LastName;
                     existingAddress.Street = shippingAddress.Street;
                     existingAddress.City = shippingAddress.City;
+                    existingAddress.State = shippingAddress.State;
+                    existingAddress.ZipCode = shippingAddress.ZipCode;
                     existingAddress.Country = shippingAddress.Country;
+                    existingAddress.PhoneNumber = shippingAddress.PhoneNumber;
+                    existingAddress.DeliveryInstructions = shippingAddress.DeliveryInstructions;
                     
                     await _unitOfWork.Repository<Address>().UpdateAsync(existingAddress);
                     await _unitOfWork.CompleteAsync();
@@ -125,124 +123,89 @@ namespace AuraDecor.Servicies
                 await _unitOfWork.CompleteAsync();
                 
                 _logger.LogInformation($"Order created successfully: {order.Id} for user {userId}");
-                return order;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error creating order: {ex.Message}");
-                throw;
-            }
+                
+                // Create payment response
+                var paymentResponse = new PaymentIntentResponse
+                {
+                    ClientSecret = paymentIntent.ClientSecret,
+                    PaymentIntentId = paymentIntent.Id
+                };
+                
+                return (order, paymentResponse);
         }
 
         public async Task<bool> CancelOrderAsync(string userId, Guid orderId)
         {
-            try
+            var spec = new OrdersWithSpecification(userId, orderId);
+            var order = await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
+
+            if (order == null)
             {
-                var spec = new OrdersWithSpecification(userId, orderId);
-                var order = await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
-
-                if (order == null)
-                {
-                    _logger.LogWarning($"Order not found: {orderId}");
-                    return false;
-                }
-                
-                if (order.UserId != userId)
-                {
-                    _logger.LogWarning($"User {userId} attempted to cancel order {orderId} belonging to another user");
-                    return false;
-                }
-
-                if (order.Status == OrderStatus.Cancelled)
-                {
-                    _logger.LogInformation($"Order {orderId} is already cancelled");
-                    return false;
-                }
-
-                if (order.PaymentStatus == PaymentStatus.Succeeded)
-                {
-                    _logger.LogWarning($"Cannot cancel order {orderId} as payment already succeeded");
-                    return false;
-                }
-
-                if (!string.IsNullOrEmpty(order.PaymentIntentId))
-                {
-                    try
-                    {
-                        var service = new Stripe.PaymentIntentService();
-                        await service.CancelAsync(order.PaymentIntentId);
-                        _logger.LogInformation($"Stripe payment intent {order.PaymentIntentId} cancelled for order {orderId}");
-                    }
-                    catch (Stripe.StripeException ex)
-                    {
-                        _logger.LogError(ex, $"Failed to cancel Stripe payment intent {order.PaymentIntentId} for order {orderId}, continuing with order cancellation");
-                    }
-                }
-
-                order.Status = OrderStatus.Cancelled;
-                order.PaymentStatus = PaymentStatus.Failed;
-                
-                await _unitOfWork.CompleteAsync();
-                _logger.LogInformation($"Order {orderId} cancelled successfully by user {userId}");
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error cancelling order {orderId} for user {userId}");
                 return false;
             }
+            
+            if (order.UserId != userId)
+            {
+                return false;
+            }
+
+            if (order.Status == OrderStatus.Cancelled)
+            {
+                return false;
+            }
+
+            if (order.PaymentStatus == PaymentStatus.Succeeded)
+            {
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(order.PaymentIntentId))
+            {
+                try
+                {
+                    var service = new Stripe.PaymentIntentService();
+                    await service.CancelAsync(order.PaymentIntentId);
+                    _logger.LogInformation($"Stripe payment intent {order.PaymentIntentId} cancelled for order {orderId}");
+                }
+                catch (Stripe.StripeException ex)
+                {
+                    _logger.LogWarning($"Failed to cancel Stripe payment intent {order.PaymentIntentId} for order {orderId}: {ex.Message}");
+                }
+            }
+
+            order.Status = OrderStatus.Cancelled;
+            order.PaymentStatus = PaymentStatus.Failed;
+            
+            await _unitOfWork.CompleteAsync();
+            _logger.LogInformation($"Order {orderId} cancelled successfully by user {userId}");
+
+            return true;
         }
 
         public async Task<Order> GetOrderByUserIdAsync(string id)
         {
-            try
-            {
-                var spec = new OrdersWithSpecification(id);
-                return await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error retrieving order for user {id}");
-                throw;
-            }
+            var spec = new OrdersWithSpecification(id);
+            return await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
         }
         
         public async Task<Order> GetOrderByIdAsync(Guid orderId, string userId = null)
         {
-            try
+            if (userId != null)
             {
-                if (userId != null)
-                {
-                    var spec = new OrdersWithSpecification(userId, orderId);
-                    return await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
-                }
-                else
-                {
-                    // Admin access - get order regardless of user
-                    var spec = new OrdersWithSpecification(orderId);
-                    return await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
-                }
+                var spec = new OrdersWithSpecification(userId, orderId);
+                return await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
             }
-            catch (Exception ex)
+            else
             {
-                _logger.LogError(ex, $"Error retrieving order {orderId}");
-                throw;
+                var spec = new OrdersWithSpecification(orderId);
+                return await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
             }
         }
         
         public async Task<IEnumerable<Order>> GetOrdersForUserAsync(string userId)
         {
-            try
-            {
-                var spec = new OrdersWithSpecification(userId);
-                return await _unitOfWork.Repository<Order>().GetAllWithSpecAsync(spec);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error retrieving orders for user {userId}");
-                throw;
-            }
+            var spec = new OrdersWithSpecification(userId);
+            return await _unitOfWork.Repository<Order>().GetAllWithSpecAsync(spec);
         }
     }
 }

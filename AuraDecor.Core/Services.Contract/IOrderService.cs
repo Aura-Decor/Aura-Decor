@@ -1,4 +1,5 @@
 ﻿using AuraDecor.Core.Entities;
+using AuraDecor.Core.Services.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace AuraDecor.Core.Services.Contract
 {
     public interface IOrderService
     {
-        Task<Order> CreateOrderAsync(string userId, Guid cartId, Address shippingAddress);
+        Task<(Order order, PaymentIntentResponse paymentIntent)> CreateOrderAsync(string userId, Guid cartId, Address shippingAddress);
         Task<bool> CancelOrderAsync(string userId, Guid orderId);
         Task<Order> GetOrderByIdAsync(Guid orderId, string userId = null);
         Task<IEnumerable<Order>> GetOrdersForUserAsync(string userId);

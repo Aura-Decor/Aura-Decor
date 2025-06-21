@@ -59,10 +59,8 @@ app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-// Configure Stripe
 StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
-// If in development, set app info
 if (app.Environment.IsDevelopment())
 {
     StripeConfiguration.AppInfo = new AppInfo
