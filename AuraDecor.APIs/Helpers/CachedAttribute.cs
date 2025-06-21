@@ -8,11 +8,14 @@ namespace AuraDecor.APIs.Helpers;
 public class CachedAttribute : Attribute, IAsyncActionFilter
 {
     private readonly int _timeToLifeInSeconed;
+    private readonly string[]? _tags;
     
-    public CachedAttribute(int timeToLifeInSeconed)
+    public CachedAttribute(int timeToLifeInSeconed, params string[] tags)
     {
         _timeToLifeInSeconed = timeToLifeInSeconed;
+        _tags = tags;
     }
+    
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
         var cacheService = context.HttpContext.RequestServices.GetRequiredService<IResponseCacheService>();
@@ -45,6 +48,13 @@ public class CachedAttribute : Attribute, IAsyncActionFilter
     {
         var keyBuilder = new StringBuilder();
         keyBuilder.Append($"{request.Path}");
+        
+        // Add tags to cache key for easier invalidation
+        if (_tags != null && _tags.Length > 0)
+        {
+            keyBuilder.Append($"|tags:{string.Join(",", _tags)}");
+        }
+        
         foreach (var (key, value) in request.Query.OrderBy(x => x.Key))
         {
             keyBuilder.Append($"|{key}-{value}");

@@ -1,6 +1,7 @@
 ﻿using AuraDecor.APIs.Dtos.Incoming;
 using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.APIs.Errors;
+using AuraDecor.APIs.Helpers;
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
@@ -28,19 +29,22 @@ namespace AuraDecor.APIs.Controllers
         private readonly IMapper _mapper;
         private readonly ILogger<OrderController> _logger;
         private readonly IConfiguration _configuration;
+        private readonly IResponseCacheService _cacheService;
 
         public OrderController(
             IOrderService orderService,
             IUnitOfWork unitOfWork,
             IMapper mapper,
             ILogger<OrderController> logger,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IResponseCacheService cacheService)
         {
             _orderService = orderService;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
             _configuration = configuration;
+            _cacheService = cacheService;
         }
 
         [HttpPost]
@@ -78,6 +82,10 @@ namespace AuraDecor.APIs.Controllers
                 Order = orderToReturn,
                 PaymentIntent = paymentIntentDto
             };
+
+            await CacheInvalidationHelper.InvalidateCartCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, userId);
             
             return Ok(response);
         }
@@ -144,6 +152,11 @@ namespace AuraDecor.APIs.Controllers
             }
 
             _logger.LogInformation($"Order {orderId} successfully cancelled by user {userId}");
+
+            await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, userId);
+
             return Ok(new { cancelled = true, message = "Order cancelled successfully" });
         }
         
@@ -182,6 +195,10 @@ namespace AuraDecor.APIs.Controllers
             await _unitOfWork.CompleteAsync();
             
             _logger.LogInformation($"Order {updateDto.OrderId} status updated to {newStatus}");
+
+            await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateAdminCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, order.UserId);
             
             var orderToReturn = _mapper.Map<OrderToReturnDto>(order);
             return Ok(orderToReturn);

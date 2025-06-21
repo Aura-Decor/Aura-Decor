@@ -17,13 +17,15 @@ namespace AuraDecor.APIs.Controllers
     {
         private readonly IFurnitureService _furnitureService;
         private readonly IMapper _mapper;
+        private readonly IResponseCacheService _cacheService;
 
-        public FurnitureController(IFurnitureService furnitureService, IMapper mapper)
+        public FurnitureController(IFurnitureService furnitureService, IMapper mapper, IResponseCacheService cacheService)
         {
             _furnitureService = furnitureService;
             _mapper = mapper;
+            _cacheService = cacheService;
         }
-        [Cached(300)]
+        [Cached(300, "furniture", "furniture-details")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Furniture>> GetFurnitureById(Guid id)
         {
@@ -35,7 +37,7 @@ namespace AuraDecor.APIs.Controllers
             var furnitureToReturn = _mapper.Map<Furniture, FurnitureToReturnDto>(furniture);
             return Ok(furnitureToReturn);
         }
-        [Cached(300)]
+        [Cached(300, "furniture", "furniture-list")]
         [RateLimit(5, 60, RateLimitAlgorithm.SlidingWindow)]  
         [HttpGet]
         public async Task<ActionResult<Pagination<Furniture>>> GetAllFurniture([FromQuery] FurnitureSpecParams specParams)
@@ -51,6 +53,9 @@ namespace AuraDecor.APIs.Controllers
         {
             var furniture = _mapper.Map<AddFurnitureDto, Furniture>(furnitureDto);
             await _furnitureService.AddFurnitureAsync(furniture, furnitureDto.Image);
+            
+            await CacheInvalidationHelper.InvalidateFurnitureCacheAsync(_cacheService);
+            
             return CreatedAtAction(nameof(GetFurnitureById), new { id = furniture.Id }, furniture);
         }
 
@@ -63,6 +68,10 @@ namespace AuraDecor.APIs.Controllers
             }
 
             await _furnitureService.UpdateFurnitureAsync(furniture);
+            
+            await CacheInvalidationHelper.InvalidateFurnitureByIdCacheAsync(_cacheService, id);
+            await CacheInvalidationHelper.InvalidateFurnitureCacheAsync(_cacheService);
+            
             return NoContent();
         }
 
@@ -76,6 +85,10 @@ namespace AuraDecor.APIs.Controllers
             }
 
             await _furnitureService.DeleteFurnitureAsync(furniture);
+            
+            await CacheInvalidationHelper.InvalidateFurnitureCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateFurnitureByIdCacheAsync(_cacheService, id);
+            
             return NoContent();
         }
 
@@ -89,6 +102,10 @@ namespace AuraDecor.APIs.Controllers
             }
     
             await _furnitureService.ApplyOfferAsync(id, offerDto.DiscountPercentage, offerDto.StartDate, offerDto.EndDate);
+            
+            await CacheInvalidationHelper.InvalidateOffersCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateFurnitureByIdCacheAsync(_cacheService, id);
+            
             return Ok();
         }
 
@@ -102,9 +119,13 @@ namespace AuraDecor.APIs.Controllers
             }
     
             await _furnitureService.RemoveOfferAsync(id);
+            
+            await CacheInvalidationHelper.InvalidateOffersCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateFurnitureByIdCacheAsync(_cacheService, id);
+            
             return NoContent();
         }
-        [Cached(300)]
+        [Cached(300, "furniture", "offers")]
         [HttpGet("offers/active")]
         public async Task<ActionResult<IReadOnlyList<FurnitureToReturnDto>>> GetFurnituresWithActiveOffers()
         {
@@ -117,6 +138,9 @@ namespace AuraDecor.APIs.Controllers
         public async Task<ActionResult> UpdateOffersStatus()
         {
             await _furnitureService.UpdateOffersStatusAsync();
+            
+            await CacheInvalidationHelper.InvalidateOffersCacheAsync(_cacheService);
+            
             return Ok();
         }
 

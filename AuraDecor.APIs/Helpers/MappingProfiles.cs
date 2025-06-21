@@ -10,10 +10,10 @@ public class MappingProfiles : Profile
     public MappingProfiles()
     {
         // Address mappings
-        CreateMap<AuraDecor.APIs.Dtos.Incoming.CreateAddressDto, Address>()
+        CreateMap<CreateAddressDto, Address>()
             .ForMember(d => d.FirstName, opt => opt.MapFrom(s => s.FirstName))
             .ForMember(d => d.LastName, opt => opt.MapFrom(s => s.LastName));
-        CreateMap<Address, AuraDecor.APIs.Dtos.Outgoing.AddressDto>();
+        CreateMap<Address, AddressDto>();
 
         // Furniture mappings
         CreateMap<AddFurnitureDto, Furniture>()

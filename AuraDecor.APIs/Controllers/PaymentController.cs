@@ -1,6 +1,7 @@
 using AuraDecor.APIs.Dtos.Incoming;
 using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.APIs.Errors;
+using AuraDecor.APIs.Helpers;
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
@@ -29,19 +30,22 @@ namespace AuraDecor.APIs.Controllers
         private readonly IMapper _mapper;
         private readonly ILogger<PaymentController> _logger;
         private readonly IConfiguration _configuration;
+        private readonly IResponseCacheService _cacheService;
 
         public PaymentController(
             IPaymentService paymentService,
             IUnitOfWork unitOfWork,
             IMapper mapper,
             ILogger<PaymentController> logger,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IResponseCacheService cacheService)
         {
             _paymentService = paymentService;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
             _configuration = configuration;
+            _cacheService = cacheService;
         }
 
         [HttpGet("verify/{paymentIntentId}")]
@@ -66,10 +70,18 @@ namespace AuraDecor.APIs.Controllers
             if (paymentStatus == PaymentStatus.Succeeded)
             {
                 await _paymentService.UpdateOrderPaymentSucceeded(paymentIntentId);
+                
+                await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+                await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
+                await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, userId);
+                await CacheInvalidationHelper.InvalidateCartCacheAsync(_cacheService);
             }
             else if (paymentStatus == PaymentStatus.Failed)
             {
                 await _paymentService.UpdateOrderPaymentFailed(paymentIntentId);
+
+                await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+                await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
             }
             
             return Ok(new { status = paymentStatus.ToString() });
@@ -228,6 +240,12 @@ namespace AuraDecor.APIs.Controllers
                 if (order != null) 
                 {
                     _logger.LogInformation($"Order {order.Id} updated to status {order.Status} for user {order.UserId}");
+
+                    await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+                    await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
+                    await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, order.UserId);
+                    await CacheInvalidationHelper.InvalidateCartCacheAsync(_cacheService);
+                    await CacheInvalidationHelper.InvalidateInventoryRelatedCacheAsync(_cacheService);
                     
                     // TODO: Send order confirmation email to customer
                     // TODO: Update inventory for purchased items
@@ -262,6 +280,12 @@ namespace AuraDecor.APIs.Controllers
             if (order != null) 
             {
                 _logger.LogInformation($"Order {order.Id} payment failed for user {order.UserId}");
+
+                // Invalidate cache after failed payment
+                await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+                await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
+                await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, order.UserId);
+                
                 // TODO: Send payment failure notification to customer
             }
         }
@@ -279,6 +303,11 @@ namespace AuraDecor.APIs.Controllers
                 _logger.LogInformation($"Order {order.Id} payment canceled for user {order.UserId}");
                 order.Status = OrderStatus.Cancelled;
                 await _unitOfWork.CompleteAsync();
+
+                // Invalidate cache after payment cancellation
+                await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+                await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
+                await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, order.UserId);
             }
         }
         
@@ -304,6 +333,12 @@ namespace AuraDecor.APIs.Controllers
                     }
                     
                     await _unitOfWork.CompleteAsync();
+
+                    // Invalidate cache after refund
+                    await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+                    await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
+                    await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, order.UserId);
+                    await CacheInvalidationHelper.InvalidateInventoryRelatedCacheAsync(_cacheService);
                     
                     // TODO: Send refund notification to customer
                 }
@@ -366,6 +401,13 @@ namespace AuraDecor.APIs.Controllers
             {
                 return BadRequest(new ApiResponse(400, result.Error));
             }
+
+            // Invalidate cache after admin refund
+            await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateAdminCacheAsync(_cacheService);
+            await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, order.UserId);
+            await CacheInvalidationHelper.InvalidateInventoryRelatedCacheAsync(_cacheService);
             
             return Ok(result);
         }

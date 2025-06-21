@@ -1,6 +1,7 @@
 using AuraDecor.APIs.Dtos.Incoming;
 using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.APIs.Errors;
+using AuraDecor.APIs.Helpers;
 using AuraDecor.Core.Entities;
 using AuraDecor.Core.Services.Contract;
 using AutoMapper;
@@ -18,11 +19,13 @@ namespace AuraDecor.APIs.Controllers
     {
         private readonly ICartService _cartService;
         private readonly IMapper _mapper;
+        private readonly IResponseCacheService _cacheService;
 
-        public CartController(ICartService cartService, IMapper mapper)
+        public CartController(ICartService cartService, IMapper mapper, IResponseCacheService cacheService)
         {
             _cartService = cartService;
             _mapper = mapper;
+            _cacheService = cacheService;
         }
 
         [HttpGet]
@@ -43,6 +46,9 @@ namespace AuraDecor.APIs.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             await _cartService.AddToCartAsync(userId, addToCartDto.FurnitureId, addToCartDto.Quantity);
+            
+            await CacheInvalidationHelper.InvalidateCartCacheAsync(_cacheService);
+            
             return Ok();
         }
 
@@ -51,6 +57,9 @@ namespace AuraDecor.APIs.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             await _cartService.RemoveFromCartAsync(userId, removeFromCartDto.FurnitureId);
+            
+            await CacheInvalidationHelper.InvalidateCartCacheAsync(_cacheService);
+            
             return Ok();
         }
     }
