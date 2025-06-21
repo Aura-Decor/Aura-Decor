@@ -12,7 +12,6 @@ namespace AuraDecor.Core.Services.Contract
         Task<Order> CreateOrderAsync(string userId, Guid cartId, Address shippingAddress);
         Task<bool> CancelOrderAsync(string userId, Guid orderId);
         Task<Order> GetOrderByIdAsync(Guid orderId, string userId = null);
-        Task<Order> GetOrderByUserIdAsync(string id);
         Task<IEnumerable<Order>> GetOrdersForUserAsync(string userId);
     }
 }

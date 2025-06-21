@@ -10,19 +10,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuraDecor.Core.Entities.Enums;
 
 namespace AuraDecor.Servicies
 {
     public class PaymentService : IPaymentService
     {
         public readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
         private readonly IConfiguration _config;
         private readonly ILogger<PaymentService> _logger;
 
-        public PaymentService(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration config, ILogger<PaymentService> logger)
+        public PaymentService(IUnitOfWork unitOfWork, IConfiguration config, ILogger<PaymentService> logger)
         {
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _config = config;
             _logger = logger;
@@ -64,7 +63,6 @@ namespace AuraDecor.Servicies
                 var service = new PaymentIntentService();
                 PaymentIntent intent;
 
-                // Add metadata to payment intent for better tracking
                 var metadata = new Dictionary<string, string>
                 {
                     { "CartId", cart.Id.ToString() },
@@ -129,7 +127,6 @@ namespace AuraDecor.Servicies
                 
                 if (string.IsNullOrEmpty(cart.PaymentIntentId))
                 {
-                    // Create payment intent if it doesn't exist
                     var intent = await CreateOrUpdatePaymentIntentAysnc(CartId);
                     return new PaymentIntentResponse
                     {
@@ -138,7 +135,6 @@ namespace AuraDecor.Servicies
                     };
                 }
                 
-                // Retrieve existing payment intent
                 try 
                 {
                     var service = new PaymentIntentService();
@@ -152,7 +148,6 @@ namespace AuraDecor.Servicies
                 }
                 catch (StripeException ex) 
                 {
-                    // If the payment intent was deleted or is invalid, create a new one
                     if (ex.StripeError.Code == "resource_missing")
                     {
                         _logger.LogWarning($"Payment intent {cart.PaymentIntentId} no longer exists, creating new one");
@@ -273,7 +268,6 @@ namespace AuraDecor.Servicies
                     case "requires_confirmation":
                     case "requires_action":
                     case "requires_capture":
-                        // Payment is still in progress
                         return PaymentStatus.Pending;
                         
                     case "canceled":
@@ -310,7 +304,6 @@ namespace AuraDecor.Servicies
                     };
                 }
                 
-                // Verify the order has been paid
                 if (order.PaymentStatus != PaymentStatus.Succeeded)
                 {
                     _logger.LogWarning($"Cannot refund order {orderId}: Payment status is {order.PaymentStatus}");
@@ -330,7 +323,6 @@ namespace AuraDecor.Servicies
                     };
                 }
                 
-                // Get the payment intent to check for charges
                 var piService = new PaymentIntentService();
                 var paymentIntent = await piService.GetAsync(order.PaymentIntentId);
                 
@@ -343,7 +335,6 @@ namespace AuraDecor.Servicies
                     };
                 }
                 
-                // Check if payment intent has charges
                 string chargeId = paymentIntent.LatestChargeId;
                 if (string.IsNullOrEmpty(chargeId))
                 {
@@ -354,27 +345,22 @@ namespace AuraDecor.Servicies
                     };
                 }
                 
-                // Create the refund
                 var refundOptions = new RefundCreateOptions
                 {
                     Charge = chargeId,
                     Reason = string.IsNullOrEmpty(reason) ? "requested_by_customer" : reason
                 };
                 
-                // If amount is specified, refund only that amount, otherwise refund the full amount
                 if (amount > 0)
                 {
                     refundOptions.Amount = (long)(amount * 100);
                 }
                 
-                // Process the refund
                 var refundService = new RefundService();
                 var refund = await refundService.CreateAsync(refundOptions);
                 
-                // Update the order status if the refund is successful
                 if (refund.Status == "succeeded")
                 {
-                    // Update order status only if it's a full refund
                     if (!refundOptions.Amount.HasValue)
                     {
                         order.Status = OrderStatus.Cancelled;

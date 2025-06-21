@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuraDecor.Core.Entities.Enums;
 // Use Stripe with alias to avoid conflict
 using StripeNamespace = Stripe;
 
@@ -38,7 +39,6 @@ namespace AuraDecor.Servicies
         {
             try
             {
-                // Validate cart using specification to include CartItems
                 var cartSpec = new CartWithItemsSpecification(cartId);
                 var cart = await _unitOfWork.Repository<Cart>().GetWithSpecAsync(cartSpec);
                 
@@ -60,16 +60,13 @@ namespace AuraDecor.Servicies
                     throw new Exception("A valid shipping address is required");
                 }
 
-                // Set the UserId on the shipping address (required field)
                 shippingAddress.UserId = userId;
 
-                // Check if user already has an address (due to unique constraint)
                 var existingAddress = await _unitOfWork.Repository<Address>()
                     .FindAsync(a => a.UserId == userId);
 
                 if (existingAddress != null)
                 {
-                    // Update existing address with new shipping info
                     existingAddress.FName = shippingAddress.FName;
                     existingAddress.LName = shippingAddress.LName;
                     existingAddress.Street = shippingAddress.Street;
@@ -79,24 +76,18 @@ namespace AuraDecor.Servicies
                     await _unitOfWork.Repository<Address>().UpdateAsync(existingAddress);
                     await _unitOfWork.CompleteAsync();
                     
-                    // Use the existing address for the order
                     shippingAddress = existingAddress;
                 }
                 else
                 {
-                    // Create new address if user doesn't have one
                     _unitOfWork.Repository<Address>().Add(shippingAddress);
                     await _unitOfWork.CompleteAsync();
                 }
 
-                // Create or update the payment intent
                 var paymentIntent = await _paymentService.CreateOrUpdatePaymentIntentAysnc(cartId);
-                _logger.LogInformation($"Payment intent {paymentIntent.Id} created/updated for cart {cartId}");
 
-                // Calculate total order amount
                 decimal total = cart.CartItems.Sum(item => item.Quantity * item.Furniture.Price);
                 
-                // Add delivery cost if delivery method is selected
                 if (cart.DeliveryMethodId.HasValue)
                 {
                     var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(cart.DeliveryMethodId.Value);
@@ -106,7 +97,6 @@ namespace AuraDecor.Servicies
                     }
                 }
 
-                // Create the order
                 var order = new Order
                 {
                     UserId = userId,
@@ -120,11 +110,9 @@ namespace AuraDecor.Servicies
                     DeliveryMethodId = cart.DeliveryMethodId
                 };
 
-                // Add the order first
                 _unitOfWork.Repository<Order>().Add(order);
                 await _unitOfWork.CompleteAsync();
 
-                // Create order items from cart items
                 var orderItems = cart.CartItems.Select(cartItem => new OrderItem
                 {
                     FurnitureId = cartItem.FurnitureId,
@@ -132,10 +120,8 @@ namespace AuraDecor.Servicies
                     Furniture = cartItem.Furniture
                 }).ToList();
 
-                // Add the order items to the order
                 order.OrderItems = orderItems;
 
-                // Save the order items
                 await _unitOfWork.CompleteAsync();
                 
                 _logger.LogInformation($"Order created successfully: {order.Id} for user {userId}");
@@ -152,7 +138,6 @@ namespace AuraDecor.Servicies
         {
             try
             {
-                // Get the order with a specification to include all related data
                 var spec = new OrdersWithSpecification(userId, orderId);
                 var order = await _unitOfWork.Repository<Order>().GetWithSpecAsync(spec);
 
@@ -174,14 +159,12 @@ namespace AuraDecor.Servicies
                     return false;
                 }
 
-                // Don't allow cancellation if payment has already been processed
                 if (order.PaymentStatus == PaymentStatus.Succeeded)
                 {
                     _logger.LogWarning($"Cannot cancel order {orderId} as payment already succeeded");
                     return false;
                 }
 
-                // Try to cancel the Stripe payment intent if it exists
                 if (!string.IsNullOrEmpty(order.PaymentIntentId))
                 {
                     try
@@ -193,11 +176,9 @@ namespace AuraDecor.Servicies
                     catch (Stripe.StripeException ex)
                     {
                         _logger.LogError(ex, $"Failed to cancel Stripe payment intent {order.PaymentIntentId} for order {orderId}, continuing with order cancellation");
-                        // Continue with order cancellation even if we can't cancel the payment intent
                     }
                 }
 
-                // Update order status
                 order.Status = OrderStatus.Cancelled;
                 order.PaymentStatus = PaymentStatus.Failed;
                 

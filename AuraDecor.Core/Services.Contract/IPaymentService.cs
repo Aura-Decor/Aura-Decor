@@ -1,4 +1,5 @@
 using AuraDecor.Core.Entities;
+using AuraDecor.Core.Entities.Enums;
 using Stripe;
 
 namespace AuraDecor.Core.Services.Contract;

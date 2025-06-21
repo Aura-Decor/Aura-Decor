@@ -19,6 +19,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AuraDecor.Core.Entities.Enums;
 
 namespace AuraDecor.APIs.Controllers
 {
@@ -64,19 +65,15 @@ namespace AuraDecor.APIs.Controllers
 
                 _logger.LogInformation($"Creating order for cart {createOrderDto.CartId}, user {userId}");
                 
-                // Map address from DTO to entity
                 var shippingAddress = _mapper.Map<AuraDecor.Core.Entities.Address>(createOrderDto.ShippingAddress);
                 
-                // Create the order
                 var order = await _orderService.CreateOrderAsync(
                     userId, 
                     createOrderDto.CartId, 
                     shippingAddress);
                 
-                // Map to DTO for response
                 var orderToReturn = _mapper.Map<OrderToReturnDto>(order);
                 
-                // Create payment intent for the order
                 PaymentIntentDto paymentIntentDto = null;
                 try
                 {
@@ -90,11 +87,9 @@ namespace AuraDecor.APIs.Controllers
                         Message = "Payment intent created successfully"
                     };
                     
-                    // Update the order with the payment intent ID
                     order.PaymentIntentId = paymentIntent.PaymentIntentId;
                     await _unitOfWork.CompleteAsync();
                     
-                    // Refresh the order mapping to include the PaymentIntentId
                     orderToReturn = _mapper.Map<OrderToReturnDto>(order);
                     
                     _logger.LogInformation($"Payment intent created for order {order.Id}: {paymentIntentDto.PaymentIntentId}");
@@ -102,7 +97,6 @@ namespace AuraDecor.APIs.Controllers
                 catch (Exception paymentEx)
                 {
                     _logger.LogError(paymentEx, $"Failed to create payment intent for order {order.Id}");
-                    // Continue without payment intent - user can still see the order
                 }
                 
                 var response = new OrderCreationResponseDto
@@ -291,7 +285,6 @@ namespace AuraDecor.APIs.Controllers
                 
                 var paymentStatus = await _paymentService.VerifyPaymentStatus(paymentIntentId);
                 
-                // If the payment succeeded, make sure the order is updated
                 if (paymentStatus == PaymentStatus.Succeeded)
                 {
                     await _paymentService.UpdateOrderPaymentSucceeded(paymentIntentId);
@@ -334,10 +327,8 @@ namespace AuraDecor.APIs.Controllers
                 
                 _logger.LogInformation($"Getting order details for payment intent {paymentIntentId}");
                 
-                // First verify the payment status
                 var paymentStatus = await _paymentService.VerifyPaymentStatus(paymentIntentId);
                 
-                // Get the order by payment intent ID
                 var order = await _unitOfWork.Repository<Order>()
                     .FindAsync(o => o.PaymentIntentId == paymentIntentId);
                 
@@ -347,14 +338,12 @@ namespace AuraDecor.APIs.Controllers
                     return NotFound(new ApiResponse(404, "Order not found for this payment"));
                 }
                 
-                // Only allow users to see their own orders
                 if (order.UserId != userId && !User.IsInRole("Admin"))
                 {
                     _logger.LogWarning($"User {userId} attempted to access order for user {order.UserId}");
                     return Unauthorized(new ApiResponse(401, "You don't have permission to view this order"));
                 }
                 
-                // Get the order with all related entities
                 var orderSpec = new OrdersWithSpecification(order.Id);
                 var orderWithDetails = await _unitOfWork.Repository<Order>().GetWithSpecAsync(orderSpec);
                 
@@ -363,12 +352,10 @@ namespace AuraDecor.APIs.Controllers
                     return NotFound(new ApiResponse(404, "Order details not found"));
                 }
                 
-                // If the payment succeeded but the order status hasn't been updated, update it
                 if (paymentStatus == PaymentStatus.Succeeded && order.PaymentStatus != PaymentStatus.Succeeded)
                 {
                     await _paymentService.UpdateOrderPaymentSucceeded(paymentIntentId);
                     
-                    // Refresh the order to get updated data
                     orderWithDetails = await _unitOfWork.Repository<Order>().GetWithSpecAsync(orderSpec);
                 }
                 
@@ -408,12 +395,10 @@ namespace AuraDecor.APIs.Controllers
                 
                 _logger.LogInformation($"Stripe webhook received: {stripeEvent.Type} - {stripeEvent.Id}");
                 
-                // Begin a transaction for any database changes
                 await _unitOfWork.BeginTransactionAsync();
                 
                 try
                 {
-                    // Handle the event based on its type
                     switch (stripeEvent.Type)
                     {
                         case "payment_intent.succeeded":
@@ -450,27 +435,21 @@ namespace AuraDecor.APIs.Controllers
                             break;
                     }
                     
-                    // Commit the transaction if everything succeeded
                     await _unitOfWork.CommitTransactionAsync();
                 }
                 catch (Exception ex)
                 {
-                    // Rollback the transaction if anything failed
                     await _unitOfWork.RollbackTransactionAsync();
                     _logger.LogError(ex, $"Error processing Stripe webhook event {stripeEvent.Type}: {ex.Message}");
                     
-                    // Still return 200 to Stripe as we don't want them to retry this event
-                    // We've logged the error and can handle it manually if needed
                 }
                 
-                // Return a 200 response to acknowledge receipt of the event
                 return Ok();
             }
             catch (StripeException ex)
             {
                 _logger.LogError(ex, "Stripe webhook error: Invalid signature or malformed payload");
                 
-                // For security reasons, return a generic error message
                 return BadRequest(new { Error = "Invalid webhook signature" });
             }
             catch (Exception ex)
@@ -484,7 +463,6 @@ namespace AuraDecor.APIs.Controllers
         {
             _logger.LogInformation($"Payment succeeded for intent: {paymentIntent.Id}");
             
-            // Get metadata from payment intent (if available)
             var metadata = paymentIntent.Metadata;
             string cartId = metadata != null && metadata.ContainsKey("CartId") ? metadata["CartId"] : null;
             string userId = metadata != null && metadata.ContainsKey("UserId") ? metadata["UserId"] : null;
@@ -494,14 +472,12 @@ namespace AuraDecor.APIs.Controllers
                 _logger.LogInformation($"Payment for Cart {cartId}, User {userId}");
             }
             
-            // Update order status
             var successResult = await _paymentService.UpdateOrderPaymentSucceeded(paymentIntent.Id);
             
             if (successResult)
             {
                 _logger.LogInformation($"Order updated successfully for payment intent: {paymentIntent.Id}");
                 
-                // Find the related order by payment intent ID
                 var order = await _unitOfWork.Repository<Order>()
                     .FindAsync(o => o.PaymentIntentId == paymentIntent.Id);
                     
@@ -523,7 +499,6 @@ namespace AuraDecor.APIs.Controllers
         {
             _logger.LogWarning($"Payment failed for intent: {paymentIntent.Id}");
             
-            // Get the failure reason
             var lastPaymentError = paymentIntent.LastPaymentError;
             if (lastPaymentError != null)
             {
@@ -537,7 +512,6 @@ namespace AuraDecor.APIs.Controllers
             
             await _paymentService.UpdateOrderPaymentFailed(paymentIntent.Id);
             
-            // Find the related order by payment intent ID
             var order = await _unitOfWork.Repository<Order>()
                 .FindAsync(o => o.PaymentIntentId == paymentIntent.Id);
                 
@@ -553,14 +527,12 @@ namespace AuraDecor.APIs.Controllers
             _logger.LogWarning($"Payment canceled for intent: {paymentIntent.Id}");
             await _paymentService.UpdateOrderPaymentFailed(paymentIntent.Id);
             
-            // Find the related order by payment intent ID
             var order = await _unitOfWork.Repository<Order>()
                 .FindAsync(o => o.PaymentIntentId == paymentIntent.Id);
                 
             if (order != null) 
             {
                 _logger.LogInformation($"Order {order.Id} payment canceled for user {order.UserId}");
-                // Update order status to canceled
                 order.Status = OrderStatus.Cancelled;
                 await _unitOfWork.CompleteAsync();
             }
@@ -570,7 +542,6 @@ namespace AuraDecor.APIs.Controllers
         {
             _logger.LogInformation($"Charge refunded: {charge.Id}, PaymentIntent: {charge.PaymentIntentId}");
             
-            // Find the related order
             if (!string.IsNullOrEmpty(charge.PaymentIntentId))
             {
                 var order = await _unitOfWork.Repository<Order>()
@@ -578,7 +549,6 @@ namespace AuraDecor.APIs.Controllers
                     
                 if (order != null)
                 {
-                    // If it's a full refund, update order status
                     if (charge.Refunded)
                     {
                         order.Status = OrderStatus.Cancelled;
@@ -587,7 +557,6 @@ namespace AuraDecor.APIs.Controllers
                     else if (charge.AmountRefunded > 0)
                     {
                         _logger.LogInformation($"Partial refund processed for order {order.Id}: {charge.AmountRefunded / 100m:C}");
-                        // You could have a partial refund status if needed
                     }
                     
                     await _unitOfWork.CompleteAsync();
@@ -609,7 +578,6 @@ namespace AuraDecor.APIs.Controllers
                 if (order != null)
                 {
                     _logger.LogWarning($"Order {order.Id} has a payment dispute");
-                    // You could add a disputed status to your orders if needed
                     // TODO: Send notification to admin about the dispute
                 }
             }
@@ -627,7 +595,6 @@ namespace AuraDecor.APIs.Controllers
                 if (order != null)
                 {
                     _logger.LogInformation($"Order {order.Id} dispute resolved with status: {dispute.Status}");
-                    // Update order status based on dispute resolution
                     // TODO: Send notification to admin about dispute resolution
                 }
             }
@@ -649,27 +616,23 @@ namespace AuraDecor.APIs.Controllers
                     return NotFound(new ApiResponse(404, "Order not found"));
                 }
 
-                // Parse and validate the new status
                 if (!Enum.TryParse<OrderStatus>(updateDto.Status, true, out var newStatus))
                 {
                     _logger.LogWarning($"Invalid order status: {updateDto.Status}");
                     return BadRequest(new ApiResponse(400, $"Invalid order status: {updateDto.Status}"));
                 }
                 
-                // Don't allow status changes for cancelled orders
                 if (order.Status == OrderStatus.Cancelled)
                 {
                     _logger.LogWarning($"Cannot update status of cancelled order {updateDto.OrderId}");
                     return BadRequest(new ApiResponse(400, "Cannot update status of cancelled order"));
                 }
                 
-                // Update the status
                 order.Status = newStatus;
                 await _unitOfWork.CompleteAsync();
                 
                 _logger.LogInformation($"Order {updateDto.OrderId} status updated to {newStatus}");
                 
-                // Return the updated order
                 var orderToReturn = _mapper.Map<OrderToReturnDto>(order);
                 return Ok(orderToReturn);
             }
@@ -688,14 +651,12 @@ namespace AuraDecor.APIs.Controllers
             {
                 _logger.LogInformation($"Processing refund for order {refundDto.OrderId}");
                 
-                // Verify the order exists
                 var order = await _orderService.GetOrderByIdAsync(refundDto.OrderId);
                 if (order == null)
                 {
                     return NotFound(new ApiResponse(404, "Order not found"));
                 }
                 
-                // Process the refund
                 var result = await _paymentService.CreateRefundAsync(
                     refundDto.OrderId, 
                     refundDto.Amount, 

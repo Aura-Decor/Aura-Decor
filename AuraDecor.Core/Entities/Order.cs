@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuraDecor.Core.Entities.Enums;
 
 namespace AuraDecor.Core.Entities
 {
@@ -22,21 +23,6 @@ namespace AuraDecor.Core.Entities
         public DeliveryMethod DeliveryMethod { get; set; }
 
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-    }
-    
-    public enum OrderStatus
-    {
-        Pending,
-        Processing,
-        Completed,
-        Cancelled
-    }
-    
-    public enum PaymentStatus
-    {
-        Pending,
-        Succeeded,
-        Failed
     }
 
 }
