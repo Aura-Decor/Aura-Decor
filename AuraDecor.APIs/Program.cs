@@ -7,7 +7,7 @@ using Scalar.AspNetCore;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
 using HealthChecks.UI.Client;
-
+using Stripe;
 
 
 #endregion
@@ -58,6 +58,20 @@ app.MapScalarApiReference(options =>
 app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+// Configure Stripe
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+
+// If in development, set app info
+if (app.Environment.IsDevelopment())
+{
+    StripeConfiguration.AppInfo = new AppInfo
+    {
+        Name = "AuraDecor Dev Environment",
+        Version = "0.1.0",
+    };
+}
+
 app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseAuthentication();
 app.UseAuthorization();

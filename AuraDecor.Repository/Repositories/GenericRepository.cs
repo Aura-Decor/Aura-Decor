@@ -50,6 +50,11 @@ public class GenericRepository<T>: IGenericRepository<T> where T : BaseEntity
     {
         _dbContext.Set<T>().Remove(entity);
     }
+    
+    public async Task<T> FindAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+    {
+        return await _dbContext.Set<T>().FirstOrDefaultAsync(predicate);
+    }
 
     public async Task<int> GetCountAsync(IBaseSpecification<T> spec)
     {

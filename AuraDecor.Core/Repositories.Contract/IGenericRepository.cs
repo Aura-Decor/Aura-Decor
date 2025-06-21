@@ -14,5 +14,5 @@ public interface IGenericRepository<T> where T : BaseEntity
     void DeleteAsync(T entity);
     
     Task<int> GetCountAsync(IBaseSpecification<T> spec);
-    
+    Task<T> FindAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate);
 }

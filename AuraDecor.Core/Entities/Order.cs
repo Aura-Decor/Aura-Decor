@@ -15,18 +15,28 @@ namespace AuraDecor.Core.Entities
         public DateTime OrderDate { get; set; }
         public Decimal OrderAmount { get; set; }
         public OrderStatus Status { get; set; }
+        public PaymentStatus PaymentStatus { get; set; } = PaymentStatus.Pending;
+        public string? PaymentIntentId { get; set; }
+        public Address ShippingAddress { get; set; }
+        public Guid? DeliveryMethodId { get; set; }
+        public DeliveryMethod DeliveryMethod { get; set; }
 
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-
-
-
     }
+    
     public enum OrderStatus
     {
         Pending,
         Processing,
         Completed,
         Cancelled
+    }
+    
+    public enum PaymentStatus
+    {
+        Pending,
+        Succeeded,
+        Failed
     }
 
 }

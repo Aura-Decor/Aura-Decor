@@ -4,6 +4,7 @@ using AuraDecor.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuraDecor.Repositoriy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250620233410_add")]
+    partial class add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -335,23 +338,11 @@ namespace AuraDecor.Repositoriy.Migrations
                     b.Property<Guid>("CartId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("DeliveryMethodId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<decimal>("OrderAmount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("PaymentIntentId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PaymentStatus")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("ShippingAddressId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -364,11 +355,7 @@ namespace AuraDecor.Repositoriy.Migrations
 
                     b.HasIndex("CartId");
 
-                    b.HasIndex("DeliveryMethodId");
-
                     b.HasIndex("OrderDate");
-
-                    b.HasIndex("ShippingAddressId");
 
                     b.HasIndex("UserId");
 
@@ -381,6 +368,9 @@ namespace AuraDecor.Repositoriy.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("CartId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("FurnitureId")
                         .HasColumnType("uniqueidentifier");
 
@@ -391,6 +381,8 @@ namespace AuraDecor.Repositoriy.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CartId");
 
                     b.HasIndex("FurnitureId");
 
@@ -805,16 +797,6 @@ namespace AuraDecor.Repositoriy.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("AuraDecor.Core.Entities.DeliveryMethod", "DeliveryMethod")
-                        .WithMany()
-                        .HasForeignKey("DeliveryMethodId");
-
-                    b.HasOne("AuraDecor.Core.Entities.Address", "ShippingAddress")
-                        .WithMany()
-                        .HasForeignKey("ShippingAddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("AuraDecor.Core.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -823,15 +805,17 @@ namespace AuraDecor.Repositoriy.Migrations
 
                     b.Navigation("Cart");
 
-                    b.Navigation("DeliveryMethod");
-
-                    b.Navigation("ShippingAddress");
-
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("AuraDecor.Core.Entities.OrderItem", b =>
                 {
+                    b.HasOne("Cart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("AuraDecor.Core.Entities.Furniture", "Furniture")
                         .WithMany()
                         .HasForeignKey("FurnitureId")
@@ -842,6 +826,8 @@ namespace AuraDecor.Repositoriy.Migrations
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Cart");
 
                     b.Navigation("Furniture");
                 });

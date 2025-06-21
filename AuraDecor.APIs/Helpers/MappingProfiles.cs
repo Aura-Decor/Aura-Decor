@@ -10,7 +10,10 @@ public class MappingProfiles : Profile
     public MappingProfiles()
     {
         // Address mappings
-        CreateMap<AddressDto, Address>().ReverseMap();
+        CreateMap<AuraDecor.APIs.Dtos.Incoming.CreateAddressDto, Address>()
+            .ForMember(d => d.FName, opt => opt.MapFrom(s => s.FirstName))
+            .ForMember(d => d.LName, opt => opt.MapFrom(s => s.LastName));
+        CreateMap<Address, AuraDecor.APIs.Dtos.Outgoing.AddressDto>();
 
         // Furniture mappings
         CreateMap<AddFurnitureDto, Furniture>()
@@ -37,9 +40,25 @@ public class MappingProfiles : Profile
 
         CreateMap<CartItem, OrderItem>()
             .ForMember(d => d.FurnitureId, opt => opt.MapFrom(s => s.FurnitureId))
-            .ForMember(d => d.CartId, opt => opt.MapFrom(s => s.CartId))
             .ForMember(d => d.Quantity, opt => opt.MapFrom(s => s.Quantity));
 
+        // Order mappings
+        CreateMap<Order, OrderToReturnDto>()
+            .ForMember(d => d.Status, opt => opt.MapFrom(s => s.Status.ToString()))
+            .ForMember(d => d.PaymentStatus, opt => opt.MapFrom(s => s.PaymentStatus.ToString()))
+            .ForMember(d => d.DeliveryFee, opt => opt.MapFrom(s => s.DeliveryMethod != null ? s.DeliveryMethod.Cost : 0))
+            .ForMember(d => d.Subtotal, opt => opt.MapFrom(s => s.OrderAmount - (s.DeliveryMethod != null ? s.DeliveryMethod.Cost : 0)))
+            .ForMember(d => d.PaymentIntentId, opt => opt.MapFrom(s => s.PaymentIntentId))
+            .ForMember(d => d.ShippingAddress, opt => opt.MapFrom(s => s.ShippingAddress))
+            .ForMember(d => d.DeliveryMethod, opt => opt.MapFrom(s => s.DeliveryMethod));
+
+        CreateMap<OrderItem, OrderItemDto>()
+            .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Furniture.Name))
+            .ForMember(d => d.PictureUrl, opt => opt.MapFrom(s => s.Furniture.PictureUrl))
+            .ForMember(d => d.Price, opt => opt.MapFrom(s => s.Furniture.Price));
+            
+        CreateMap<DeliveryMethod, DeliveryMethodDto>();
+        
         // Notification mappings
         CreateMap<Notification, NotificationDto>()
             .ForMember(d => d.Type, opt => opt.MapFrom(s => s.Type.ToString()));

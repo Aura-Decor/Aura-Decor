@@ -12,4 +12,13 @@ public class CartWithItemsSpecification : BaseSpecification<Cart>
         AddInclude("CartItems.Furniture.Brand");
         AddInclude("CartItems.Furniture.Category");
     }
+    
+    public CartWithItemsSpecification(Guid cartId)
+        : base(cart => cart.Id == cartId)
+    {
+        AddInclude("CartItems.Furniture.StyleType");
+        AddInclude("CartItems.Furniture.Color");
+        AddInclude("CartItems.Furniture.Brand");
+        AddInclude("CartItems.Furniture.Category");
+    }
 }

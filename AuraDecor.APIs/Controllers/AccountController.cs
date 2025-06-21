@@ -302,11 +302,11 @@ public class AccountController : ApiBaseController
         
         [Authorize]
         [HttpGet("address")]
-        public async Task<ActionResult<AddressDto>> GetUserAddress()
+        public async Task<ActionResult<Dtos.Outgoing.AddressDto>> GetUserAddress()
         {
             var email = User.FindFirstValue(ClaimTypes.Email);
             var user = await _userManager.FindUserWithAddressAsync(User);
-            var address = _mapper.Map<Address, AddressDto>(user.Address);
+            var address = _mapper.Map<Address, Dtos.Outgoing.AddressDto>(user.Address);
             if (address == null)
             {
                 return NotFound(new ApiResponse(404));
@@ -317,12 +317,12 @@ public class AccountController : ApiBaseController
 
         [Authorize]
         [HttpPut("address")]
-        public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto addressDto)
+        public async Task<ActionResult<Dtos.Outgoing.AddressDto>> UpdateUserAddress(Dtos.Incoming.CreateAddressDto addressDto)
         {
             var user = await _userManager.FindUserWithAddressAsync(User);
-            user.Address = _mapper.Map<AddressDto, Address>(addressDto);
+            user.Address = _mapper.Map<Dtos.Incoming.CreateAddressDto, Address>(addressDto);
             var result = await _userManager.UpdateAsync(user);
-            if (result.Succeeded) return Ok(_mapper.Map<Address, AddressDto>(user.Address));
+            if (result.Succeeded) return Ok(_mapper.Map<Address, Dtos.Outgoing.AddressDto>(user.Address));
             return BadRequest("Problem updating the user");
         }
         [HttpGet]
