@@ -186,7 +186,6 @@ namespace AuraDecor.Servicies
             
             order.PaymentStatus = PaymentStatus.Failed;
             await _unitOfWork.CompleteAsync();
-            _logger.LogInformation($"Order {order.Id} payment failed for payment intent {paymentIntentId}");
             return true;
         }
         

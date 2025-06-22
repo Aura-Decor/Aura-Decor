@@ -17,6 +17,7 @@ using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AuraDecor.Core.Entities.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace AuraDecor.APIs.Controllers
 {
@@ -31,6 +32,9 @@ namespace AuraDecor.APIs.Controllers
         private readonly ILogger<PaymentController> _logger;
         private readonly IConfiguration _configuration;
         private readonly IResponseCacheService _cacheService;
+        private readonly IEmailService _emailService;
+        private readonly IEmailTemplateService _emailTemplateService;
+        private readonly UserManager<User> _userManager;
 
         public PaymentController(
             IPaymentService paymentService,
@@ -38,7 +42,10 @@ namespace AuraDecor.APIs.Controllers
             IMapper mapper,
             ILogger<PaymentController> logger,
             IConfiguration configuration,
-            IResponseCacheService cacheService)
+            IResponseCacheService cacheService,
+            IEmailService emailService,
+            IEmailTemplateService emailTemplateService,
+            UserManager<User> userManager)
         {
             _paymentService = paymentService;
             _unitOfWork = unitOfWork;
@@ -46,6 +53,9 @@ namespace AuraDecor.APIs.Controllers
             _logger = logger;
             _configuration = configuration;
             _cacheService = cacheService;
+            _emailService = emailService;
+            _emailTemplateService = emailTemplateService;
+            _userManager = userManager;
         }
 
         [HttpGet("verify/{paymentIntentId}")]
@@ -247,7 +257,31 @@ namespace AuraDecor.APIs.Controllers
                     await CacheInvalidationHelper.InvalidateCartCacheAsync(_cacheService);
                     await CacheInvalidationHelper.InvalidateInventoryRelatedCacheAsync(_cacheService);
                     
-                    // TODO: Send order confirmation email to customer
+                    // Send order confirmation email to customer
+                    try
+                    {
+                        var user = await _userManager.FindByIdAsync(order.UserId);
+                        if (user?.Email != null)
+                        {
+                            var emailSubject = "AuraDecor - Order Confirmation";
+                            var emailBody = _emailTemplateService.CreateOrderConfirmationTemplate(
+                                order.Id.ToString(), 
+                                order.OrderAmount
+                            );
+                            
+                            await _emailService.SendNotificationEmailAsync(user.Email, emailSubject, emailBody);
+                            _logger.LogInformation($"Order confirmation email sent to {user.Email} for order {order.Id}");
+                        }
+                        else
+                        {
+                            _logger.LogWarning($"Could not send order confirmation email - user or email not found for order {order.Id}");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Failed to send order confirmation email for order {order.Id}");
+                    }
+                    
                     // TODO: Update inventory for purchased items
                 }
             }
@@ -286,7 +320,31 @@ namespace AuraDecor.APIs.Controllers
                 await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
                 await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, order.UserId);
                 
-                // TODO: Send payment failure notification to customer
+                // Send payment failure notification to customer
+                try
+                {
+                    var user = await _userManager.FindByIdAsync(order.UserId);
+                    if (user?.Email != null)
+                    {
+                        var failureReason = lastPaymentError?.Message ?? "Payment could not be processed";
+                        var emailSubject = "AuraDecor - Payment Failed";
+                        var emailBody = _emailTemplateService.CreatePaymentFailureTemplate(
+                            order.Id.ToString(),
+                            failureReason
+                        );
+                        
+                        await _emailService.SendNotificationEmailAsync(user.Email, emailSubject, emailBody);
+                        _logger.LogInformation($"Payment failure email sent to {user.Email} for order {order.Id}");
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"Could not send payment failure email - user or email not found for order {order.Id}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"Failed to send payment failure email for order {order.Id}");
+=                }
             }
         }
         
@@ -340,7 +398,33 @@ namespace AuraDecor.APIs.Controllers
                     await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, order.UserId);
                     await CacheInvalidationHelper.InvalidateInventoryRelatedCacheAsync(_cacheService);
                     
-                    // TODO: Send refund notification to customer
+                    // Send refund notification to customer
+                    try
+                    {
+                        var user = await _userManager.FindByIdAsync(order.UserId);
+                        if (user?.Email != null)
+                        {
+                            var refundAmount = charge.AmountRefunded > 0 ? charge.AmountRefunded / 100m : charge.Amount / 100m;
+                            var refundReason = charge.Refunded ? "Full refund processed" : "Partial refund processed";
+                            var emailSubject = "AuraDecor - Refund Processed";
+                            var emailBody = _emailTemplateService.CreateRefundNotificationTemplate(
+                                order.Id.ToString(),
+                                refundAmount,
+                                refundReason
+                            );
+                            
+                            await _emailService.SendNotificationEmailAsync(user.Email, emailSubject, emailBody);
+                            _logger.LogInformation($"Refund notification email sent to {user.Email} for order {order.Id}");
+                        }
+                        else
+                        {
+                            _logger.LogWarning($"Could not send refund notification email - user or email not found for order {order.Id}");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Failed to send refund notification email for order {order.Id}");
+=                    }
                 }
             }
         }
@@ -357,7 +441,33 @@ namespace AuraDecor.APIs.Controllers
                 if (order != null)
                 {
                     _logger.LogWarning($"Order {order.Id} has a payment dispute");
-                    // TODO: Send notification to admin about the dispute
+                    
+                    // Send notification to admin about the dispute
+                    try
+                    {
+                        // Get admin users
+                        var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+                        
+                        foreach (var admin in adminUsers)
+                        {
+                            if (!string.IsNullOrEmpty(admin.Email))
+                            {
+                                var emailSubject = "AuraDecor Admin - Payment Dispute Alert";
+                                var emailBody = _emailTemplateService.CreateAdminDisputeNotificationTemplate(
+                                    order.Id.ToString(),
+                                    dispute.Reason,
+                                    dispute.Amount / 100m
+                                );
+                                
+                                await _emailService.SendNotificationEmailAsync(admin.Email, emailSubject, emailBody);
+                                _logger.LogInformation($"Dispute notification email sent to admin {admin.Email} for order {order.Id}");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Failed to send dispute notification email for order {order.Id}");
+                    }
                 }
             }
         }
@@ -374,7 +484,33 @@ namespace AuraDecor.APIs.Controllers
                 if (order != null)
                 {
                     _logger.LogInformation($"Order {order.Id} dispute resolved with status: {dispute.Status}");
-                    // TODO: Send notification to admin about dispute resolution
+                    
+                    // Send notification to admin about dispute resolution
+                    try
+                    {
+                        // Get admin users
+                        var adminUsers = await _userManager.GetUsersInRoleAsync("Admin");
+                        
+                        foreach (var admin in adminUsers)
+                        {
+                            if (!string.IsNullOrEmpty(admin.Email))
+                            {
+                                var emailSubject = "AuraDecor Admin - Dispute Resolved";
+                                var emailBody = _emailTemplateService.CreateNotificationEmailTemplate(
+                                    "Payment Dispute Resolved",
+                                    $"The payment dispute for order #{order.Id} has been resolved with status: {dispute.Status}. Please review the resolution details in the admin panel.",
+                                    NotificationType.SystemAlert
+                                );
+                                
+                                await _emailService.SendNotificationEmailAsync(admin.Email, emailSubject, emailBody);
+                                _logger.LogInformation($"Dispute resolution notification email sent to admin {admin.Email} for order {order.Id}");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Failed to send dispute resolution notification email for order {order.Id}");
+                    }
                 }
             }
         }

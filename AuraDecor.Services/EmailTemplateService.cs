@@ -223,6 +223,173 @@ public class EmailTemplateService : IEmailTemplateService
             </body>
             </html>";
     }
+    
+    public string CreatePaymentFailureTemplate(string orderNumber, string failureReason)
+    {
+        return $@"
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    {GetBaseEmailStyles()}
+                    {GetPaymentFailureStyles()}
+                </style>
+            </head>
+            <body>
+                <div class='container'>
+                    <div class='pattern-top'></div>
+                    {GetEmailHeader()}
+                    <div class='content'>
+                        <p class='greeting'>Payment Failed</p>
+                        <p class='message'>We were unable to process your payment for order #{orderNumber}. Please review the details below and try again.</p>
+                        
+                        <div class='feature-container payment-failure-container'>
+                            <div class='feature-label'>Payment Issue</div>
+                            <div class='payment-failure-icon-wrapper'>
+                                <span class='payment-failure-icon'>❌</span>
+                            </div>
+                            <div class='order-details'>
+                                <div class='order-row'>
+                                    <span class='order-label'>Order Number:</span>
+                                    <span class='order-value'>{orderNumber}</span>
+                                </div>
+                                <div class='order-row'>
+                                    <span class='order-label'>Failure Reason:</span>
+                                    <span class='order-value'>{failureReason}</span>
+                                </div>
+                                <div class='order-row'>
+                                    <span class='order-label'>Date:</span>
+                                    <span class='order-value'>{DateTime.Now:MMM dd, yyyy}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='cta-section'>
+                            <a href='#' class='cta-button payment-retry-button'>Retry Payment</a>
+                        </div>
+                        
+                        <p class='notice'>If you continue to experience payment issues, please contact our support team for assistance. We're here to help!</p>
+                    </div>
+                    {GetEmailFooter()}
+                    <div class='pattern-bottom'></div>
+                </div>
+            </body>
+            </html>";
+    }
+    
+    public string CreateRefundNotificationTemplate(string orderNumber, decimal refundAmount, string refundReason)
+    {
+        return $@"
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    {GetBaseEmailStyles()}
+                    {GetRefundNotificationStyles()}
+                </style>
+            </head>
+            <body>
+                <div class='container'>
+                    <div class='pattern-top'></div>
+                    {GetEmailHeader()}
+                    <div class='content'>
+                        <p class='greeting'>Refund Processed</p>
+                        <p class='message'>Your refund has been successfully processed. Please review the details below.</p>
+                        
+                        <div class='feature-container refund-container'>
+                            <div class='feature-label'>Refund Details</div>
+                            <div class='refund-icon-wrapper'>
+                                <span class='refund-icon'>💰</span>
+                            </div>
+                            <div class='order-details'>
+                                <div class='order-row'>
+                                    <span class='order-label'>Order Number:</span>
+                                    <span class='order-value'>{orderNumber}</span>
+                                </div>
+                                <div class='order-row'>
+                                    <span class='order-label'>Refund Amount:</span>
+                                    <span class='order-value refund-amount'>${refundAmount:F2}</span>
+                                </div>
+                                <div class='order-row'>
+                                    <span class='order-label'>Reason:</span>
+                                    <span class='order-value'>{refundReason}</span>
+                                </div>
+                                <div class='order-row'>
+                                    <span class='order-label'>Processing Date:</span>
+                                    <span class='order-value'>{DateTime.Now:MMM dd, yyyy}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='cta-section'>
+                            <a href='#' class='cta-button'>View Order History</a>
+                        </div>
+                        
+                        <p class='notice'>Your refund will appear in your original payment method within 3-5 business days. Thank you for your patience.</p>
+                    </div>
+                    {GetEmailFooter()}
+                    <div class='pattern-bottom'></div>
+                </div>
+            </body>
+            </html>";
+    }
+    
+    public string CreateAdminDisputeNotificationTemplate(string orderNumber, string disputeReason, decimal disputeAmount)
+    {
+        return $@"
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    {GetBaseEmailStyles()}
+                    {GetAdminDisputeStyles()}
+                </style>
+            </head>
+            <body>
+                <div class='container'>
+                    <div class='pattern-top'></div>
+                    {GetEmailHeader()}
+                    <div class='content'>
+                        <p class='greeting'>Payment Dispute Alert</p>
+                        <p class='message'>A payment dispute has been raised that requires immediate attention. Please review the details below.</p>
+                        
+                        <div class='feature-container dispute-container'>
+                            <div class='feature-label'>Dispute Information</div>
+                            <div class='dispute-icon-wrapper'>
+                                <span class='dispute-icon'>⚠️</span>
+                            </div>
+                            <div class='order-details'>
+                                <div class='order-row'>
+                                    <span class='order-label'>Order Number:</span>
+                                    <span class='order-value'>{orderNumber}</span>
+                                </div>
+                                <div class='order-row'>
+                                    <span class='order-label'>Dispute Amount:</span>
+                                    <span class='order-value dispute-amount'>${disputeAmount:F2}</span>
+                                </div>
+                                <div class='order-row'>
+                                    <span class='order-label'>Reason:</span>
+                                    <span class='order-value'>{disputeReason}</span>
+                                </div>
+                                <div class='order-row'>
+                                    <span class='order-label'>Date:</span>
+                                    <span class='order-value'>{DateTime.Now:MMM dd, yyyy HH:mm}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='cta-section'>
+                            <a href='#' class='cta-button dispute-button'>Review in Admin Panel</a>
+                        </div>
+                        
+                        <p class='notice'>This is an automated admin notification. Please take appropriate action to resolve this dispute promptly.</p>
+                    </div>
+                    {GetEmailFooter()}
+                    <div class='pattern-bottom'></div>
+                </div>
+            </body>
+            </html>";
+    }
 
     private string GetBaseEmailStyles()
     {
@@ -663,6 +830,90 @@ public class EmailTemplateService : IEmailTemplateService
             
             .reset-button:hover {
                 background-color: #c82333;
+            }";
+    }
+    
+    private string GetPaymentFailureStyles()
+    {
+        return @"
+            .payment-failure-container {
+                border-left-color: #dc3545;
+            }
+            
+            .payment-failure-icon-wrapper {
+                margin: 15px 0;
+            }
+            
+            .payment-failure-icon {
+                font-size: 48px;
+                color: #dc3545;
+                display: inline-block;
+            }
+            
+            .payment-retry-button {
+                background-color: #dc3545;
+                color: white;
+            }
+            
+            .payment-retry-button:hover {
+                background-color: #c82333;
+            }";
+    }
+    
+    private string GetRefundNotificationStyles()
+    {
+        return @"
+            .refund-container {
+                border-left-color: #28a745;
+            }
+            
+            .refund-icon-wrapper {
+                margin: 15px 0;
+            }
+            
+            .refund-icon {
+                font-size: 48px;
+                color: #28a745;
+                display: inline-block;
+            }
+            
+            .refund-amount {
+                color: #28a745;
+                font-weight: 700;
+                font-size: 16px;
+            }";
+    }
+    
+    private string GetAdminDisputeStyles()
+    {
+        return @"
+            .dispute-container {
+                border-left-color: #ffc107;
+            }
+            
+            .dispute-icon-wrapper {
+                margin: 15px 0;
+            }
+            
+            .dispute-icon {
+                font-size: 48px;
+                color: #ffc107;
+                display: inline-block;
+            }
+            
+            .dispute-amount {
+                color: #dc3545;
+                font-weight: 700;
+                font-size: 16px;
+            }
+            
+            .dispute-button {
+                background-color: #ffc107;
+                color: #212529;
+            }
+            
+            .dispute-button:hover {
+                background-color: #e0a800;
             }";
     }
 
