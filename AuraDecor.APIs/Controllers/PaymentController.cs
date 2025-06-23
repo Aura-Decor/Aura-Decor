@@ -310,8 +310,8 @@ namespace AuraDecor.APIs.Controllers
             
             var order = await _unitOfWork.Repository<Order>()
                 .FindAsync(o => o.PaymentIntentId == paymentIntent.Id);
-                
-            if (order != null) 
+
+            if (order != null)
             {
                 _logger.LogInformation($"Order {order.Id} payment failed for user {order.UserId}");
 
@@ -319,7 +319,7 @@ namespace AuraDecor.APIs.Controllers
                 await CacheInvalidationHelper.InvalidateOrderCacheAsync(_cacheService);
                 await CacheInvalidationHelper.InvalidatePaymentCacheAsync(_cacheService);
                 await CacheInvalidationHelper.InvalidateUserSpecificCacheAsync(_cacheService, order.UserId);
-                
+
                 // Send payment failure notification to customer
                 try
                 {
@@ -332,7 +332,7 @@ namespace AuraDecor.APIs.Controllers
                             order.Id.ToString(),
                             failureReason
                         );
-                        
+
                         await _emailService.SendNotificationEmailAsync(user.Email, emailSubject, emailBody);
                         _logger.LogInformation($"Payment failure email sent to {user.Email} for order {order.Id}");
                     }
@@ -344,7 +344,8 @@ namespace AuraDecor.APIs.Controllers
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, $"Failed to send payment failure email for order {order.Id}");
-=                }
+                }
+            
             }
         }
         
@@ -424,7 +425,7 @@ namespace AuraDecor.APIs.Controllers
                     catch (Exception ex)
                     {
                         _logger.LogError(ex, $"Failed to send refund notification email for order {order.Id}");
-=                    }
+                    }
                 }
             }
         }
