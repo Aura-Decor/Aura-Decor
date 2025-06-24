@@ -63,9 +63,10 @@ public class AccountController : ApiBaseController
             
             return new AuthResponseDto
             {
-                Email = user.Email,
-                Token = token,
                 DisplayName = user.DisplayName,
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                Token = token,
                 RefreshToken = refreshToken.Token,
                 RefreshTokenExpiry = refreshToken.Expires
             };
@@ -110,9 +111,10 @@ public class AccountController : ApiBaseController
             
             return new AuthResponseDto
             {
-                Email = user.Email,
-                Token = token,
                 DisplayName = user.DisplayName,
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                Token = token,
                 RefreshToken = refreshToken.Token,
                 RefreshTokenExpiry = refreshToken.Expires
             };
@@ -139,9 +141,10 @@ public class AccountController : ApiBaseController
                 
                 return new AuthResponseDto
                 {
-                    Email = user.Email,
-                    Token = accessToken,
                     DisplayName = user.DisplayName,
+                    Email = user.Email,
+                    Phone = user.PhoneNumber,
+                    Token = accessToken,
                     RefreshToken = refreshToken.Token,
                     RefreshTokenExpiry = refreshToken.Expires
                 };
@@ -229,9 +232,10 @@ public class AccountController : ApiBaseController
 
             return Ok(new AuthResponseDto
             {
-                Email = user.Email,
-                Token = token,
                 DisplayName = user.DisplayName,
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                Token = token,
                 RefreshToken = refreshToken.Token,
                 RefreshTokenExpiry = refreshToken.Expires
             });
@@ -329,6 +333,7 @@ public class AccountController : ApiBaseController
         public async Task<ActionResult<AuthResponseDto>> GetCurrentUser()
         {
             var email = User.FindFirstValue(ClaimTypes.Email);
+
             var user = await _userManager.FindByEmailAsync(email);
             
             var token = await _authService.CreateTokenAsync(user, _userManager);
@@ -343,9 +348,10 @@ public class AccountController : ApiBaseController
 
             return new AuthResponseDto
             {
-                Email = user.Email,
-                Token = token,
                 DisplayName = user.DisplayName,
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                Token = token,
                 RefreshToken = refreshToken.Token,
                 RefreshTokenExpiry = refreshToken.Expires
             };
