@@ -40,6 +40,8 @@ public static class ApplicationServicesExtensions
         services.AddSingleton<IEmailTemplateService, EmailTemplateService>();
         
         services.AddScoped<FurniturePicUrlResolver>();
+        services.AddScoped<FurnitureModdelUrlResolver>();
+
         services.AddScoped<CartItemPicUrlResolver>();
         
         services.AddHttpClient();

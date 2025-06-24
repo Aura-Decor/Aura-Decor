@@ -24,7 +24,9 @@ public class MappingProfiles : Profile
             .ForMember(d => d.Category, o => o.MapFrom(s => s.Category.Name))
             .ForMember(d => d.StyleType, o => o.MapFrom(s => s.StyleType.Name))
             .ForMember(d => d.Color, o => o.MapFrom(s => s.Color.Name))
-            .ForMember(d => d.PictureUrl, o => o.MapFrom<FurniturePicUrlResolver>());
+            .ForMember(d => d.PictureUrl, o => o.MapFrom<FurniturePicUrlResolver>())
+            .ForMember(d => d.FurnitureModel, o => o.MapFrom<FurnitureModdelUrlResolver>());
+
 
         // Cart mappings
         CreateMap<Cart, CartDto>()
