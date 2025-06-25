@@ -3,6 +3,7 @@ using AuraDecor.Core.Repositories.Contract;
 using AuraDecor.Core.Services.Contract;
 using AuraDecor.Core.Specifications;
 using AuraDecor.Core.Specifications.CartSpecification;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AuraDecor.Servicies
 {
@@ -61,6 +62,16 @@ namespace AuraDecor.Servicies
             return await _unitOfWork.Repository<Cart>().GetWithSpecAsync(spec);
         }
 
+        public async Task RemoveAllItemsFromCartAsync(string userId)
+        {
+            var spec = new CartByUserIdSpecification(userId);
+            var cart = await _unitOfWork.Repository<Cart>().GetWithSpecAsync(spec);
+            if (cart == null) throw new Exception("Cart not found!");
+            if (!cart.CartItems.Any()) throw new Exception("Empty Cart");
+            cart.CartItems.Clear();
+            await _unitOfWork.CompleteAsync();
+        }
+
         public async Task RemoveFromCartAsync(string userId, Guid furnitureId)
         {
             var spec = new CartByUserIdSpecification(userId);
@@ -79,5 +90,7 @@ namespace AuraDecor.Servicies
 
             await _unitOfWork.CompleteAsync();
         }
+
+
     }
 }

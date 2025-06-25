@@ -8,5 +8,6 @@ namespace AuraDecor.Core.Services.Contract
         Task<Cart> GetCartByUserIdAsync(string Id);
         Task AddToCartAsync(string userId, Guid furnitureId, int quantity);
         Task RemoveFromCartAsync(string userId, Guid furnitureId);
+        Task RemoveAllItemsFromCartAsync(string userId);
     }
 }
