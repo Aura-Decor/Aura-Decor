@@ -74,24 +74,23 @@ The following diagrams provide a comprehensive overview of the AuraDecor system 
 ####  System Architecture Overview
 ![Clean Architecture Overview](./docs/clean-architecture-overview.svg)
 
-*Clean Architecture implementation showing the separation of concerns across presentation, application, domain, and infrastructure layers.*
+
 
 #### Request Processing Flow
 ![Request Processing Flow](./docs/request-processing-flow.svg)
 
-*Complete request lifecycle from client to database, including middleware pipeline, authentication, caching, and error handling.*
+
 
 #### Business Domains Structure
 ![Business Domains Overview](./docs/business-domains-overview.svg)
 
-*Core business domains and their relationships: User Management, Product Catalog, Shopping & Orders, and Communication systems.*
 
 
 
 #### 🔧 Technical Patterns
 ![Repository Pattern](./docs/repository-pattern.svg)
 
-*Implementation of Repository and Unit of Work patterns for clean data access architecture.*
+
 
 ## Technology Stack
 
