@@ -21,17 +21,20 @@ namespace AuraDecor.Servicies
         private readonly IMapper _mapper;
         private readonly IPaymentService _paymentService;
         private readonly ILogger<OrderService> _logger;
+        private readonly ICartService _cartService;
 
         public OrderService(
             IUnitOfWork unitOfWork, 
-            IMapper mapper, 
+            IMapper mapper,
             IPaymentService paymentService,
-            ILogger<OrderService> logger)
+            ILogger<OrderService> logger,
+            ICartService cartService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _paymentService = paymentService;
             _logger = logger;
+            _cartService = cartService;
         }
 
         public async Task<(Order order, PaymentIntentResponse paymentIntent)> CreateOrderAsync(string userId, Guid cartId, Address shippingAddress)
@@ -130,7 +133,7 @@ namespace AuraDecor.Servicies
                     ClientSecret = paymentIntent.ClientSecret,
                     PaymentIntentId = paymentIntent.Id
                 };
-                
+            await _cartService.RemoveAllItemsFromCartAsync(userId);
                 return (order, paymentResponse);
         }
 
