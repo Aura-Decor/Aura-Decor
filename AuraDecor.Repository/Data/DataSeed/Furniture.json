@@ -14,7 +14,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-19T18:49:17.431014+00:00",
+    "updatedAt": "2025-06-20T18:49:17.431014+00:00"
   },
   {
     "id": "c3201f1c-ce1c-4f08-a815-9e0f2ff7bb77",
@@ -31,7 +33,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-04-14T21:12:17.431050+00:00",
+    "updatedAt": "2025-05-16T21:12:17.431050+00:00"
   },
   {
     "id": "898a6dee-66c9-4a71-a2b3-e9a9c010fcc3",
@@ -48,7 +52,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-05-18T17:52:17.431064+00:00",
+    "updatedAt": "2025-05-29T17:52:17.431064+00:00"
   },
   {
     "id": "94a205de-6403-483a-8554-2ab1c810584a",
@@ -65,7 +71,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-31T02:59:17.431077+00:00",
+    "updatedAt": "2025-02-20T02:59:17.431077+00:00"
   },
   {
     "id": "441b47aa-386d-45ce-9ae5-ae7c91000d9a",
@@ -82,7 +90,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-18T03:33:17.431090+00:00",
+    "updatedAt": "2025-06-22T03:33:17.431090+00:00"
   },
   {
     "id": "4d8da5be-0950-461c-97e2-d1ec6e1ebd00",
@@ -99,7 +109,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-25T02:43:17.431104+00:00",
+    "updatedAt": "2025-03-28T02:43:17.431104+00:00"
   },
   {
     "id": "e780a1a5-a803-443d-b0c9-bf1433790c0a",
@@ -116,7 +128,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-13T23:44:17.431117+00:00",
+    "updatedAt": "2025-06-03T23:44:17.431117+00:00"
   },
   {
     "id": "3eca0351-1874-4097-a091-dcd7af0b0bff",
@@ -133,7 +147,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-14T09:47:17.431130+00:00",
+    "updatedAt": "2025-05-10T09:47:17.431130+00:00"
   },
   {
     "id": "c4b67ecd-99d1-4a6b-8967-5a11f827579d",
@@ -150,7 +166,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-03T19:41:17.431143+00:00",
+    "updatedAt": "2025-06-09T19:41:17.431143+00:00"
   },
   {
     "id": "9af246d7-d4a4-40bd-98a2-fcb8d3212a2b",
@@ -167,7 +185,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-10T01:46:17.431174+00:00",
+    "updatedAt": "2025-05-22T01:46:17.431174+00:00"
   },
   {
     "id": "328e6576-5f2d-4448-aff1-31f28bac6311",
@@ -184,7 +204,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-12T22:43:17.431189+00:00",
+    "updatedAt": "2025-05-15T22:43:17.431189+00:00"
   },
   {
     "id": "40490a41-4208-49a3-90fd-0a6758554db5",
@@ -201,7 +223,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-30T13:02:17.431204+00:00",
+    "updatedAt": "2025-06-02T13:02:17.431204+00:00"
   },
   {
     "id": "d5bd5cc9-0972-4510-a99c-713185037965",
@@ -218,7 +242,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-07T09:35:17.431218+00:00",
+    "updatedAt": "2025-06-21T09:35:17.431218+00:00"
   },
   {
     "id": "4cddadac-077d-401c-a411-62fef9a4375a",
@@ -235,7 +261,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-13T18:39:17.431233+00:00",
+    "updatedAt": "2025-06-28T18:39:17.431233+00:00"
   },
   {
     "id": "b2b78951-718d-4e72-85d4-a87312641a4e",
@@ -252,7 +280,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-21T08:33:17.431249+00:00",
+    "updatedAt": "2025-06-25T08:33:17.431249+00:00"
   },
   {
     "id": "e420cf67-4317-46de-8b07-9d9e1dfb5725",
@@ -269,7 +299,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-24T02:04:17.431263+00:00",
+    "updatedAt": "2025-06-13T02:04:17.431263+00:00"
   },
   {
     "id": "e555dcd0-09e8-43ef-ba8f-f55433cf8061",
@@ -286,7 +318,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-02T23:10:17.431278+00:00",
+    "updatedAt": "2025-02-09T23:10:17.431278+00:00"
   },
   {
     "id": "d98fca99-ed5d-4eed-a612-2d603df62495",
@@ -303,7 +337,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-20T08:32:17.431292+00:00",
+    "updatedAt": "2025-04-27T08:32:17.431292+00:00"
   },
   {
     "id": "98fdd724-42ef-4e39-864e-468798575ef9",
@@ -320,7 +356,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-23T02:38:17.431306+00:00",
+    "updatedAt": "2025-06-04T02:38:17.431306+00:00"
   },
   {
     "id": "f40cc16b-3df7-402f-8f1b-8fc1df14a6e2",
@@ -337,7 +375,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-02T01:14:17.431321+00:00",
+    "updatedAt": "2025-05-03T01:14:17.431321+00:00"
   },
   {
     "id": "67a8fcd0-fce8-4b6e-901e-9290c3f39e4c",
@@ -354,7 +394,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-04T17:27:17.431335+00:00",
+    "updatedAt": "2025-05-28T17:27:17.431335+00:00"
   },
   {
     "id": "98e11393-a80d-424b-b9ea-0ec1cd979e2b",
@@ -371,7 +413,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-12T11:21:17.431354+00:00",
+    "updatedAt": "2025-04-25T11:21:17.431354+00:00"
   },
   {
     "id": "515b4dcf-23e2-4687-9efb-59b4c4e21984",
@@ -388,7 +432,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-13T20:33:17.431369+00:00",
+    "updatedAt": "2025-05-27T20:33:17.431369+00:00"
   },
   {
     "id": "65333233-8673-4799-8250-f61823d612a2",
@@ -405,7 +451,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-13T01:55:17.431384+00:00",
+    "updatedAt": "2025-06-19T01:55:17.431384+00:00"
   },
   {
     "id": "fd9a2304-2961-45f0-a4d1-88394422c9a6",
@@ -422,7 +470,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-08T20:34:17.431398+00:00",
+    "updatedAt": "2025-06-27T20:34:17.431398+00:00"
   },
   {
     "id": "24f6e836-a14b-4802-bdd2-a99878d29513",
@@ -439,7 +489,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-18T22:36:17.431413+00:00",
+    "updatedAt": "2025-05-02T22:36:17.431413+00:00"
   },
   {
     "id": "d465bd0d-910e-45f1-8334-fa2961dd1e3f",
@@ -456,7 +508,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-18T17:30:17.431427+00:00",
+    "updatedAt": "2025-06-22T17:30:17.431427+00:00"
   },
   {
     "id": "e841d9f2-da74-4005-bab6-0b89d81244d3",
@@ -473,7 +527,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-23T23:37:17.431442+00:00",
+    "updatedAt": "2025-06-17T23:37:17.431442+00:00"
   },
   {
     "id": "8e2c5497-2b9e-4c6f-9c2f-edb9cba4852d",
@@ -490,7 +546,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-02-24T19:35:17.431456+00:00",
+    "updatedAt": "2025-04-22T19:35:17.431456+00:00"
   },
   {
     "id": "a3ac7b93-594a-4dd8-a7d1-d7e50f116914",
@@ -507,7 +565,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-05-27T09:53:17.431470+00:00",
+    "updatedAt": "2025-06-04T09:53:17.431470+00:00"
   },
   {
     "id": "2df40e00-b627-4216-90a7-511918861a0f",
@@ -524,7 +584,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-04-27T07:20:17.431499+00:00",
+    "updatedAt": "2025-05-10T07:20:17.431499+00:00"
   },
   {
     "id": "1eba8623-8909-4539-b5ce-ddb38eff72ac",
@@ -541,7 +603,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-01-08T16:45:17.431514+00:00",
+    "updatedAt": "2025-05-15T16:45:17.431514+00:00"
   },
   {
     "id": "da221202-6b6e-47a6-b9c1-3e0f38648604",
@@ -558,7 +622,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-07T07:34:17.431529+00:00",
+    "updatedAt": "2025-05-21T07:34:17.431529+00:00"
   },
   {
     "id": "91a036a7-0af1-46b7-9081-8c6fefeef8a3",
@@ -575,7 +641,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d1",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-03-13T19:52:17.431543+00:00",
+    "updatedAt": "2025-06-29T19:52:17.431543+00:00"
   },
   {
     "id": "0ca92f37-ff03-459b-a714-9fded362ab8f",
@@ -592,7 +660,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d1",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-04-06T16:18:17.431558+00:00",
+    "updatedAt": "2025-04-28T16:18:17.431558+00:00"
   },
   {
     "id": "045ecba9-37d7-483a-803a-b29bbf59ab1d",
@@ -609,7 +679,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-06-08T19:45:17.431572+00:00",
+    "updatedAt": "2025-06-24T19:45:17.431572+00:00"
   },
   {
     "id": "ddd2b511-a4bb-4581-ab52-8264bace1bd3",
@@ -626,7 +698,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-30T16:11:17.431588+00:00",
+    "updatedAt": "2025-06-30T16:11:17.431588+00:00"
   },
   {
     "id": "2374c73c-404d-46a4-9c1c-df5312249518",
@@ -643,7 +717,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-03-10T23:01:17.431602+00:00",
+    "updatedAt": "2025-04-22T23:01:17.431602+00:00"
   },
   {
     "id": "3d9f2813-3783-47ae-8f6e-3667d91d19d0",
@@ -660,7 +736,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-13T14:08:17.431617+00:00",
+    "updatedAt": "2025-04-11T14:08:17.431617+00:00"
   },
   {
     "id": "dbeb4901-b54b-4f9d-86ff-e63c5d147a36",
@@ -677,7 +755,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-01-07T22:38:17.431632+00:00",
+    "updatedAt": "2025-01-23T22:38:17.431632+00:00"
   },
   {
     "id": "17e18003-2955-41bf-94c7-54ce00e0e563",
@@ -694,7 +774,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-06-03T16:58:17.431646+00:00",
+    "updatedAt": "2025-06-14T16:58:17.431646+00:00"
   },
   {
     "id": "5e5c7932-1e45-41b1-8e5d-e134b3532ee0",
@@ -711,7 +793,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-01-25T06:51:17.431661+00:00",
+    "updatedAt": "2025-02-23T06:51:17.431661+00:00"
   },
   {
     "id": "f675fd73-cc9c-4da1-b896-2dc684d96cd7",
@@ -728,7 +812,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-13T05:43:17.431675+00:00",
+    "updatedAt": "2025-04-11T05:43:17.431675+00:00"
   },
   {
     "id": "130b96dc-bc59-4cb9-8b93-96746e5e09ac",
@@ -745,7 +831,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-05-09T21:56:17.431690+00:00",
+    "updatedAt": "2025-05-27T21:56:17.431690+00:00"
   },
   {
     "id": "d5f66cf1-949c-4098-b1dd-92a1c2ef7680",
@@ -762,7 +850,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-18T05:56:17.431705+00:00",
+    "updatedAt": "2025-05-25T05:56:17.431705+00:00"
   },
   {
     "id": "405e0c51-ca24-4bb5-9998-c9f8136e7bdb",
@@ -779,7 +869,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-07T07:04:17.431720+00:00",
+    "updatedAt": "2025-04-14T07:04:17.431720+00:00"
   },
   {
     "id": "9565f424-7588-4488-b098-f9f02ee900a4",
@@ -796,7 +888,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-05-29T01:09:17.431734+00:00",
+    "updatedAt": "2025-06-12T01:09:17.431734+00:00"
   },
   {
     "id": "6e3032b6-6dcd-44b2-a925-a4c079f469a7",
@@ -813,7 +907,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-11T15:53:17.431752+00:00",
+    "updatedAt": "2025-06-23T15:53:17.431752+00:00"
   },
   {
     "id": "129cbef0-016b-4e78-adba-68b6eaa0682b",
@@ -830,7 +926,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-06-07T22:03:17.431767+00:00",
+    "updatedAt": "2025-06-17T22:03:17.431767+00:00"
   },
   {
     "id": "f74854fd-70b5-4b42-a6b2-1fd226cb6e0c",
@@ -847,7 +945,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-03-25T22:45:17.431795+00:00",
+    "updatedAt": "2025-04-25T22:45:17.431795+00:00"
   },
   {
     "id": "35b1e601-e59d-489e-8794-9a1f444b157b",
@@ -864,7 +964,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-11T19:44:17.431811+00:00",
+    "updatedAt": "2025-02-21T19:44:17.431811+00:00"
   },
   {
     "id": "9ea4c28c-a86e-4a76-ab07-cf66cc12d491",
@@ -881,7 +983,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-21T14:02:17.431834+00:00",
+    "updatedAt": "2025-05-11T14:02:17.431834+00:00"
   },
   {
     "id": "d0e31edc-74be-467f-b9fa-dd0520db255b",
@@ -898,7 +1002,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-06-22T06:18:17.431867+00:00",
+    "updatedAt": "2025-06-24T06:18:17.431867+00:00"
   },
   {
     "id": "575ba1f7-d4a0-47b6-ab21-93c3a08fb211",
@@ -915,7 +1021,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-01-17T16:12:17.431892+00:00",
+    "updatedAt": "2025-05-03T16:12:17.431892+00:00"
   },
   {
     "id": "a99e927e-5223-4f9f-a56e-edfef1ab3074",
@@ -932,7 +1040,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-09T04:58:17.431919+00:00",
+    "updatedAt": "2025-04-23T04:58:17.431919+00:00"
   },
   {
     "id": "643b9a79-12e5-4036-91c1-94aa0f2522eb",
@@ -949,7 +1059,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-07T05:52:17.431943+00:00",
+    "updatedAt": "2025-06-23T05:52:17.431943+00:00"
   },
   {
     "id": "cf229c2a-b2dd-496c-93bf-f2e4e17b007b",
@@ -966,7 +1078,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-17T21:15:17.431987+00:00",
+    "updatedAt": "2025-05-09T21:15:17.431987+00:00"
   },
   {
     "id": "5c29b676-b3dd-41ff-9b0a-1af2754d0390",
@@ -983,7 +1097,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-10T14:32:17.432014+00:00",
+    "updatedAt": "2025-06-14T14:32:17.432014+00:00"
   },
   {
     "id": "c6008c3d-ad75-4c8a-bed9-4123046ffb83",
@@ -1000,7 +1116,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-06-07T10:10:17.432041+00:00",
+    "updatedAt": "2025-06-26T10:10:17.432041+00:00"
   },
   {
     "id": "5bd50e08-4368-4446-b202-5b8cd64b60d6",
@@ -1017,7 +1135,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-03-18T09:05:17.432070+00:00",
+    "updatedAt": "2025-04-04T09:05:17.432070+00:00"
   },
   {
     "id": "bd99f2b2-6a56-4226-9f34-a9b968811c26",
@@ -1034,7 +1154,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-16T16:02:17.432099+00:00",
+    "updatedAt": "2025-05-26T16:02:17.432099+00:00"
   },
   {
     "id": "b4b20dcc-e518-4c0b-9fb4-d9f9fe6d6c16",
@@ -1051,7 +1173,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-18T04:32:17.432128+00:00",
+    "updatedAt": "2025-06-08T04:32:17.432128+00:00"
   },
   {
     "id": "6700bd3c-3352-479e-84f1-cd3298537ecf",
@@ -1068,7 +1192,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-11T03:14:17.432151+00:00",
+    "updatedAt": "2025-05-25T03:14:17.432151+00:00"
   },
   {
     "id": "667cceb2-77c7-4551-b9c4-aaecf5207a53",
@@ -1085,7 +1211,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-05-06T06:16:17.432166+00:00",
+    "updatedAt": "2025-06-27T06:16:17.432166+00:00"
   },
   {
     "id": "35a242d1-d95c-4941-8e19-f7895cb04e57",
@@ -1102,7 +1230,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-03-27T02:05:17.432182+00:00",
+    "updatedAt": "2025-06-10T02:05:17.432182+00:00"
   },
   {
     "id": "664d9d11-3812-45ee-9ac8-11592d33552b",
@@ -1119,7 +1249,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-05-28T08:30:17.432197+00:00",
+    "updatedAt": "2025-06-24T08:30:17.432197+00:00"
   },
   {
     "id": "562d9063-7ffd-40be-9d5d-289fb02afce6",
@@ -1136,7 +1268,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-01-22T04:55:17.432212+00:00",
+    "updatedAt": "2025-05-04T04:55:17.432212+00:00"
   },
   {
     "id": "2dc5bba2-ce42-4692-b358-3ba3f6f16682",
@@ -1153,7 +1287,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "createdAt": "2025-05-17T19:32:17.432229+00:00",
+    "updatedAt": "2025-06-29T19:32:17.432229+00:00"
   },
   {
     "id": "f51e8bd1-07e1-4eb7-b57c-e2466d8b0bd5",
@@ -1170,7 +1306,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "createdAt": "2025-06-11T19:49:17.432244+00:00",
+    "updatedAt": "2025-06-13T19:49:17.432244+00:00"
   },
   {
     "id": "91c7fdb6-315e-47ef-922d-2f9fad9d9bf9",
@@ -1187,7 +1325,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "createdAt": "2025-05-31T18:59:17.432259+00:00",
+    "updatedAt": "2025-06-01T18:59:17.432259+00:00"
   },
   {
     "id": "88b84ece-eee6-491c-889c-160dedc3e181",
@@ -1204,7 +1344,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d1",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-06-05T03:35:17.432275+00:00",
+    "updatedAt": "2025-06-14T03:35:17.432275+00:00"
   },
   {
     "id": "9ae74f5b-2387-496e-990f-725ad8cec5fc",
@@ -1221,7 +1363,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d1",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-09T02:48:17.432290+00:00",
+    "updatedAt": "2025-06-17T02:48:17.432290+00:00"
   },
   {
     "id": "b686a26f-ae57-4d00-b630-1c21c2829074",
@@ -1238,7 +1382,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-31T06:57:17.432305+00:00",
+    "updatedAt": "2025-05-12T06:57:17.432305+00:00"
   },
   {
     "id": "d86fc5cf-51a8-46e1-8504-4e527c9582e3",
@@ -1255,7 +1401,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-05-03T13:08:17.432346+00:00",
+    "updatedAt": "2025-06-04T13:08:17.432346+00:00"
   },
   {
     "id": "3ca13ec0-d222-441f-b5bd-ecb1e1fe9537",
@@ -1272,7 +1420,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-06-22T04:47:17.432361+00:00",
+    "updatedAt": "2025-07-01T04:47:17.432361+00:00"
   },
   {
     "id": "1e2e7905-12f7-455f-9a99-40ebdc3333a3",
@@ -1289,7 +1439,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-04-25T17:41:17.432374+00:00",
+    "updatedAt": "2025-06-25T17:41:17.432374+00:00"
   },
   {
     "id": "c52ab39d-64de-4971-af46-d37419d6ff1d",
@@ -1306,7 +1458,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-21T06:20:17.432387+00:00",
+    "updatedAt": "2025-05-19T06:20:17.432387+00:00"
   },
   {
     "id": "9008f7d5-8eec-4c1d-b15d-4db15effd5d4",
@@ -1323,7 +1477,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-04T15:44:17.432400+00:00",
+    "updatedAt": "2025-05-19T15:44:17.432400+00:00"
   },
   {
     "id": "069db269-d8e1-4844-ad4e-c6efed876b27",
@@ -1340,7 +1496,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-12T09:05:17.432413+00:00",
+    "updatedAt": "2025-05-29T09:05:17.432413+00:00"
   },
   {
     "id": "f952b1d7-1213-40c8-accc-61582fe75038",
@@ -1357,7 +1515,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-01T12:53:17.432427+00:00",
+    "updatedAt": "2025-06-24T12:53:17.432427+00:00"
   },
   {
     "id": "733d8c5d-1196-421d-ad52-778f5a002f63",
@@ -1374,7 +1534,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-04-29T15:07:17.432440+00:00",
+    "updatedAt": "2025-05-12T15:07:17.432440+00:00"
   },
   {
     "id": "a99d5b41-a04f-4145-b1d2-dae5810689ea",
@@ -1391,7 +1553,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d7"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d7",
+    "createdAt": "2025-01-16T06:56:17.432453+00:00",
+    "updatedAt": "2025-04-30T06:56:17.432453+00:00"
   },
   {
     "id": "a6abdc59-5538-4119-a2ce-2060019ddb51",
@@ -1408,7 +1572,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-03-04T21:16:17.432467+00:00",
+    "updatedAt": "2025-04-21T21:16:17.432467+00:00"
   },
   {
     "id": "bc122d7b-02f7-42be-ab8e-d1b5ff0490c8",
@@ -1425,7 +1591,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-05-13T18:59:17.432480+00:00",
+    "updatedAt": "2025-06-30T18:59:17.432480+00:00"
   },
   {
     "id": "a6b9d02c-8d1a-4b9e-aaae-c5103465c600",
@@ -1442,7 +1610,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-04T03:30:17.432493+00:00",
+    "updatedAt": "2025-02-21T03:30:17.432493+00:00"
   },
   {
     "id": "b187ff1d-6677-4080-a97d-d4a3d4bf2e55",
@@ -1459,7 +1629,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "createdAt": "2025-01-20T10:01:17.432507+00:00",
+    "updatedAt": "2025-05-15T10:01:17.432507+00:00"
   },
   {
     "id": "2cfea77b-ca8e-43d3-9ab2-dd287a569c0c",
@@ -1476,7 +1648,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-10T07:54:17.432536+00:00",
+    "updatedAt": "2025-01-10T07:54:17.432536+00:00"
   },
   {
     "id": "b098b06f-42d9-4088-b8b2-1e46917b89e9",
@@ -1493,7 +1667,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-04-12T06:27:17.432547+00:00",
+    "updatedAt": "2025-06-13T06:27:17.432547+00:00"
   },
   {
     "id": "854a7f2c-ca8a-48c0-b837-f5affdedd23b",
@@ -1510,7 +1686,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-10T04:33:17.432558+00:00",
+    "updatedAt": "2025-05-10T04:33:17.432558+00:00"
   },
   {
     "id": "d5fe76c3-c99d-43d8-828f-b1880d90114d",
@@ -1527,7 +1705,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-02-22T04:04:17.432568+00:00",
+    "updatedAt": "2025-03-30T04:04:17.432568+00:00"
   },
   {
     "id": "daff914b-de20-4a86-9b19-524fdfc07cb9",
@@ -1544,7 +1724,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-25T15:44:17.432579+00:00",
+    "updatedAt": "2025-06-17T15:44:17.432579+00:00"
   },
   {
     "id": "2ca5f6a4-7c12-43f8-a430-015abb8e0a93",
@@ -1561,7 +1743,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-20T19:33:17.432590+00:00",
+    "updatedAt": "2025-04-27T19:33:17.432590+00:00"
   },
   {
     "id": "93ee8a8e-58b9-4315-ab07-ec45381cdeaf",
@@ -1578,7 +1762,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-16T01:09:17.432600+00:00",
+    "updatedAt": "2025-05-05T01:09:17.432600+00:00"
   },
   {
     "id": "2132509d-d273-4715-8c28-360334cf0a69",
@@ -1595,7 +1781,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-13T12:18:17.432611+00:00",
+    "updatedAt": "2025-04-22T12:18:17.432611+00:00"
   },
   {
     "id": "70e0579d-3c2d-41c3-8ee5-f3e11d653d14",
@@ -1612,7 +1800,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d7"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d7",
+    "createdAt": "2025-01-24T17:34:17.432621+00:00",
+    "updatedAt": "2025-02-16T17:34:17.432621+00:00"
   },
   {
     "id": "8fdbedb2-ac92-45d5-9f43-c0d20375b4c8",
@@ -1629,7 +1819,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-20T09:36:17.432632+00:00",
+    "updatedAt": "2025-06-23T09:36:17.432632+00:00"
   },
   {
     "id": "f6b23c4b-8017-4d1d-a938-f23019b4c8de",
@@ -1646,7 +1838,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-05T13:05:17.432642+00:00",
+    "updatedAt": "2025-06-26T13:05:17.432642+00:00"
   },
   {
     "id": "735d2758-f2b2-42cb-9693-b19a615638b9",
@@ -1663,7 +1857,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-02-26T10:42:17.432654+00:00",
+    "updatedAt": "2025-03-27T10:42:17.432654+00:00"
   },
   {
     "id": "64c07484-f3b1-45b1-af47-099c64fbd578",
@@ -1680,7 +1876,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-04T11:30:17.432668+00:00",
+    "updatedAt": "2025-06-06T11:30:17.432668+00:00"
   },
   {
     "id": "08451119-3e7e-4eb0-901a-243d07c7bb49",
@@ -1697,7 +1895,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-01-19T19:07:17.432680+00:00",
+    "updatedAt": "2025-05-07T19:07:17.432680+00:00"
   },
   {
     "id": "6dd55a7d-f14a-4c46-89a8-38519a33405b",
@@ -1714,7 +1914,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-02T13:37:17.432691+00:00",
+    "updatedAt": "2025-04-11T13:37:17.432691+00:00"
   },
   {
     "id": "537b6049-1ad9-4993-9957-ea01b8cc7ea6",
@@ -1731,7 +1933,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-06T05:53:17.432702+00:00",
+    "updatedAt": "2025-04-21T05:53:17.432702+00:00"
   },
   {
     "id": "3ea32cf2-e1b5-4334-97e8-2350ccc99907",
@@ -1748,7 +1952,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-06-03T22:43:17.432712+00:00",
+    "updatedAt": "2025-06-13T22:43:17.432712+00:00"
   },
   {
     "id": "c184cc28-f599-4298-8af7-db92d69b028b",
@@ -1765,7 +1971,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-24T06:21:17.432723+00:00",
+    "updatedAt": "2025-05-06T06:21:17.432723+00:00"
   },
   {
     "id": "f29140cf-8a11-4f3d-9b13-179e9a863f7e",
@@ -1782,7 +1990,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-20T17:21:17.432734+00:00",
+    "updatedAt": "2025-04-23T17:21:17.432734+00:00"
   },
   {
     "id": "07a54767-09a7-4a3d-880b-749b4c901bd5",
@@ -1799,7 +2009,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-02T01:09:17.432745+00:00",
+    "updatedAt": "2025-02-17T01:09:17.432745+00:00"
   },
   {
     "id": "410ff8bb-4c0b-4219-a746-af58dbcb4ecf",
@@ -1816,7 +2028,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-06-13T03:32:17.432756+00:00",
+    "updatedAt": "2025-06-28T03:32:17.432756+00:00"
   },
   {
     "id": "6129f1a0-76c3-4616-9c91-0275dc0ac031",
@@ -1833,7 +2047,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-19T20:50:17.432767+00:00",
+    "updatedAt": "2025-06-22T20:50:17.432767+00:00"
   },
   {
     "id": "9d7fa9a8-2911-4949-817e-622b5c680dcc",
@@ -1850,7 +2066,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-02-18T01:09:17.432813+00:00",
+    "updatedAt": "2025-04-26T01:09:17.432813+00:00"
   },
   {
     "id": "b663ccd8-4a6b-45b3-8da0-2a90bf63f006",
@@ -1867,7 +2085,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-02-19T22:27:17.432830+00:00",
+    "updatedAt": "2025-02-28T22:27:17.432830+00:00"
   },
   {
     "id": "686f4982-d689-45a6-87d3-464c96e59c4e",
@@ -1884,7 +2104,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-02-24T18:17:17.432845+00:00",
+    "updatedAt": "2025-02-25T18:17:17.432845+00:00"
   },
   {
     "id": "93000cba-fa24-4b64-90d5-047edb14a3ec",
@@ -1901,7 +2123,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-03T04:33:17.432861+00:00",
+    "updatedAt": "2025-06-08T04:33:17.432861+00:00"
   },
   {
     "id": "9d2356a6-8466-446f-ad23-cb9611717fae",
@@ -1918,7 +2142,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-06-03T13:09:17.432893+00:00",
+    "updatedAt": "2025-06-04T13:09:17.432893+00:00"
   },
   {
     "id": "014e8da4-0dc4-405f-b7d9-2dbdb0576429",
@@ -1935,7 +2161,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-24T23:39:17.432906+00:00",
+    "updatedAt": "2025-06-13T23:39:17.432906+00:00"
   },
   {
     "id": "f624e736-02f7-4273-9cba-7d4a2f0e65c4",
@@ -1952,7 +2180,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-06-06T15:39:17.432919+00:00",
+    "updatedAt": "2025-06-29T15:39:17.432919+00:00"
   },
   {
     "id": "f9cc3c66-7151-4912-976e-f6a988452a3c",
@@ -1969,7 +2199,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-12T15:43:17.432932+00:00",
+    "updatedAt": "2025-05-04T15:43:17.432932+00:00"
   },
   {
     "id": "69777cc5-16a0-49fe-abef-e5751b246ee4",
@@ -1986,7 +2218,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-24T14:18:17.432945+00:00",
+    "updatedAt": "2025-06-26T14:18:17.432945+00:00"
   },
   {
     "id": "28bb69a4-2e68-4b1e-8dd3-83530df4e724",
@@ -2003,7 +2237,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-23T18:59:17.432958+00:00",
+    "updatedAt": "2025-06-25T18:59:17.432958+00:00"
   },
   {
     "id": "c8ca9af2-eed2-4841-9b53-dd89c30743a3",
@@ -2020,7 +2256,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d7",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-03-10T21:55:17.432971+00:00",
+    "updatedAt": "2025-03-24T21:55:17.432971+00:00"
   },
   {
     "id": "56480bd4-241b-4446-b49b-bfc375c1a9a4",
@@ -2037,7 +2275,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-06T18:52:17.432985+00:00",
+    "updatedAt": "2025-04-15T18:52:17.432985+00:00"
   },
   {
     "id": "314c8d01-33a6-4b58-b81f-215354efd161",
@@ -2054,7 +2294,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-05-30T19:29:17.432998+00:00",
+    "updatedAt": "2025-06-30T19:29:17.432998+00:00"
   },
   {
     "id": "1efebdc3-f0cb-43a2-aea8-020817d5c4b2",
@@ -2071,7 +2313,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-02-19T08:25:17.433011+00:00",
+    "updatedAt": "2025-05-05T08:25:17.433011+00:00"
   },
   {
     "id": "c6000538-6ee7-4fe0-84a0-c681f96e2ab8",
@@ -2088,7 +2332,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-24T11:51:17.433024+00:00",
+    "updatedAt": "2025-06-19T11:51:17.433024+00:00"
   },
   {
     "id": "78c5d8da-8032-4cde-a125-ad458450786b",
@@ -2105,7 +2351,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-02-22T16:11:17.433041+00:00",
+    "updatedAt": "2025-04-04T16:11:17.433041+00:00"
   },
   {
     "id": "b095eea8-e100-4cb9-8456-75c7669650eb",
@@ -2122,7 +2370,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-02-27T02:59:17.433055+00:00",
+    "updatedAt": "2025-03-16T02:59:17.433055+00:00"
   },
   {
     "id": "933fa26a-55f3-4450-8e86-bfc3483f950a",
@@ -2139,7 +2389,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-09T06:19:17.433069+00:00",
+    "updatedAt": "2025-06-17T06:19:17.433069+00:00"
   },
   {
     "id": "518d7b55-e634-41df-bb9f-f3d6d5fc1149",
@@ -2156,7 +2408,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-06-22T13:16:17.433082+00:00",
+    "updatedAt": "2025-06-23T13:16:17.433082+00:00"
   },
   {
     "id": "0ebe5794-0b69-4bfb-a1b5-04a1b131259f",
@@ -2173,7 +2427,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-04-15T15:17:17.433096+00:00",
+    "updatedAt": "2025-05-03T15:17:17.433096+00:00"
   },
   {
     "id": "c5cdb1ea-f52c-4d81-8e65-2e99f0631aa6",
@@ -2190,7 +2446,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-06-24T14:43:17.433109+00:00",
+    "updatedAt": "2025-07-01T14:43:17.433109+00:00"
   },
   {
     "id": "1e4088ef-02a0-40f6-ad49-0145d2693ac4",
@@ -2207,7 +2465,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-04-24T02:22:17.433123+00:00",
+    "updatedAt": "2025-06-27T02:22:17.433123+00:00"
   },
   {
     "id": "a10f7f9b-d772-4b88-a395-227b579a96b0",
@@ -2224,7 +2484,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-01-16T00:07:17.433137+00:00",
+    "updatedAt": "2025-02-09T00:07:17.433137+00:00"
   },
   {
     "id": "05582eac-f1b2-46e5-9b23-41e1b0e410b9",
@@ -2241,7 +2503,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-16T07:52:17.433150+00:00",
+    "updatedAt": "2025-06-27T07:52:17.433150+00:00"
   },
   {
     "id": "cc707b4b-5fab-45d0-a5d5-566bc3a93f80",
@@ -2258,7 +2522,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-05-26T07:01:17.433164+00:00",
+    "updatedAt": "2025-06-24T07:01:17.433164+00:00"
   },
   {
     "id": "9299f0b8-ecc7-451d-b7f9-b69a6e2992ec",
@@ -2275,7 +2541,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-16T15:26:17.433177+00:00",
+    "updatedAt": "2025-04-04T15:26:17.433177+00:00"
   },
   {
     "id": "64251498-87a0-4eb7-8b34-6c8d4d81a040",
@@ -2292,7 +2560,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-05-22T23:37:17.433190+00:00",
+    "updatedAt": "2025-06-28T23:37:17.433190+00:00"
   },
   {
     "id": "d5d14642-a45e-4122-a53d-0fc7fd92936a",
@@ -2309,7 +2579,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-12T06:59:17.433204+00:00",
+    "updatedAt": "2025-06-27T06:59:17.433204+00:00"
   },
   {
     "id": "4cc6cb9f-3b7e-48d6-b554-3fcc1e083f5e",
@@ -2326,7 +2598,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-11T06:31:17.433217+00:00",
+    "updatedAt": "2025-01-26T06:31:17.433217+00:00"
   },
   {
     "id": "5213bfb5-b5b1-4bb9-aade-d7f716c15626",
@@ -2343,7 +2617,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-05-10T08:47:17.433230+00:00",
+    "updatedAt": "2025-06-30T08:47:17.433230+00:00"
   },
   {
     "id": "51724ddc-220c-4fd2-a0df-b965a574ad6f",
@@ -2360,7 +2636,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-05-15T09:14:17.433243+00:00",
+    "updatedAt": "2025-06-02T09:14:17.433243+00:00"
   },
   {
     "id": "0456be85-f3c7-4441-a528-0a25d1b53b9b",
@@ -2377,7 +2655,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-04-24T23:39:17.433256+00:00",
+    "updatedAt": "2025-06-14T23:39:17.433256+00:00"
   },
   {
     "id": "ffd6c929-ab81-4498-8590-b2400007ac8d",
@@ -2394,7 +2674,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-14T03:15:17.433269+00:00",
+    "updatedAt": "2025-06-21T03:15:17.433269+00:00"
   },
   {
     "id": "af1a5afa-7a90-4e87-bd53-24dbfc5b824f",
@@ -2411,7 +2693,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-06-14T14:04:17.433283+00:00",
+    "updatedAt": "2025-06-23T14:04:17.433283+00:00"
   },
   {
     "id": "e259cc46-7c07-4a0b-b97c-094e027c061c",
@@ -2428,7 +2712,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-12T12:41:17.433296+00:00",
+    "updatedAt": "2025-03-28T12:41:17.433296+00:00"
   },
   {
     "id": "a4ba2b6f-0e3c-4700-af43-4d20786e4606",
@@ -2445,7 +2731,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-01-01T22:29:17.433309+00:00",
+    "updatedAt": "2025-01-09T22:29:17.433309+00:00"
   },
   {
     "id": "70347af5-b01c-4ee2-8df3-06d09dd24de2",
@@ -2462,7 +2750,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-22T12:38:17.433323+00:00",
+    "updatedAt": "2025-06-23T12:38:17.433323+00:00"
   },
   {
     "id": "03b28567-1284-4cac-93b9-d69ceaecbe36",
@@ -2479,7 +2769,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-02-16T05:09:17.433336+00:00",
+    "updatedAt": "2025-06-25T05:09:17.433336+00:00"
   },
   {
     "id": "54358528-67db-4024-9643-3d6b11390108",
@@ -2496,7 +2788,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-17T17:21:17.433349+00:00",
+    "updatedAt": "2025-06-22T17:21:17.433349+00:00"
   },
   {
     "id": "a6116bdd-2796-460d-9dcd-bd65f1a70916",
@@ -2513,7 +2807,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-05-26T14:45:17.433363+00:00",
+    "updatedAt": "2025-06-17T14:45:17.433363+00:00"
   },
   {
     "id": "643a0d2d-2fc0-4cbf-af66-5a6cdddd8620",
@@ -2530,7 +2826,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-05-20T17:14:17.433376+00:00",
+    "updatedAt": "2025-06-13T17:14:17.433376+00:00"
   },
   {
     "id": "43fa4653-c1b6-4e86-858d-84b6986e84d9",
@@ -2547,7 +2845,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-06T20:46:17.433391+00:00",
+    "updatedAt": "2025-06-29T20:46:17.433391+00:00"
   },
   {
     "id": "2829d246-8809-45cf-82a0-a457cdf5194c",
@@ -2564,7 +2864,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-26T19:58:17.433405+00:00",
+    "updatedAt": "2025-06-19T19:58:17.433405+00:00"
   },
   {
     "id": "b486b84f-edd7-472e-acf8-63240e169703",
@@ -2581,7 +2883,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-16T02:45:17.433418+00:00",
+    "updatedAt": "2025-05-18T02:45:17.433418+00:00"
   },
   {
     "id": "5775d5d5-c17f-402e-98df-d042e25ab79b",
@@ -2598,7 +2902,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-05T19:12:17.433432+00:00",
+    "updatedAt": "2025-01-23T19:12:17.433432+00:00"
   },
   {
     "id": "eaa5dbfc-cf7c-4820-8060-11e1c608c1bb",
@@ -2615,7 +2921,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-08T06:14:17.433445+00:00",
+    "updatedAt": "2025-04-29T06:14:17.433445+00:00"
   },
   {
     "id": "1915b620-e323-4ecd-ab58-e7d05dc52f95",
@@ -2632,7 +2940,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-25T15:18:17.433458+00:00",
+    "updatedAt": "2025-06-30T15:18:17.433458+00:00"
   },
   {
     "id": "2b83627c-26cb-4b08-93f9-1f76778a3196",
@@ -2649,7 +2959,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-03-19T06:46:17.433471+00:00",
+    "updatedAt": "2025-03-26T06:46:17.433471+00:00"
   },
   {
     "id": "5e2d9a84-9ac1-45ec-9414-192506125818",
@@ -2666,7 +2978,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-27T23:08:17.433484+00:00",
+    "updatedAt": "2025-06-17T23:08:17.433484+00:00"
   },
   {
     "id": "c801949f-92d0-4e64-97f4-8d43c3cedfda",
@@ -2683,7 +2997,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-16T09:27:17.433497+00:00",
+    "updatedAt": "2025-06-20T09:27:17.433497+00:00"
   },
   {
     "id": "7e1f3647-9d4d-4d52-8681-1fdcd5616c43",
@@ -2700,7 +3016,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-06T01:37:17.433510+00:00",
+    "updatedAt": "2025-04-22T01:37:17.433510+00:00"
   },
   {
     "id": "04ad4f47-30c0-44af-a776-e3adfdeff970",
@@ -2717,7 +3035,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-02-09T20:49:17.433524+00:00",
+    "updatedAt": "2025-04-04T20:49:17.433524+00:00"
   },
   {
     "id": "9f643e2c-1854-454d-b826-e44eb1278931",
@@ -2734,7 +3054,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-07-01T19:00:17.433537+00:00",
+    "updatedAt": "2025-07-01T19:00:17.433537+00:00"
   },
   {
     "id": "219eab74-7673-400f-923d-d03ea33ac30c",
@@ -2751,7 +3073,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-20T03:17:17.433550+00:00",
+    "updatedAt": "2025-06-02T03:17:17.433550+00:00"
   },
   {
     "id": "5072a99e-55ec-4936-be90-e0bc1df64baa",
@@ -2768,7 +3092,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-02-08T10:31:17.433564+00:00",
+    "updatedAt": "2025-05-08T10:31:17.433564+00:00"
   },
   {
     "id": "3de32c7e-17fa-4134-9a0f-9000c79a1056",
@@ -2785,7 +3111,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-07-01T06:38:17.433577+00:00",
+    "updatedAt": "2025-07-01T06:38:17.433577+00:00"
   },
   {
     "id": "79363062-283f-4647-b4a7-ef45d18ab06d",
@@ -2802,7 +3130,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-03T23:15:17.433590+00:00",
+    "updatedAt": "2025-05-17T23:15:17.433590+00:00"
   },
   {
     "id": "f7cf4c46-48db-47bc-a552-4d1b1b42a7cf",
@@ -2819,7 +3149,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-01-22T03:40:17.433603+00:00",
+    "updatedAt": "2025-06-04T03:40:17.433603+00:00"
   },
   {
     "id": "66cb66e2-8035-4546-b64b-f0b23e4b6d07",
@@ -2836,7 +3168,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-07T18:31:17.433616+00:00",
+    "updatedAt": "2025-06-23T18:31:17.433616+00:00"
   },
   {
     "id": "2f7a315b-b252-4022-812f-a8ab5aca3920",
@@ -2853,7 +3187,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-03-22T14:52:17.433629+00:00",
+    "updatedAt": "2025-04-27T14:52:17.433629+00:00"
   },
   {
     "id": "b30690d1-6e4a-4c73-9bd8-079038d1cd96",
@@ -2870,7 +3206,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d4",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d8"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d8",
+    "createdAt": "2025-01-26T13:07:17.433642+00:00",
+    "updatedAt": "2025-02-21T13:07:17.433642+00:00"
   },
   {
     "id": "9ae5a628-359b-4986-959d-8c48474bc660",
@@ -2887,7 +3225,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d4",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-04-21T12:34:17.433656+00:00",
+    "updatedAt": "2025-06-21T12:34:17.433656+00:00"
   },
   {
     "id": "9bc7d596-7c1c-4ea1-a55a-74c0135159bc",
@@ -2904,7 +3244,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d4",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-08T02:00:17.433669+00:00",
+    "updatedAt": "2025-06-08T02:00:17.433669+00:00"
   },
   {
     "id": "653fd2b7-8ade-4f47-a570-ee69ed0210f3",
@@ -2921,7 +3263,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d7",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-06-21T00:57:17.433682+00:00",
+    "updatedAt": "2025-06-28T00:57:17.433682+00:00"
   },
   {
     "id": "65cfe70a-e59b-4106-a28b-0adba61c21a6",
@@ -2938,7 +3282,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-13T12:20:17.433695+00:00",
+    "updatedAt": "2025-04-23T12:20:17.433695+00:00"
   },
   {
     "id": "1719e7f6-612e-49d2-a052-bd9176670b4d",
@@ -2955,7 +3301,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-06-03T23:37:17.433709+00:00",
+    "updatedAt": "2025-06-18T23:37:17.433709+00:00"
   },
   {
     "id": "c4ae3bac-fd78-4014-a6c6-b3a7d4ced858",
@@ -2972,7 +3320,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-11T00:15:17.433722+00:00",
+    "updatedAt": "2025-06-02T00:15:17.433722+00:00"
   },
   {
     "id": "b196399e-58a4-4ce9-a2f1-e1c41d1131e5",
@@ -2989,7 +3339,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-06-16T03:05:17.433739+00:00",
+    "updatedAt": "2025-06-24T03:05:17.433739+00:00"
   },
   {
     "id": "f718d069-7cf3-4b1b-a3f1-ecb2e1cfc0d4",
@@ -3006,7 +3358,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-04-29T19:01:17.433753+00:00",
+    "updatedAt": "2025-04-30T19:01:17.433753+00:00"
   },
   {
     "id": "55f5cc49-e0a6-489c-b7cc-ab1582e22fee",
@@ -3023,7 +3377,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-21T19:29:17.433767+00:00",
+    "updatedAt": "2025-06-27T19:29:17.433767+00:00"
   },
   {
     "id": "0ea7c10b-fc3f-4769-84a8-10c70d3c55ef",
@@ -3040,7 +3396,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-03-21T02:50:17.433815+00:00",
+    "updatedAt": "2025-05-01T02:50:17.433815+00:00"
   },
   {
     "id": "9d64535d-8831-48ec-9414-6c12797303a0",
@@ -3057,7 +3415,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-26T10:53:17.433832+00:00",
+    "updatedAt": "2025-06-03T10:53:17.433832+00:00"
   },
   {
     "id": "8a04a8c6-1d80-4b4c-a6c5-9da4d7cc5079",
@@ -3074,7 +3434,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-18T15:37:17.433848+00:00",
+    "updatedAt": "2025-05-13T15:37:17.433848+00:00"
   },
   {
     "id": "d8e58896-4b74-447d-b284-2ecbbed2a3b5",
@@ -3091,7 +3453,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-28T13:41:17.433881+00:00",
+    "updatedAt": "2025-02-22T13:41:17.433881+00:00"
   },
   {
     "id": "442f3421-c890-4b85-988c-3c86310ba65f",
@@ -3108,7 +3472,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d4",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-14T12:12:17.433894+00:00",
+    "updatedAt": "2025-03-29T12:12:17.433894+00:00"
   },
   {
     "id": "acae99d4-0303-48ca-9eba-e40de75f72ca",
@@ -3125,7 +3491,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-28T00:38:17.433907+00:00",
+    "updatedAt": "2025-06-28T00:38:17.433907+00:00"
   },
   {
     "id": "a335e644-c06e-47ee-a628-efbed0e7a3ea",
@@ -3142,7 +3510,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "createdAt": "2025-05-16T23:52:17.433920+00:00",
+    "updatedAt": "2025-06-29T23:52:17.433920+00:00"
   },
   {
     "id": "5cb1b6fb-5723-4836-80f1-9e5582071acf",
@@ -3159,7 +3529,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-04-03T10:32:17.433933+00:00",
+    "updatedAt": "2025-04-20T10:32:17.433933+00:00"
   },
   {
     "id": "5bd681a2-55cb-4dd5-896b-9aab03f50700",
@@ -3176,7 +3548,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-16T22:57:17.433946+00:00",
+    "updatedAt": "2025-06-23T22:57:17.433946+00:00"
   },
   {
     "id": "4a292fd1-ab2e-44ca-abc6-e8ffcbd5ce4d",
@@ -3193,7 +3567,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-01-27T19:21:17.433959+00:00",
+    "updatedAt": "2025-03-20T19:21:17.433959+00:00"
   },
   {
     "id": "0c0d4c52-09b2-4eb9-99a3-2d9bfe3aa296",
@@ -3210,7 +3586,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-11T12:56:17.433973+00:00",
+    "updatedAt": "2025-06-01T12:56:17.433973+00:00"
   },
   {
     "id": "2afffd55-6fba-47fb-881b-4b6495c649b7",
@@ -3227,7 +3605,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-12T21:30:17.433985+00:00",
+    "updatedAt": "2025-06-21T21:30:17.433985+00:00"
   },
   {
     "id": "117eef91-4884-40ef-b057-f34387d3fc00",
@@ -3244,7 +3624,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-04-11T13:20:17.433999+00:00",
+    "updatedAt": "2025-04-24T13:20:17.433999+00:00"
   },
   {
     "id": "57da5f57-d0b1-4a62-8c7e-684a97dc5115",
@@ -3261,7 +3643,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-07-01T02:47:17.434012+00:00",
+    "updatedAt": "2025-07-01T02:47:17.434012+00:00"
   },
   {
     "id": "0d4ebd3f-6eb0-45e1-b291-bff0337bb5d9",
@@ -3278,7 +3662,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-20T04:04:17.434025+00:00",
+    "updatedAt": "2025-06-08T04:04:17.434025+00:00"
   },
   {
     "id": "fa24a2df-f3d9-49b0-ab8b-e70e301f7898",
@@ -3295,7 +3681,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d3",
+    "createdAt": "2025-03-23T12:45:17.434038+00:00",
+    "updatedAt": "2025-06-04T12:45:17.434038+00:00"
   },
   {
     "id": "ecf65e6e-1f70-422b-9af2-87ccccc366b9",
@@ -3312,7 +3700,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-01-03T10:20:17.434051+00:00",
+    "updatedAt": "2025-06-06T10:20:17.434051+00:00"
   },
   {
     "id": "00353168-792e-4756-934f-bbcb64e05d14",
@@ -3329,7 +3719,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-06-24T10:55:17.434064+00:00",
+    "updatedAt": "2025-06-26T10:55:17.434064+00:00"
   },
   {
     "id": "45574841-0299-4d27-9425-d8516aa0da4c",
@@ -3346,7 +3738,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "createdAt": "2025-03-04T19:14:17.434077+00:00",
+    "updatedAt": "2025-06-27T19:14:17.434077+00:00"
   },
   {
     "id": "3cc26115-a97c-4871-97f8-e66b82174ad6",
@@ -3363,7 +3757,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d4",
+    "createdAt": "2025-03-26T10:28:17.434091+00:00",
+    "updatedAt": "2025-04-26T10:28:17.434091+00:00"
   },
   {
     "id": "9e325726-e692-4088-9e34-26878c7f7c92",
@@ -3380,7 +3776,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-10T14:58:17.434104+00:00",
+    "updatedAt": "2025-06-17T14:58:17.434104+00:00"
   },
   {
     "id": "65444faf-bff0-408b-a75c-ea6862c9fa97",
@@ -3397,7 +3795,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d5",
+    "createdAt": "2025-01-19T13:00:17.434116+00:00",
+    "updatedAt": "2025-02-10T13:00:17.434116+00:00"
   },
   {
     "id": "9ce90800-6a59-485f-920e-a2582bbe8556",
@@ -3414,7 +3814,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d4",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-05-31T21:59:17.434151+00:00",
+    "updatedAt": "2025-06-22T21:59:17.434151+00:00"
   },
   {
     "id": "ded0ace7-829e-445f-9dcb-976c7c6dc54c",
@@ -3431,7 +3833,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-02-16T06:12:17.434186+00:00",
+    "updatedAt": "2025-05-08T06:12:17.434186+00:00"
   },
   {
     "id": "5c2cfa60-31df-4460-8c1d-803b28c64ee2",
@@ -3448,7 +3852,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-03-04T17:14:17.434200+00:00",
+    "updatedAt": "2025-05-25T17:14:17.434200+00:00"
   },
   {
     "id": "9664006a-379d-4e85-bf9b-24b549e7ea18",
@@ -3465,7 +3871,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-03-26T06:32:17.434214+00:00",
+    "updatedAt": "2025-05-02T06:32:17.434214+00:00"
   },
   {
     "id": "b1fbf5ac-6f3a-41c0-91be-767c56ab0387",
@@ -3482,7 +3890,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-02-23T08:23:17.434227+00:00",
+    "updatedAt": "2025-03-29T08:23:17.434227+00:00"
   },
   {
     "id": "fa68b318-40b0-45ac-84e8-33ccc5bd90a3",
@@ -3499,7 +3909,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-06-17T06:02:17.434240+00:00",
+    "updatedAt": "2025-06-17T06:02:17.434240+00:00"
   },
   {
     "id": "17bbde93-d253-4068-97b7-65184d550005",
@@ -3516,7 +3928,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-02-18T20:09:17.434253+00:00",
+    "updatedAt": "2025-04-17T20:09:17.434253+00:00"
   },
   {
     "id": "1d02a304-797e-46ca-93d2-8503e4341941",
@@ -3533,7 +3947,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-04-26T14:41:17.434267+00:00",
+    "updatedAt": "2025-06-20T14:41:17.434267+00:00"
   },
   {
     "id": "c8643cdd-16ce-4975-a52d-87767910f74c",
@@ -3550,7 +3966,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-01-20T15:15:17.434280+00:00",
+    "updatedAt": "2025-05-06T15:15:17.434280+00:00"
   },
   {
     "id": "458ddf0b-9e08-45bf-ac94-9f93f9382ffe",
@@ -3567,7 +3985,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-04-08T16:30:17.434293+00:00",
+    "updatedAt": "2025-06-07T16:30:17.434293+00:00"
   },
   {
     "id": "a8cb0e01-6187-4117-a862-d4018055e591",
@@ -3584,7 +4004,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-03-10T03:33:17.434306+00:00",
+    "updatedAt": "2025-05-24T03:33:17.434306+00:00"
   },
   {
     "id": "a8752e7b-a5d3-4cf2-9e98-c5c1ebe7640b",
@@ -3601,7 +4023,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-26T14:29:17.434320+00:00",
+    "updatedAt": "2025-05-20T14:29:17.434320+00:00"
   },
   {
     "id": "2686eaec-b353-454a-aac3-b6637f7cb750",
@@ -3618,7 +4042,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-04-17T12:04:17.434373+00:00",
+    "updatedAt": "2025-06-05T12:04:17.434373+00:00"
   },
   {
     "id": "12e43491-f3ac-4f55-99e0-868f88e167d0",
@@ -3635,7 +4061,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-02-23T00:58:17.434389+00:00",
+    "updatedAt": "2025-03-17T00:58:17.434389+00:00"
   },
   {
     "id": "b7826f81-bd1a-4392-9767-37e6e37df76e",
@@ -3652,7 +4080,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d7"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d7",
+    "createdAt": "2025-03-09T21:47:17.434403+00:00",
+    "updatedAt": "2025-04-05T21:47:17.434403+00:00"
   },
   {
     "id": "29279404-e091-47c0-9ed3-5e263cce5527",
@@ -3669,7 +4099,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d7"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d7",
+    "createdAt": "2025-05-16T06:44:17.434434+00:00",
+    "updatedAt": "2025-06-07T06:44:17.434434+00:00"
   },
   {
     "id": "f93473ac-5ac7-477f-b567-a2f3d1b43c97",
@@ -3686,7 +4118,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-04-05T04:03:17.434449+00:00",
+    "updatedAt": "2025-04-27T04:03:17.434449+00:00"
   },
   {
     "id": "8d40a274-a929-4f09-8c96-c28f9f2382ab",
@@ -3703,7 +4137,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-06T10:45:17.434462+00:00",
+    "updatedAt": "2025-05-30T10:45:17.434462+00:00"
   },
   {
     "id": "2c6c6507-0793-4f2b-a3f8-4857b4c5e760",
@@ -3720,7 +4156,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-01-08T06:50:17.434476+00:00",
+    "updatedAt": "2025-06-25T06:50:17.434476+00:00"
   },
   {
     "id": "54f8a8ec-4e8b-4c1b-adcb-f6253f307d27",
@@ -3737,7 +4175,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d1",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-06-18T00:05:17.434489+00:00",
+    "updatedAt": "2025-06-22T00:05:17.434489+00:00"
   },
   {
     "id": "770bb66c-583d-4fe2-a319-dc4a4c6c0a52",
@@ -3754,7 +4194,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d1",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-01-02T21:41:17.434551+00:00",
+    "updatedAt": "2025-04-24T21:41:17.434551+00:00"
   },
   {
     "id": "51f29693-6da2-4a3b-8b9d-fd335c54b3ea",
@@ -3771,7 +4213,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-06-09T04:14:17.434600+00:00",
+    "updatedAt": "2025-06-11T04:14:17.434600+00:00"
   },
   {
     "id": "2f040355-23db-4e5c-b154-a57889ca1d23",
@@ -3788,7 +4232,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d1",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-05-17T10:48:17.434651+00:00",
+    "updatedAt": "2025-06-16T10:48:17.434651+00:00"
   },
   {
     "id": "d8450d6e-a213-4a4c-b062-9239f72e5eb6",
@@ -3805,7 +4251,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-20T16:51:17.434666+00:00",
+    "updatedAt": "2025-05-04T16:51:17.434666+00:00"
   },
   {
     "id": "6059cf03-1e61-4a87-b7a0-e0fc2fe2ec14",
@@ -3822,7 +4270,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-03-06T01:47:17.434681+00:00",
+    "updatedAt": "2025-06-24T01:47:17.434681+00:00"
   },
   {
     "id": "963f6c82-b6a2-436c-b33f-6ffefe011d6b",
@@ -3839,7 +4289,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-04-29T00:37:17.434700+00:00",
+    "updatedAt": "2025-06-20T00:37:17.434700+00:00"
   },
   {
     "id": "44b7d639-58d1-46dc-a92c-0d2f80489707",
@@ -3856,7 +4308,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-06-09T05:22:17.434716+00:00",
+    "updatedAt": "2025-06-29T05:22:17.434716+00:00"
   },
   {
     "id": "65f12090-ce99-4b34-8e66-e6ce2a3373b8",
@@ -3873,7 +4327,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d9",
+    "createdAt": "2025-03-10T15:04:17.434731+00:00",
+    "updatedAt": "2025-03-26T15:04:17.434731+00:00"
   },
   {
     "id": "6a46d87c-9459-4c33-af95-718647fae890",
@@ -3890,7 +4346,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-01-07T13:22:17.434746+00:00",
+    "updatedAt": "2025-04-11T13:22:17.434746+00:00"
   },
   {
     "id": "7fbd2e98-0407-4749-941d-7b57f4a13350",
@@ -3907,7 +4365,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d1",
+    "createdAt": "2025-05-07T07:51:17.434760+00:00",
+    "updatedAt": "2025-06-21T07:51:17.434760+00:00"
   },
   {
     "id": "ae05a0ae-c7bc-4313-8a12-84489cdb8b5c",
@@ -3924,7 +4384,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-04-16T08:14:17.434789+00:00",
+    "updatedAt": "2025-05-06T08:14:17.434789+00:00"
   },
   {
     "id": "5882012f-c5be-46f3-882b-c4bbceb82ead",
@@ -3941,7 +4403,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d2",
+    "createdAt": "2025-04-12T03:56:17.434808+00:00",
+    "updatedAt": "2025-06-16T03:56:17.434808+00:00"
   },
   {
     "id": "ec42851d-f0bf-410d-a83e-1202ce24fcd2",
@@ -3958,7 +4422,9 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-05-08T10:16:17.434823+00:00",
+    "updatedAt": "2025-05-20T10:16:17.434823+00:00"
   },
   {
     "id": "36cefa84-8e2e-4115-97d7-71418d77a1d1",
@@ -3975,6 +4441,8 @@
     "brandId": "7e94f147-004e-4886-8a60-a9f3c98ad1d5",
     "categoryId": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
     "styleTypeId": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6"
+    "colorId": "9e94f147-004e-4886-8a60-a9f3c98ad1d6",
+    "createdAt": "2025-04-08T18:32:17.434837+00:00",
+    "updatedAt": "2025-05-25T18:32:17.434837+00:00"
   }
 ]

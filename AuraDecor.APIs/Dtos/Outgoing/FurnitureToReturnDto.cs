@@ -21,4 +21,6 @@ public class FurnitureToReturnDto
     public string StyleType { get; set; }
     public Guid ColorId { get; set; }
     public string Color { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 }

@@ -1,34 +1,50 @@
 [
   {
     "id": "8e94f147-004e-4886-8a60-a9f3c98ad1d1",
-    "name": "Modern"
+    "name": "Modern",
+    "createdAt": "2025-01-31T19:33:17.427176+00:00",
+    "updatedAt": "2025-04-26T19:33:17.427176+00:00"
   },
   {
     "id": "8e94f147-004e-4886-8a60-a9f3c98ad1d2",
-    "name": "Contemporary"
+    "name": "Contemporary",
+    "createdAt": "2025-04-20T13:43:17.427206+00:00",
+    "updatedAt": "2025-06-03T13:43:17.427206+00:00"
   },
   {
     "id": "8e94f147-004e-4886-8a60-a9f3c98ad1d3",
-    "name": "Scandinavian"
+    "name": "Scandinavian",
+    "createdAt": "2025-04-30T17:08:17.427223+00:00",
+    "updatedAt": "2025-05-02T17:08:17.427223+00:00"
   },
   {
     "id": "8e94f147-004e-4886-8a60-a9f3c98ad1d4",
-    "name": "Industrial"
+    "name": "Industrial",
+    "createdAt": "2025-05-08T06:01:17.427239+00:00",
+    "updatedAt": "2025-06-30T06:01:17.427239+00:00"
   },
   {
     "id": "8e94f147-004e-4886-8a60-a9f3c98ad1d5",
-    "name": "Minimalist"
+    "name": "Minimalist",
+    "createdAt": "2025-05-14T05:56:17.427255+00:00",
+    "updatedAt": "2025-06-18T05:56:17.427255+00:00"
   },
   {
     "id": "8e94f147-004e-4886-8a60-a9f3c98ad1d6",
-    "name": "Traditional"
+    "name": "Traditional",
+    "createdAt": "2025-05-30T19:13:17.427272+00:00",
+    "updatedAt": "2025-06-04T19:13:17.427272+00:00"
   },
   {
     "id": "8e94f147-004e-4886-8a60-a9f3c98ad1d7",
-    "name": "Rustic"
+    "name": "Rustic",
+    "createdAt": "2025-01-26T14:46:17.427289+00:00",
+    "updatedAt": "2025-03-16T14:46:17.427289+00:00"
   },
   {
     "id": "8e94f147-004e-4886-8a60-a9f3c98ad1d8",
-    "name": "Mid-Century"
+    "name": "Mid-Century",
+    "createdAt": "2025-01-09T19:19:17.427323+00:00",
+    "updatedAt": "2025-05-18T19:19:17.427323+00:00"
   }
 ]

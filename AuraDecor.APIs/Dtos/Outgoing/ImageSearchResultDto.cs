@@ -17,5 +17,7 @@ namespace AuraDecor.APIs.Dtos.Outgoing
         public string CategoryId { get; set; }
         public string StyleTypeId { get; set; }
         public string ColorId { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
     }
 }

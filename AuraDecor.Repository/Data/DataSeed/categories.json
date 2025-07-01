@@ -1,14 +1,20 @@
 [
-    {
-      "id": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
-      "name": "Storage Solutions"
-    },
-    {
-      "id": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
-      "name": "Beds & Bedroom"
-    },
-    {
-      "id": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
-      "name": "Children's Furniture"
-    }
+  {
+    "id": "1e93f147-004e-4886-8a60-a9f3c98ad1d1",
+    "name": "Storage Solutions",
+    "createdAt": "2025-03-06T12:27:17.426013+00:00",
+    "updatedAt": "2025-03-12T12:27:17.426013+00:00"
+  },
+  {
+    "id": "2e93f147-004e-4886-8a60-a9f3c98ad1d2",
+    "name": "Beds & Bedroom",
+    "createdAt": "2025-03-26T08:27:17.426064+00:00",
+    "updatedAt": "2025-06-11T08:27:17.426064+00:00"
+  },
+  {
+    "id": "3e93f147-004e-4886-8a60-a9f3c98ad1d3",
+    "name": "Children's Furniture",
+    "createdAt": "2025-06-29T19:46:17.426083+00:00",
+    "updatedAt": "2025-06-29T19:46:17.426083+00:00"
+  }
 ]
