@@ -221,7 +221,7 @@ namespace AuraDecor.APIs.Controllers
                 return BadRequest(ModelState);
             }
 
-            var jsonResult = await ((FurnitureService)_furnitureService).SearchFurnitureByImageAsync(searchDto.File, searchDto.Limit, searchDto.Color);
+            var jsonResult = await ((FurnitureService)_furnitureService).SearchFurnitureByImageAsync(searchDto.File, searchDto.Limit);
             
             try
             {

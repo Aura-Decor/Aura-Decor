@@ -231,7 +231,7 @@ namespace AuraDecor.Servicies
             }
         }
 
-        public async Task<string> SearchFurnitureByImageAsync(IFormFile image, int limit = 10, string? color = null)
+        public async Task<string> SearchFurnitureByImageAsync(IFormFile image, int limit = 10)
         {
             try
             {
@@ -246,10 +246,6 @@ namespace AuraDecor.Servicies
                 formData.Add(imageContent, "File", image.FileName ?? "image.jpg");
                 
                 formData.Add(new StringContent(limit.ToString()), "limit");
-                if (!string.IsNullOrEmpty(color))
-                {
-                    formData.Add(new StringContent(color), "color");
-                }
 
                 var response = await _httpClient.PostAsync(
                     "https://A7medAyman-image-text-search.hf.space/api/v1/image/ImageSearchQuery", 
