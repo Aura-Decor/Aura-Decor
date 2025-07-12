@@ -1,4 +1,4 @@
-using AuraDecor.APIs.Dtos.Outgoing;
+﻿using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.Core.Entities;
 using AutoMapper;
 
@@ -12,7 +12,7 @@ public class FurnitureModdelUrlResolver : IValueResolver<Furniture, FurnitureToR
     {
         _configuration = configuration;
     }
-    
+
     public string Resolve(Furniture source, FurnitureToReturnDto destination, string destMember, ResolutionContext context)
     {
         if (!string.IsNullOrEmpty(source.FurnitureModel))
@@ -30,4 +30,3 @@ public class FurnitureModdelUrlResolver : IValueResolver<Furniture, FurnitureToR
         return null;
     }
 }
-    
