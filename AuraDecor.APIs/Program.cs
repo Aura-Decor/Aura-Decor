@@ -71,6 +71,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
+
+
 app.UseAuthentication();
 app.UseAuthorization();
 

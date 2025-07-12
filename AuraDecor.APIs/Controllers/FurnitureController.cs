@@ -39,7 +39,8 @@ namespace AuraDecor.APIs.Controllers
             return Ok(furnitureToReturn);
         }
         [Cached(300, "furniture", "furniture-list")]
-        [RateLimit(5, 60, RateLimitAlgorithm.SlidingWindow)]  
+        [RateLimit(100, 60, RateLimitAlgorithm.SlidingWindow)]
+
         [HttpGet]
         public async Task<ActionResult<Pagination<Furniture>>> GetAllFurniture([FromQuery] FurnitureSpecParams specParams)
         {

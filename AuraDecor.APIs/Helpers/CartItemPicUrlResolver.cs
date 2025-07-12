@@ -1,4 +1,4 @@
-using AuraDecor.APIs.Dtos.Outgoing;
+﻿using AuraDecor.APIs.Dtos.Outgoing;
 using AuraDecor.Core.Entities;
 using AutoMapper;
 
@@ -12,7 +12,7 @@ public class CartItemPicUrlResolver : IValueResolver<CartItem, CartItemDto, stri
     {
         _configuration = configuration;
     }
-    
+
     public string Resolve(CartItem source, CartItemDto destination, string destMember, ResolutionContext context)
     {
         if (!string.IsNullOrEmpty(source.Furniture?.PictureUrl))
