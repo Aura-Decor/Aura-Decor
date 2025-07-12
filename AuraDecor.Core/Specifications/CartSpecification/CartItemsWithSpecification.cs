@@ -7,6 +7,7 @@ public class CartWithItemsSpecification : BaseSpecification<Cart>
     public CartWithItemsSpecification(string userId)
         : base(cart => cart.UserId == userId)
     {
+        AddInclude("CartItems.Furniture");
         AddInclude("CartItems.Furniture.StyleType");
         AddInclude("CartItems.Furniture.Color");
         AddInclude("CartItems.Furniture.Brand");
@@ -16,6 +17,7 @@ public class CartWithItemsSpecification : BaseSpecification<Cart>
     public CartWithItemsSpecification(Guid cartId)
         : base(cart => cart.Id == cartId)
     {
+        AddInclude("CartItems.Furniture");
         AddInclude("CartItems.Furniture.StyleType");
         AddInclude("CartItems.Furniture.Color");
         AddInclude("CartItems.Furniture.Brand");

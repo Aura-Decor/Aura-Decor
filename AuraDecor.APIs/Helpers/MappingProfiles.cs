@@ -36,7 +36,8 @@ public class MappingProfiles : Profile
             .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Furniture.Name))
             .ForMember(d => d.Price, opt => opt.MapFrom(s => s.Furniture.Price))
             .ForMember(d => d.StyleType, opt => opt.MapFrom(s => s.Furniture.StyleType.Name))
-            .ForMember(d => d.Color, opt => opt.MapFrom(s => s.Furniture.Color.Name));
+            .ForMember(d => d.Color, opt => opt.MapFrom(s => s.Furniture.Color.Name))
+            .ForMember(d => d.PictureUrl, opt => opt.MapFrom(s => s.Furniture.PictureUrl));
 
         CreateMap<CartItem, OrderItem>()
             .ForMember(d => d.FurnitureId, opt => opt.MapFrom(s => s.FurnitureId))
