@@ -17,16 +17,10 @@ public class CartItemPicUrlResolver : IValueResolver<CartItem, CartItemDto, stri
     {
         if (!string.IsNullOrEmpty(source.Furniture?.PictureUrl))
         {
-            if (source.Furniture.PictureUrl.StartsWith("http://") || source.Furniture.PictureUrl.StartsWith("https://"))
-            {
-                var corsProxy = _configuration["CorsProxy:Url"] ?? "https://corsproxy.io/?url=";
-                return $"{corsProxy}{source.Furniture.PictureUrl}";
-            }
-            else
-            {
+      
                 return $"{_configuration["ApiUrls:Base"]}{source.Furniture.PictureUrl}";
-            }
         }
         return null;
     }
+    
 }
