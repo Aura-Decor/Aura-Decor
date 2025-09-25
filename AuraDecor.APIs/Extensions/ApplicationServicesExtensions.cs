@@ -48,18 +48,26 @@ public static class ApplicationServicesExtensions
         
         services.AddAutoMapper(m => m.AddProfile<MappingProfiles>());
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+        {
+            options.UseSqlServer(config.GetRequiredConnectionString("DefaultConnection"), sqlOptions =>
+            {
+                sqlOptions.EnableRetryOnFailure(maxRetryCount: 3);
+                sqlOptions.CommandTimeout(30);
+            });
+            
+            // Enable query caching for better performance
+            options.EnableServiceProviderCaching();
+            options.EnableSensitiveDataLogging(false);
+            
+            // Configure change tracking for better performance
+            options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+        });
 
         // Configure Redis with optimized settings
         services.AddSingleton<IConnectionMultiplexer>(serviceProvider =>
         {
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-            var connectionString = configuration.GetConnectionString("Redis");
-            
-            if (string.IsNullOrEmpty(connectionString))
-            {
-                throw new InvalidOperationException("Redis connection string is not configured");
-            }
+            var connectionString = configuration.GetRequiredConnectionString("Redis");
 
             var configOptions = ConfigurationOptions.Parse(connectionString, true);
             configOptions.AbortOnConnectFail = false;
@@ -117,11 +125,11 @@ public static class ApplicationServicesExtensions
                 name: "Database",
                 tags: new[] { "ready", "db" })
             .AddRedis(
-                config.GetConnectionString("Redis") ?? throw new InvalidOperationException("Redis connection string is required"),
+                config.GetRequiredConnectionString("Redis"),
                 name: "Redis",
                 tags: new[] { "ready", "cache" })
             .AddRabbitMQ(
-                config["RabbitMQ:Uri"] ?? throw new InvalidOperationException("RabbitMQ URI is required"),
+                config.GetRequiredValue("RabbitMQ:Uri"),
                 name: "RabbitMQ",
                 tags: new[] { "ready", "messaging" });
 
