@@ -25,27 +25,66 @@ builder.Services.AddSwaggerServices();
 
 #region Application Configuration
 var app = builder.Build();
+
 #region DatabaseMigration
-using var scope = app.Services.CreateScope();
-
-// Ask CLR to create a scope for the service provider
-var services = scope.ServiceProvider;
-var _dbcontext = services.GetRequiredService<AppDbContext>();
-var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-try
+// Optimize database migration with better error handling and performance
+await using (var scope = app.Services.CreateAsyncScope())
 {
-    await _dbcontext.Database.MigrateAsync();
-    await AppDbContextDataSeed.SeedAsync(_dbcontext);
+    var services = scope.ServiceProvider;
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    
+    try
+    {
+        var dbContext = services.GetRequiredService<AppDbContext>();
+        
+        // Check if migration is needed before attempting
+        var pendingMigrations = await dbContext.Database.GetPendingMigrationsAsync();
+        if (pendingMigrations.Any())
+        {
+            logger.LogInformation("Applying {Count} pending migrations", pendingMigrations.Count());
+            await dbContext.Database.MigrateAsync();
+            logger.LogInformation("Database migration completed successfully");
+        }
+        else
+        {
+            logger.LogInformation("Database is up to date, no migrations needed");
+        }
 
-}
-catch (Exception e)
-{
-    var logger = loggerFactory.CreateLogger<Program>();
-    logger.LogError(e, "An error occurred during migration");
+        // Seed data only if necessary
+        await AppDbContextDataSeed.SeedAsync(dbContext);
+        logger.LogInformation("Database seeding completed successfully");
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "An error occurred during database migration or seeding");
+        
+        // In production, you might want to fail fast on migration errors
+        if (!app.Environment.IsDevelopment())
+        {
+            throw;
+        }
+    }
 }
 #endregion
 
+// Configure security and performance middleware in optimal order
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<PerformanceMiddleware>();
+
+// Add security headers for production
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHsts();
+    app.Use(next => context =>
+    {
+        context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
+        context.Response.Headers.Append("X-Frame-Options", "DENY");
+        context.Response.Headers.Append("X-XSS-Protection", "1; mode=block");
+        context.Response.Headers.Append("Referrer-Policy", "strict-origin-when-cross-origin");
+        return next(context);
+    });
+}
+
 app.UseRateLimiting();
 app.UseSwaggerMiddleWare();
 app.MapScalarApiReference(options =>
@@ -54,11 +93,16 @@ app.MapScalarApiReference(options =>
         .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
 );
 
-
 app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseHttpsRedirection();
+
+// Add response caching middleware
+app.UseResponseCaching();
+app.UseOutputCache();
+
 app.UseStaticFiles();
 
+// Configure Stripe with environment-specific settings
 StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 if (app.Environment.IsDevelopment())
@@ -70,20 +114,47 @@ if (app.Environment.IsDevelopment())
     };
 }
 
-app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+// Optimize CORS configuration
+if (app.Environment.IsDevelopment())
+{
+    // Development: Allow all origins for easier testing
+    app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+}
+else
+{
+    // Production: Use specific origins for security
+    app.UseCors(c => c
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .WithOrigins(builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? new[] { "https://localhost" })
+        .AllowCredentials());
+}
 
 
 
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Configure optimized health checks
 app.MapHealthChecks("/health", new HealthCheckOptions
 {
     Predicate = _ => true,
-    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+    AllowCachingResponses = false
 });
 
-app.MapHealthChecksUI();
+// Separate lightweight health check for load balancers
+app.MapHealthChecks("/health/ready", new HealthCheckOptions
+{
+    Predicate = check => check.Tags.Contains("ready"),
+    AllowCachingResponses = false
+});
+
+app.MapHealthChecksUI(options =>
+{
+    options.ResourcesPath = "/health-ui/resources";
+    options.UIPath = "/health-ui";
+});
 
 app.MapControllers();
 
