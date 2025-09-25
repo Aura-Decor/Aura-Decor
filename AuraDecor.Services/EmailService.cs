@@ -23,9 +23,10 @@ public class EmailService : IEmailService, IDisposable
     private readonly ILogger<EmailService> _logger;
     private const int OTP_EXPIRY = 5;
 
-    private static IConnection _connection;
-    private static IModel _channel;
+    private IConnection? _connection;
+    private IModel? _channel;
     private readonly object _connectionLock = new object();
+    private volatile bool _disposed;
 
     public EmailService(
         IOptions<EmailSettings> emailSettings,
@@ -45,29 +46,53 @@ public class EmailService : IEmailService, IDisposable
 
     private void InitializeRabbitMqConnection()
     {
-        if (_connection != null && _connection.IsOpen)
+        if (_disposed)
+            return;
+
+        if (_connection?.IsOpen == true && _channel?.IsOpen == true)
             return;
 
         lock (_connectionLock)
         {
-            if (_connection != null && _connection.IsOpen)
+            if (_disposed)
                 return;
 
-            var factory = new ConnectionFactory
+            if (_connection?.IsOpen == true && _channel?.IsOpen == true)
+                return;
+
+            try
             {
-                Uri = new Uri(_rabbitMqSettings.GetConnectionString()),
-                AutomaticRecoveryEnabled = true,
-                NetworkRecoveryInterval = TimeSpan.FromSeconds(10)
-            };
+                // Dispose existing connections if they exist
+                _channel?.Dispose();
+                _connection?.Dispose();
 
-            _connection = factory.CreateConnection();
-            _channel = _connection.CreateModel();
+                var factory = new ConnectionFactory
+                {
+                    Uri = new Uri(_rabbitMqSettings.GetConnectionString()),
+                    AutomaticRecoveryEnabled = true,
+                    NetworkRecoveryInterval = TimeSpan.FromSeconds(10),
+                    RequestedConnectionTimeout = TimeSpan.FromSeconds(30),
+                    RequestedHeartbeat = TimeSpan.FromSeconds(60),
+                    TopologyRecoveryEnabled = true
+                };
 
-            _channel.ExchangeDeclare(_rabbitMqSettings.Exchanges.EmailExchange, ExchangeType.Direct, durable: true);
-            _channel.QueueDeclare(_rabbitMqSettings.Queues.OtpEmails, durable: true, exclusive: false, autoDelete: false);
-            _channel.QueueDeclare(_rabbitMqSettings.Queues.NotificationEmails, durable: true, exclusive: false, autoDelete: false);
-            _channel.QueueBind(_rabbitMqSettings.Queues.OtpEmails, _rabbitMqSettings.Exchanges.EmailExchange, _rabbitMqSettings.Queues.OtpEmails);
-            _channel.QueueBind(_rabbitMqSettings.Queues.NotificationEmails, _rabbitMqSettings.Exchanges.EmailExchange, _rabbitMqSettings.Queues.NotificationEmails);
+                _connection = factory.CreateConnection($"EmailService-{Environment.MachineName}");
+                _channel = _connection.CreateModel();
+
+                // Declare exchanges and queues with error handling
+                _channel.ExchangeDeclare(_rabbitMqSettings.Exchanges.EmailExchange, ExchangeType.Direct, durable: true);
+                _channel.QueueDeclare(_rabbitMqSettings.Queues.OtpEmails, durable: true, exclusive: false, autoDelete: false);
+                _channel.QueueDeclare(_rabbitMqSettings.Queues.NotificationEmails, durable: true, exclusive: false, autoDelete: false);
+                _channel.QueueBind(_rabbitMqSettings.Queues.OtpEmails, _rabbitMqSettings.Exchanges.EmailExchange, _rabbitMqSettings.Queues.OtpEmails);
+                _channel.QueueBind(_rabbitMqSettings.Queues.NotificationEmails, _rabbitMqSettings.Exchanges.EmailExchange, _rabbitMqSettings.Queues.NotificationEmails);
+
+                _logger.LogInformation("RabbitMQ connection initialized successfully");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to initialize RabbitMQ connection");
+                throw;
+            }
         }
     }
 
@@ -150,8 +175,22 @@ public class EmailService : IEmailService, IDisposable
 
     private void PublishToQueue<T>(string queueName, string exchangeName, T message)
     {
+        if (_disposed)
+        {
+            _logger.LogWarning("Cannot publish to queue - EmailService is disposed");
+            throw new ObjectDisposedException(nameof(EmailService));
+        }
+
         try
         {
+            // Ensure connection is available
+            InitializeRabbitMqConnection();
+
+            if (_channel?.IsOpen != true)
+            {
+                throw new InvalidOperationException("RabbitMQ channel is not available");
+            }
+
             var messageJson = JsonSerializer.Serialize(message);
             var messageBody = Encoding.UTF8.GetBytes(messageJson);
 
@@ -160,6 +199,7 @@ public class EmailService : IEmailService, IDisposable
             properties.ContentType = "application/json";
             properties.Timestamp = new AmqpTimestamp(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
             properties.CorrelationId = Guid.NewGuid().ToString();
+            properties.DeliveryMode = 2; // Persistent message
 
             _channel.BasicPublish(
                 exchange: exchangeName,
@@ -167,6 +207,8 @@ public class EmailService : IEmailService, IDisposable
                 basicProperties: properties,
                 body: messageBody
             );
+
+            _logger.LogDebug("Message published to queue {QueueName}", queueName);
         }
         catch (Exception ex)
         {
@@ -206,19 +248,39 @@ public class EmailService : IEmailService, IDisposable
 
     public void Dispose()
     {
-        try
+        if (_disposed)
+            return;
+
+        lock (_connectionLock)
         {
-            _channel?.Close();
-            _connection?.Close();
+            if (_disposed)
+                return;
+
+            _disposed = true;
+
+            try
+            {
+                _channel?.Close(200, "Application shutdown");
+                _connection?.Close(200, "Application shutdown");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Error during graceful closure of RabbitMQ resources");
+            }
+            finally
+            {
+                try
+                {
+                    _channel?.Dispose();
+                    _connection?.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Error during disposal of RabbitMQ resources");
+                }
+            }
         }
-        catch (Exception ex)
-        {
-            _logger.LogWarning(ex, "Error during disposal of RabbitMQ resources");
-        }
-        finally
-        {
-            _channel?.Dispose();
-            _connection?.Dispose();
-        }
+
+        GC.SuppressFinalize(this);
     }
 }

@@ -98,40 +98,48 @@ public class RateLimitingMiddleware
         await _next(context);
     }
 
-    // ALGORITHM 1: FIXED WINDOW
+    // ALGORITHM 1: FIXED WINDOW (Optimized)
     private async Task<(bool IsAllowed, int Remaining, TimeSpan? ResetTime)> CheckFixedWindowLimitAsync(
         string clientId, string resource, int limit, int windowSeconds)
     {
         var db = _redis.GetDatabase();
         var key = $"rate-limit:fixed:{clientId}:{resource}";
         
-        var transaction = db.CreateTransaction();
-        var counterTask = transaction.StringGetAsync(key);
-        var ttlTask = transaction.KeyTimeToLiveAsync(key);
-        
-        await transaction.ExecuteAsync();
-        
-        var currentCount = await counterTask;
-        var ttl = await ttlTask;
-        
-        var count = currentCount.IsNull ? 0 : int.Parse(currentCount.ToString());
-        
-        if (count >= limit)
-        {
-            return (false, 0, ttl);
-        }
-        
-        // Use Lua script for atomic increment and expiry
+        // Use single Lua script for atomic operations to reduce Redis round trips
         var script = @"
-            local current = redis.call('INCR', KEYS[1])
-            if current == 1 then
-                redis.call('EXPIRE', KEYS[1], ARGV[1])
+            local key = KEYS[1]
+            local limit = tonumber(ARGV[1])
+            local windowSeconds = tonumber(ARGV[2])
+            
+            local current = redis.call('GET', key)
+            local count = tonumber(current) or 0
+            
+            if count >= limit then
+                local ttl = redis.call('TTL', key)
+                return {0, 0, ttl > 0 and ttl or windowSeconds}
             end
-            return current";
+            
+            -- Increment and set expiry atomically
+            local newCount = redis.call('INCR', key)
+            if newCount == 1 then
+                redis.call('EXPIRE', key, windowSeconds)
+            end
+            
+            local ttl = redis.call('TTL', key)
+            return {1, limit - newCount, ttl > 0 and ttl or windowSeconds}";
         
-        await db.ScriptEvaluateAsync(script, new RedisKey[] { key }, new RedisValue[] { windowSeconds });
+        var result = (RedisResult[])await db.ScriptEvaluateAsync(
+            script, 
+            new RedisKey[] { key }, 
+            new RedisValue[] { limit.ToString(), windowSeconds.ToString() }
+        );
         
-        return (true, limit - count - 1, ttl);
+        bool isAllowed = result[0].ToString() == "1";
+        int remaining = (int)result[1];
+        int ttlSeconds = (int)result[2];
+        TimeSpan? resetTime = ttlSeconds > 0 ? TimeSpan.FromSeconds(ttlSeconds) : null;
+        
+        return (isAllowed, remaining, resetTime);
     }
 
     // ALGORITHM 2: SLIDING WINDOW
@@ -277,15 +285,33 @@ public class RateLimitingMiddleware
 
     private string GetClientIdentifier(HttpContext context)
     {
+        // Prioritize authenticated user identification
         if (context.User?.Identity?.IsAuthenticated == true)
         {
             var userId = context.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
             if (!string.IsNullOrEmpty(userId))
             {
-                return userId;
+                return $"user:{userId}";
             }
         }
         
-        return context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+        // Fallback to IP address with header consideration for proxies
+        var ipAddress = context.Connection.RemoteIpAddress?.ToString();
+        
+        // Check for forwarded IP headers (common in load balancer scenarios)
+        if (context.Request.Headers.TryGetValue("X-Forwarded-For", out var forwardedFor))
+        {
+            var firstIp = forwardedFor.ToString().Split(',').FirstOrDefault()?.Trim();
+            if (!string.IsNullOrEmpty(firstIp))
+            {
+                ipAddress = firstIp;
+            }
+        }
+        else if (context.Request.Headers.TryGetValue("X-Real-IP", out var realIp))
+        {
+            ipAddress = realIp.ToString();
+        }
+        
+        return $"ip:{ipAddress ?? "unknown"}";
     }
 }
