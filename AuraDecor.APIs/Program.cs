@@ -15,6 +15,20 @@ using Stripe;
 #region Builder Configuration
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure host options for better performance
+builder.Host.ConfigureHostOptions(options =>
+{
+    options.ShutdownTimeout = TimeSpan.FromSeconds(30);
+});
+
+// Configure Kestrel for better performance
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = 10 * 1024 * 1024; // 10MB limit
+    options.Limits.RequestHeadersTimeout = TimeSpan.FromSeconds(15);
+    options.Limits.KeepAliveTimeout = TimeSpan.FromSeconds(120);
+});
+
 builder.Services.AddCors();
 
 builder.Services.AddControllers();
@@ -157,6 +171,14 @@ app.MapHealthChecksUI(options =>
 });
 
 app.MapControllers();
+
+// Configure graceful shutdown
+var lifetime = app.Services.GetRequiredService<IHostApplicationLifetime>();
+lifetime.ApplicationStopping.Register(() =>
+{
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation("Application is shutting down gracefully...");
+});
 
 app.Run();
 #endregion

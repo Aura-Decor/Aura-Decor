@@ -28,20 +28,39 @@ public class ExceptionMiddleware
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, ex.Message); //Development
-            // log the exception in (Database, File, Cloud) //Production
+            // Log the exception with structured logging
+            using (_logger.BeginScope(new Dictionary<string, object>
+            {
+                ["RequestId"] = httpContext.TraceIdentifier,
+                ["RequestPath"] = httpContext.Request.Path.ToString(),
+                ["RequestMethod"] = httpContext.Request.Method,
+                ["UserAgent"] = httpContext.Request.Headers.UserAgent.ToString()
+            }))
+            {
+                _logger.LogError(ex, "Unhandled exception occurred");
+            }
+
+            // Set response properties
             httpContext.Response.ContentType = "application/json";
-            httpContext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
-            var response = _env.IsDevelopment()?
-                new ApiExceptionResponse((int) HttpStatusCode.InternalServerError, ex.Message, ex.StackTrace.ToString())
-                : new ApiExceptionResponse((int) HttpStatusCode.InternalServerError);
+            httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            // Create appropriate response based on environment
+            var response = _env.IsDevelopment()
+                ? new ApiExceptionResponse(
+                    (int)HttpStatusCode.InternalServerError, 
+                    ex.Message, 
+                    ex.StackTrace?.ToString())
+                : new ApiExceptionResponse((int)HttpStatusCode.InternalServerError);
+
+            var options = new JsonSerializerOptions 
+            { 
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = _env.IsDevelopment()
+            };
             
-            var options = new JsonSerializerOptions {PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
             var json = JsonSerializer.Serialize(response, options);
             await httpContext.Response.WriteAsync(json);
         }
-        
-
     }
     
 }
